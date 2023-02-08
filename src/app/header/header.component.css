@@ -1,0 +1,52 @@
+:host {
+  display: block;
+  padding-top: 10px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+img {
+  width: 100%;
+}
+
+.header {
+  position: absolute;
+  margin: 0px;
+  left: 20%;
+  top: 75%;
+  width: 60%;
+}
+
+button {
+  margin: 0px;
+}
+
+button:focus {
+  outline: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+.menuBtn {
+  width: 40px;
+}
+@media (max-width: 736px) {
+  .header {
+    top: 85%;
+  }
+  .header {
+    position: absolute;
+    margin: 0px;
+    left: 20%;
+    top: 75%;
+    width: 70%;
+  }
+  .menuBtn {
+    width: 58px;
+  }
+}
+.menu {
+  font-size: 40px;
+  color: #a9ccf1;
+}

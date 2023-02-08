@@ -1,0 +1,19 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/firebase', '.' ]
+  - name: 'gcr.io/cloud-builders/yarn'
+    args: ['install']
+  - name: 'gcr.io/cloud-builders/yarn'
+    args: ['run', 'build']
+  - name: 'gcr.io/$PROJECT_ID/firebase'
+    args: ['deploy', '--project', '$PROJECT_ID']
+    secretEnv: ['FIREBASE_TOKEN']
+secrets:
+  - kmsKeyName: projects/name-marmac-3dhomes/locations/global/keyRings/3DHomes_KR/cryptoKeys/3DHome_DeployKey
+    secretEnv:
+      FIREBASE_TOKEN: 'CiQAJXcotrWrx7+UIs5DtYAKXBgU/Tnk1p6YRA2oIW6dqEdkcmMSVgCYt06Vp8eNN3c7s12YZb7tTuIU5oEL9Vn77bhV5INEdJAIasIsdfvT4caPiWBPpAZTUjK0CuUiEtYrNv5Cp6xeg/pbXje+XJxSCnYUf39gXQsdfJgD'
+
+images:
+  - 'gcr.io/$PROJECT_ID/firebase'
+
+

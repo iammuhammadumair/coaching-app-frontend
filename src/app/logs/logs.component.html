@@ -1,0 +1,133 @@
+<h2>Pending bookings</h2>
+<br>
+<table mat-table [dataSource]="pendingBookings">
+  <ng-container matColumnDef="client-name">
+    <th mat-header-cell *matHeaderCellDef> Client Name </th>
+    <td mat-cell *matCellDef="let booking"> {{booking?.client?.firstname}} {{booking?.client?.lastname}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="client-email">
+    <th mat-header-cell *matHeaderCellDef class="hideResp"> Coach Name </th>
+    <td mat-cell *matCellDef="let booking" class="hideResp"> {{booking?.client?.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="coach-name">
+    <th mat-header-cell *matHeaderCellDef class="hideResp"> Coach Name </th>
+    <td mat-cell *matCellDef="let booking" class="hideResp"> {{booking?.coach?.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="coach-email">
+    <th mat-header-cell *matHeaderCellDef class="hideResp"> Coach Name </th>
+    <td mat-cell *matCellDef="let booking" class="hideResp"> {{booking?.coach?.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef class="hideResp"> Date </th>
+    <td mat-cell *matCellDef="let booking" class="hideResp"> {{booking?.date | date}} </td>
+  </ng-container>
+
+  <!-- Header and Row Declarations -->
+  <tr mat-header-row *matHeaderRowDef="['client-name', 'client-email', 'coach-name', 'coach-email', 'date']"></tr>
+  <tr mat-row *matRowDef="let booking; columns: ['client-name', 'client-email', 'coach-name', 'coach-email', 'date']"></tr>
+</table>
+<br><br>
+<h2>Sessions</h2>
+<br>
+<table mat-table [dataSource]="sessionBookings">
+  <ng-container matColumnDef="client-name">
+    <th mat-header-cell *matHeaderCellDef> Client Name </th>
+    <td mat-cell *matCellDef="let booking"> {{booking?.client?.firstname}} {{booking?.client?.lastname}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="client-email">
+    <th mat-header-cell *matHeaderCellDef class="hideResp"> Coach Name </th>
+    <td mat-cell *matCellDef="let booking" class="hideResp"> {{booking?.client?.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="coach-name">
+    <th mat-header-cell *matHeaderCellDef class="hideResp"> Coach Name </th>
+    <td mat-cell *matCellDef="let booking" class="hideResp"> {{booking?.coach?.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="coach-email">
+    <th mat-header-cell *matHeaderCellDef class="hideResp"> Coach Name </th>
+    <td mat-cell *matCellDef="let booking" class="hideResp"> {{booking?.coach?.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef class="hideResp"> Date </th>
+    <td mat-cell *matCellDef="let booking" class="hideResp"> {{booking?.date | date}} </td>
+  </ng-container>
+
+  <!-- Header and Row Declarations -->
+  <tr mat-header-row *matHeaderRowDef="['client-name', 'client-email', 'coach-name', 'coach-email', 'date']"></tr>
+  <tr mat-row *matRowDef="let booking; columns: ['client-name', 'client-email', 'coach-name', 'coach-email', 'date']"></tr>
+</table>
+<br><br>
+<h2>No Show</h2>
+<br>
+<table mat-table [dataSource]="noShowBookings">
+  <ng-container matColumnDef="client-name">
+    <th mat-header-cell *matHeaderCellDef> Client Name </th>
+    <td mat-cell *matCellDef="let booking"> {{booking?.client?.firstname}} {{booking?.client?.lastname}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="client-email">
+    <th mat-header-cell *matHeaderCellDef class="hideResp"> Coach Name </th>
+    <td mat-cell *matCellDef="let booking" class="hideResp"> {{booking?.client?.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="coach-name">
+    <th mat-header-cell *matHeaderCellDef class="hideResp"> Coach Name </th>
+    <td mat-cell *matCellDef="let booking" class="hideResp"> {{booking?.coach?.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="coach-email">
+    <th mat-header-cell *matHeaderCellDef class="hideResp"> Coach Name </th>
+    <td mat-cell *matCellDef="let booking" class="hideResp"> {{booking?.coach?.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef class="hideResp"> Date </th>
+    <td mat-cell *matCellDef="let booking" class="hideResp"> {{booking?.date | date}} </td>
+  </ng-container>
+
+  <!-- Header and Row Declarations -->
+  <tr mat-header-row *matHeaderRowDef="['client-name', 'client-email', 'coach-name', 'coach-email', 'date']"></tr>
+  <tr mat-row *matRowDef="let booking; columns: ['client-name', 'client-email', 'coach-name', 'coach-email', 'date']"></tr>
+</table>
+<br><br>
+<h2>Cancelled Bookings</h2>
+<br>
+<table mat-table [dataSource]="cancelledBookings">
+  <ng-container matColumnDef="client-name">
+    <th mat-header-cell *matHeaderCellDef> Client Name </th>
+    <td mat-cell *matCellDef="let booking"> {{booking?.client?.firstname}} {{booking?.client?.lastname}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="client-email">
+    <th mat-header-cell *matHeaderCellDef class="hideResp"> Coach Name </th>
+    <td mat-cell *matCellDef="let booking" class="hideResp"> {{booking?.client?.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="coach-name">
+    <th mat-header-cell *matHeaderCellDef class="hideResp"> Coach Name </th>
+    <td mat-cell *matCellDef="let booking" class="hideResp"> {{booking?.coach?.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="coach-email">
+    <th mat-header-cell *matHeaderCellDef class="hideResp"> Coach Name </th>
+    <td mat-cell *matCellDef="let booking" class="hideResp"> {{booking?.coach?.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef class="hideResp"> Date </th>
+    <td mat-cell *matCellDef="let booking" class="hideResp"> {{booking?.date | date}} </td>
+  </ng-container>
+
+  <!-- Header and Row Declarations -->
+  <tr mat-header-row *matHeaderRowDef="['client-name', 'client-email', 'coach-name', 'coach-email', 'date']"></tr>
+  <tr mat-row *matRowDef="let booking; columns: ['client-name', 'client-email', 'coach-name', 'coach-email', 'date']"></tr>
+</table>
+
+

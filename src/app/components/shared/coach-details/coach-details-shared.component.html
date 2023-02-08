@@ -1,0 +1,13 @@
+<div class="coachDetailsFlexContainer" [ngStyle]="{'flex-direction': getDisplayDirection()}">
+  <div style="text-align:center; padding-bottom:3px;">
+    <span style="font-size:12pt;">
+      <br />
+      <div>{{coach.name}}</div>
+      <br />
+      <div><b>€{{coach.price | thousandSeparator}}</b></div>
+      <br />
+      <div>{{coach.quote}}</div>
+      <br />
+    </span>
+  </div>
+</div>

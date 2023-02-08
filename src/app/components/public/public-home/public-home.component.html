@@ -1,0 +1,199 @@
+<h1 class=" top jubilat jubilat-header" fxLayout="row" fxLayoutAlign="center start">
+  Talk with an internationally accredited coach about
+</h1>
+<div class="text txtcenter" fxLayout="row" fxLayoutAlign="center start">
+  <div fxFlex="100%" fxFlex.gt-sm="70%">
+    <p>
+      professional development, mental problems, stress, conflict, emotional showstoppers and more.
+      Use the filter to find the coach that fits you and your outcome now. Happiness is in the palm of your hand.
+    </p>
+    <app-form-button (click)="BookFreeSessionPopup(BookFreeSession)" [color]="'orange'">
+      <span fxLayout="row" fxLayoutAlign="center center">
+        Book a free discovery session
+      </span>
+    </app-form-button>
+    <div style="margin-top: 10px">
+      <app-form-button  (click)="openCalendar(GuestPopUp)">
+        <span  fxLayout="row" fxLayoutAlign="center center">
+          My Bookings
+        </span>
+      </app-form-button>
+    </div>
+    <p style="margin-top: 1.2rem">
+      Do you want to find a qualified coach in Latin America? Please
+      <a class="latim-btn" [routerLink]="['/partner']">tap here</a>
+    </p>
+
+  </div>
+</div>
+<!-- <div class="text" fxLayout="row" fxLayoutAlign="center start">
+  <div fxFlex="100%" fxFlex.gt-sm="70%">
+    <p>
+     We are software that facilitates you to connect with an international group of certified
+    professionals in NLP coaching. We enable you to filter, schedule, see your coach, follow
+    your progress on a personal timeline, and pay for your sessions. A smooth journey in
+    coaching online. Are you ready to grow?
+    </p>
+  </div>
+</div> -->
+<br />
+<div>
+  <a class="filter-btn" (click)="toggleShowDiv()">Filter</a>
+  <div [@slideInOut]="animationState">
+    <app-search-form source="home"></app-search-form>
+  </div>
+  <div class="separator"></div>
+  <br />
+</div>
+<br /><br />
+<div class="carouselDiv">
+  <app-carousel source="home"></app-carousel>
+</div>
+<br />
+<div class="ig-container">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div class="jubilat-header jubilat textsize txtcenter">
+      <h1> For companies</h1>
+    </div>
+    </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div class="jubilat jubilat-header textsize txtcenter">
+      Ensure employee’s mental and emotional health
+    </div>
+  </div>
+  <div class="text txtcenter" fxLayout="row" fxLayoutAlign="center start">
+    <div fxFlex="100%" fxFlex.gt-sm="70%">
+    <p>Superior in comfort, efficiency, and quality </p>
+    <a class="Jamming-logo" href="https://succeed.xtensio.com/succeedpage">
+    <app-form-button [color]="'violet'" >
+      Find out how
+    </app-form-button></a>
+    </div>
+  </div>
+  <br />
+  <div fxLayout="row" fxLayoutAlign="center center" >
+    <div fxFlex="initial" class="notes-container">
+      <div class="stripes violet"></div>
+      <div class="stripes orange"></div>
+      <div class="stripes blue"></div>
+      <div class="note">
+        <ng-container>
+          <div class="line"></div><span class="steps" style="background-color: #A9ccf1;"> 1 </span>
+          <span class="date"> select topic</span>
+        </ng-container>
+      </div>
+      <div class="note">
+        <ng-container>
+          <div class="line"></div><span class="steps" style="background-color: #FF9966"> 2 </span>
+          <span class="date"> choose coach</span>
+        </ng-container>
+      </div>
+      <div class="note">
+        <ng-container>
+          <div class="line"></div><span class="steps" style="background-color : #993399"> 3 </span>
+          <span class="date"> select day & time</span>
+        </ng-container>
+      </div>
+      <div class="note">
+        <ng-container>
+          <div class="line"></div><span class="steps" style="background-color: #A9ccf1;"> 4 </span>
+          <span class="date"> talk about it</span>
+        </ng-container>
+      </div>
+      <div class="note">
+        <ng-container>
+          <div class="line"></div><span class="steps" style="background-color: #FF9966"> 5 </span>
+          <span class="date"> read notes</span>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<div class="ig-container">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <a class="Jamming-logo" href="https://www.instagram.com/succeed.now/">
+      <img class="instagram-image" src="/assets/images/instagram.png" />
+    </a>
+    
+  </div>
+  <div fxLayout="column" fxLayoutGap="10px" class="ig-images" *ngIf="media">
+    <div fxLayout="row" fxLayoutGap="10px">
+      <div fxFlex="33%">
+        <img *ngIf="media[0]" [src]="media[0]?.media_url" />
+      </div>
+      <div fxFlex="33%">
+        <img *ngIf="media[1]" [src]="media[1]?.media_url" />
+      </div>
+      <div fxFlex="33%">
+        <img *ngIf="media[2]" [src]="media[2]?.media_url" />
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="10px">
+      <div fxFlex="33%">
+        <img *ngIf="media[3]" [src]="media[3]?.media_url" />
+      </div>
+      <div fxFlex="33%">
+        <img *ngIf="media[4]" [src]="media[4]?.media_url" />
+      </div>
+      <div fxFlex="33%">
+        <img *ngIf="media[5]" [src]="media[5]?.media_url" />
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="text txtcenter" fxLayout="row" fxLayoutAlign="center start">
+      <!-- <app-form-button [color]="'blue'"[routerLink]="['/privacy']"> -->
+      <p>
+          <a class="privacyPolicy" [routerLink]="['/privacy']">
+            Privacy Policy
+          </a>
+      </p>
+      <!-- </app-form-button> -->
+    </div>
+  </div>
+</div>
+<br /><br />
+<ng-template #GuestPopUp>
+  <div fxLayout="row" fxLayoutAlign="center center" style="border-bottom: ridge;">
+    <p class="jubilat CalederPopup">Please sign in to see your Calendar </p>
+    <hr>
+  </div>
+  <br />
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex="initial">
+      <app-form-button (click)="closeDialog()" [color]="'blue'"> Close </app-form-button>
+    </div>
+    <div fxFlex="grow" fxLayout="row" fxLayoutAlign="end center">
+      <app-form-button [routerLink]="['/signin','calendar']" (click)="closeDialog()"> Sign in </app-form-button>
+      &nbsp;&nbsp;
+      <app-form-button [color]="'orange'" [routerLink]="['/signup']" (click)="closeDialog()"> Sign up </app-form-button>
+    </div>
+  </div>
+</ng-template>
+<ng-template #BookFreeSession>
+  <div class="Free-Book-Session">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div fxFlex="grow" fxLayout="row" fxLayoutAlign="end center">
+        <app-form-button class="closebtn" (click)="closeDialog()" [color]="'blue'">
+          x
+        </app-form-button>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <p class="free-session">
+        After closing this pop-up, open any coach profile by tapping on their photo. Then you see the orange coloured
+        button that enables you to book the free initial session.
+      </p>
+    </div>
+
+    <div class="text txtcenter" fxLayout="row" fxLayoutAlign="center start">
+      <div fxFlex="100%" fxFlex.gt-sm="70%">
+        <app-form-button [routerLink]="['/public/services']" (click)="closeDialog()">
+          <div class="free-booking-session">Tap here to read about coach topics</div>
+        </app-form-button>
+      </div>
+    </div>
+  </div>
+</ng-template>

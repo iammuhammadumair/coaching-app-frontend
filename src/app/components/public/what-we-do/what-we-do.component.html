@@ -1,0 +1,15 @@
+<app-page-header [gray]="true">About & Contact</app-page-header>
+<br />
+<div fxLayout="row" fxLayoutAlign="center center" class="about-content">
+    <div class="text" fxFlex="100" fxFlex.gt-sm="60" class="about-content-in">
+        <ng-container *ngIf="user?.profileType == 'Coach'">
+            NLP Coaches are professionals who are trained in NLP amongst other methods. NLP Coaches subscribe to the conduct of ethics and presuppositions that are described here. (link to a page) If you feel you want to take part of Succeed as a professional, you are most welcome to send your NLP history to info@succeed.world. You will be contacted as soon as possible.
+        </ng-container>
+<!-- 
+        <ng-container *ngIf="user?.profileType == 'Coach Agent'">
+            Does your company support employees’ growth? Do you believe that self-sufficient happy employees bring a company to the next level? Then Succeed is for you. Your account with Succeed allows employees and coaches to sign up as members of your company. This enables your employees to exclusively schedule with coaches that are registered to your account. Is your coach pool not sufficient or not yet established? No problem, we are happy to schedule a sit down with you and talk about your possibilities with Succeed. Please email to info@succeed.world or use the contact form, we will get in touch with you.
+        </ng-container> -->
+
+        <app-contact></app-contact>
+    </div>
+</div>

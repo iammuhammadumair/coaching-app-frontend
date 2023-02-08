@@ -1,0 +1,26 @@
+.app-container {
+    padding: 15px;
+    text-align: center;
+    position: relative;
+}
+
+.app-button {
+    padding: 5px 10px;
+    background: #ff9966;
+    color: #fff;
+    cursor: pointer;
+}
+
+.app-close {
+    cursor: pointer;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #808080;
+    line-height: normal;
+    height: auto;
+    padding: 0px 5px;
+}

@@ -1,0 +1,43 @@
+<div >
+  <div class="jubilat top jubilat-header" fxLayout="row" fxLayoutAlign="center start">
+    You are about to find the best coach for you
+  </div>
+  <div class="text  Videotitle" fxLayout="row" fxLayoutAlign="center start" >
+    <div fxFlex="100%" fxFlex.gt-sm="70%">
+      <p>
+        We are a community that has been put in the world for people like you. You know there is more to life than eat, pray, love. There is also growth, fulfillment, helping others and caring for the planet. NLP trained coaches are here for you when life prompts you to explore your subconscious thinking.
+      </p>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="center center" class="Subscribe">
+      <div class="detail-container">
+        <app-form-button (click)="Subscribe()">
+         Subscribe
+        </app-form-button>
+      </div>
+    </div>
+  </div>
+
+  <div fxLayout="row wrap" fxLayoutAlign="center center" class="Subscribe-A">
+    <div class="detail-container">
+      <app-form-button (click)="Subscribe()">
+       Subscribe
+      </app-form-button>
+    </div>
+  </div>
+  </div>
+
+  <div class="row">
+  <div class="col-sm-6 blog" *ngFor="let Data of GetBlogData">
+
+    <div class="jubilat jubilat-header Blog-Title" fxLayout="row" fxLayoutAlign="center start">
+      {{ Data.BlogTitle }}
+    </div>
+    <div class="Blog-shortDesc">
+      {{Data.ShortDescription}}
+      <a [routerLink]="['/public/blog-details']" (click)="blogdetails(Data.ID)">..Read More..</a>
+    </div>
+  </div>
+</div>
+
+

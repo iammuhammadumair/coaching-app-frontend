@@ -1,0 +1,65 @@
+<div class="time-section-header">
+  <b>
+    {{ displayDate | date }} {{timezone}}
+  </b>
+</div>
+<br />
+<div fxLayout="row">
+  <div fxFlex="grow">
+    <div class="time-section-header">
+      Before 12.00
+    </div>
+    <br />
+    <ng-container *ngFor="let slot of availableSlots; let index = index;">
+      <ng-container *ngIf="isSlotAm(slot)">
+        <a class="time-slot selected"
+            [routerLink]="'/session/' + slot.booking.id"
+            target="_blank"
+            *ngIf="isSlotSelected(slot); else noLink">
+          <span (click)="slotClicked(index); $event.preventDefault()"
+                class="cancel-booking-icon"
+                *ngIf="canCancelSlot(slot)">
+            x
+          </span>
+          Session with {{ getClientName(slot) }} at {{slot.starts}}
+        </a>
+        <ng-template #noLink>
+          <a class="time-slot"
+             [ngClass]="{'circled': isSlotCircled(slot)}"
+             (click)="slotClicked(index)">
+            {{slot.starts}}
+          </a>
+        </ng-template>
+      </ng-container>
+    </ng-container>
+  </div>
+  <div fxFlex="30px"></div>
+  <div fxFlex="grow">
+    <div class="time-section-header">
+      After 12.00
+    </div>
+    <br />
+    <ng-container *ngFor="let slot of availableSlots; let index = index;">
+      <ng-container *ngIf="isSlotPm(slot)">
+        <a class="time-slot selected"
+           [routerLink]="'/session/' + slot.booking.id"
+           target="_blank"
+           *ngIf="isSlotSelected(slot); else noLink">
+          <span (click)="slotClicked(index); $event.preventDefault()"
+                class="cancel-booking-icon"
+                *ngIf="canCancelSlot(slot)">
+            x
+          </span>
+          Session with {{ getClientName(slot) }} at {{slot.starts}}
+        </a>
+        <ng-template #noLink>
+          <a class="time-slot"
+             [ngClass]="{'circled': isSlotCircled(slot)}"
+             (click)="slotClicked(index)">
+            {{slot.starts}}
+          </a>
+        </ng-template>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

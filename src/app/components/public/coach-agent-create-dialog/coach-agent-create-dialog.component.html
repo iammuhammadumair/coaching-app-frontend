@@ -1,0 +1,432 @@
+<div class="popup-container">
+  <mat-icon svgIcon="update" layout="column" layout-align=" end"></mat-icon>
+  <h2 mat-dialog-title>Add new Coach Agent</h2>
+  <mat-error *ngIf="saveError && saveError != ''">
+    {{ saveError }}
+  </mat-error>
+
+  <mat-dialog-content class="form-container">
+    <form [formGroup]="userForm" fxLayout="column">
+      <mat-form-field>
+        <mat-select
+          formControlName="CoachAgentTypeCtrl"
+          placeholder="Coach Agent Type"
+        >
+          <mat-option value="Individual">
+            Individual
+          </mat-option>
+          <mat-option value="Company">
+            Company
+            </mat-option>
+        </mat-select>
+        <mat-error>
+          <span
+            *ngIf="
+              form.CoachAgentTypeCtrl.invalid &&
+              form.CoachAgentTypeCtrl.errors.required &&
+              (form.CoachAgentTypeCtrl.dirty)
+            "
+          >
+            {{ validationMessages["field"]["required"] }}
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="emailCtrl" />
+        <mat-error>
+          <span
+            *ngIf="
+              form.emailCtrl.invalid &&
+              form.emailCtrl.errors.required &&
+              (form.emailCtrl.dirty || form.emailCtrl.touched)
+            "
+          >
+            {{ validationMessages["email"]["required"] }}
+          </span>
+          <span
+            *ngIf="
+              form.emailCtrl.invalid &&
+              form.emailCtrl.errors.email &&
+              (form.emailCtrl.dirty || form.emailCtrl.touched)
+            "
+          >
+            {{ validationMessages["email"]["email"] }}
+          </span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          type="password"
+          placeholder="Password"
+          formControlName="passwordCtrl"
+        />
+        <mat-error>
+          <span
+            *ngIf="
+              form.passwordCtrl.invalid &&
+              form.passwordCtrl.errors.required &&
+              (form.passwordCtrl.dirty || form.passwordCtrl.touched)
+            "
+          >
+            {{ validationMessages["password"]["required"] }}</span
+          >
+          <span
+            *ngIf="
+              form.passwordCtrl.invalid &&
+              form.passwordCtrl.errors.pattern &&
+              (form.passwordCtrl.dirty || form.passwordCtrl.touched)
+            "
+          >
+            {{ validationMessages["password"]["pattern"] }}</span
+          >
+          <span
+            *ngIf="
+              form.passwordCtrl.invalid &&
+              form.passwordCtrl.errors.minlength &&
+              (form.passwordCtrl.dirty || form.passwordCtrl.touched)
+            "
+          >
+            {{ validationMessages["password"]["minlength"] }}</span
+          >
+          <span
+            *ngIf="
+              form.passwordCtrl.invalid &&
+              form.passwordCtrl.errors.maxlength &&
+              (form.passwordCtrl.dirty || form.passwordCtrl.touched)
+            "
+          >
+            {{ validationMessages["password"]["maxlength"] }}</span
+          >
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          type="password"
+          placeholder="Confirm Password"
+          formControlName="confirmPasswordCtrl"
+        />
+        <mat-error>
+          <span
+            *ngIf="
+              form.confirmPasswordCtrl.invalid &&
+              form.confirmPasswordCtrl.errors.mismatch &&
+              (form.confirmPasswordCtrl.dirty ||
+                form.confirmPasswordCtrl.touched)
+            "
+          >
+            Password does not match the confirm password</span
+          >
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="First Name"
+          formControlName="firstnameCtrl"
+        />
+        <mat-error>
+          <span
+            *ngIf="
+              form.firstnameCtrl.invalid &&
+              form.firstnameCtrl.errors.required &&
+              (form.firstnameCtrl.dirty || form.firstnameCtrl.touched)
+            "
+          >
+            {{ validationMessages["field"]["required"] }}
+          </span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Last Name"
+          formControlName="lastnameCtrl"
+        />
+        <mat-error>
+          <span
+            *ngIf="
+              form.lastnameCtrl.invalid &&
+              form.lastnameCtrl.errors.required &&
+              (form.lastnameCtrl.dirty || form.lastnameCtrl.touched)
+            "
+          >
+            {{ validationMessages["field"]["required"] }}
+          </span>
+        </mat-error>
+      </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            formControlName="birthdayCtrl"
+            [matDatepicker]="picker"
+            placeholder="Birthday"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>
+            <span
+              *ngIf="
+              form.birthdayCtrl.invalid &&
+                form.birthdayCtrl.errors.required &&
+                (form.birthdayCtrl.dirty ||
+                  form.birthdayCtrl.touched)
+              "
+            >
+              {{ validationMessages["field"]["required"] }}
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select
+            formControlName="nationalityCtrl"
+            placeholder="Nationality"
+          >
+            <mat-option *ngFor="let option of countries" [value]="option.code">
+              {{ option.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            <span
+              *ngIf="
+                form.nationalityCtrl.invalid &&
+                form.nationalityCtrl.errors.required &&
+                (form.nationalityCtrl.dirty ||
+                  form.nationalityCtrl.touched)
+              "
+            >
+              {{ validationMessages["field"]["required"] }}
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select
+            formControlName="countryOfResidenceCtrl"
+            placeholder="Country of residence"
+          >
+            <mat-option *ngFor="let option of countries" [value]="option.code">
+              {{ option.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            <span
+              *ngIf="
+                form.countryOfResidenceCtrl.invalid &&
+                form.countryOfResidenceCtrl.errors.required &&
+                (form.countryOfResidenceCtrl.dirty ||
+                  form.countryOfResidenceCtrl.touched)
+              "
+            >
+              {{ validationMessages["field"]["required"] }}
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+      <!-- <div formGroupName="mangoUser" fxLayout="column" fxLayoutGap="32px">
+        <mat-form-field>
+          <input
+            matInput
+            formControlName="birthdayCtrl"
+            [matDatepicker]="picker"
+            placeholder="Birthday"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>
+            <span
+              *ngIf="
+                mangoUserForm.birthdayCtrl.invalid &&
+                mangoUserForm.birthdayCtrl.errors.required &&
+                (mangoUserForm.birthdayCtrl.dirty ||
+                  mangoUserForm.birthdayCtrl.touched)
+              "
+            >
+              {{ validationMessages["field"]["required"] }}
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select
+            formControlName="nationalityCtrl"
+            placeholder="Nationality"
+          >
+            <mat-option *ngFor="let option of countries" [value]="option.code">
+              {{ option.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            <span
+              *ngIf="
+                mangoUserForm.nationalityCtrl.invalid &&
+                mangoUserForm.nationalityCtrl.errors.required &&
+                (mangoUserForm.nationalityCtrl.dirty ||
+                  mangoUserForm.nationalityCtrl.touched)
+              "
+            >
+              {{ validationMessages["field"]["required"] }}
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select
+            formControlName="countryOfResidenceCtrl"
+            placeholder="Country of residence"
+          >
+            <mat-option *ngFor="let option of countries" [value]="option.code">
+              {{ option.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            <span
+              *ngIf="
+                mangoUserForm.countryOfResidenceCtrl.invalid &&
+                mangoUserForm.countryOfResidenceCtrl.errors.required &&
+                (mangoUserForm.countryOfResidenceCtrl.dirty ||
+                  mangoUserForm.countryOfResidenceCtrl.touched)
+              "
+            >
+              {{ validationMessages["field"]["required"] }}
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div> -->
+      <!--
+      <br /><br />
+      <h2>Payment Details</h2>
+
+      <div formGroupName="bankingDetailsFormGroup" fxLayout="column" fxLayoutGap="32px">
+          <ng-template matStepLabel>Bank Account details</ng-template>
+
+          <mat-form-field>
+            <input matInput placeholder="Account Number (IBAN)" formControlName="IBAN">
+            <mat-error>
+              <span *ngIf="banking.IBAN.invalid && banking.IBAN.errors.required && (banking.IBAN.dirty || banking.IBAN.touched)">
+                {{validationMessages['field']['required']}}
+              </span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Bank Identifier Code - BIC (Optional)" formControlName="BIC">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Owner Name" formControlName="OwnerName">
+            <mat-error>
+              <span *ngIf="banking.OwnerName.invalid && banking.OwnerName.errors.required && (banking.OwnerName.dirty || banking.OwnerName.touched)">
+                {{validationMessages['field']['required']}}
+              </span>
+            </mat-error>
+          </mat-form-field>
+
+          <div formGroupName="OwnerAddress" fxLayout="column" fxLayoutGap="32px">
+            <mat-form-field>
+              <input matInput placeholder="Address Line 1" formControlName="AddressLine1">
+              <mat-error>
+                <span *ngIf="ownerAddress.AddressLine1.invalid && ownerAddress.AddressLine1.errors.required && (ownerAddress.AddressLine1.dirty || ownerAddress.AddressLine1.touched)">
+                  {{validationMessages['field']['required']}}
+                </span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput placeholder="Address Line 2 (Optional)" formControlName="AddressLine2">
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput placeholder="City" formControlName="City">
+              <mat-error>
+                <span *ngIf="ownerAddress.City.invalid && ownerAddress.City.errors.required && (ownerAddress.City.dirty || ownerAddress.City.touched)">
+                  {{validationMessages['field']['required']}}
+                </span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput placeholder="Region" formControlName="Region">
+              <mat-error>
+                <span *ngIf="ownerAddress.Region.invalid && ownerAddress.Region.errors.required && (ownerAddress.Region.dirty || ownerAddress.Region.touched)">
+                  {{validationMessages['field']['required']}}
+                </span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput placeholder="Postal Code" formControlName="PostalCode">
+              <mat-error>
+                <span *ngIf="ownerAddress.PostalCode.invalid && ownerAddress.PostalCode.errors.required && (ownerAddress.PostalCode.dirty || ownerAddress.PostalCode.touched)">
+                  {{validationMessages['field']['required']}}
+                </span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select formControlName="Country" placeholder="Country of residence">
+                <mat-option *ngFor="let option of countries" [value]="option.code">
+                  {{option.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error>
+                <span
+                  *ngIf="ownerAddress.Country.invalid && ownerAddress.Country.errors.required && (ownerAddress.Country.dirty || ownerAddress.Country.touched)">
+                  {{validationMessages['field']['required']}}
+                </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <br><br>
+      </div>
+      <br /> -->
+      <div>
+        <mat-checkbox formControlName="privacyCtrl" color="warn"
+          >Accept privacy policy</mat-checkbox
+        ><br />
+        <span
+          style="font-size: 13px; cursor: pointer; padding-top: 0px"
+          (click)="openBottomSheetPrivacy()"
+          >Click here to read our privacy policy</span
+        >
+      </div>
+      <br />
+
+      <div>
+        <mat-checkbox formControlName="termCtrl" color="warn"
+          >Accept terms & conditions</mat-checkbox
+        ><br />
+        <span
+          style="font-size: 13px; cursor: pointer; padding-top: 0px"
+          (click)="openBottomSheetTerms()"
+          >Click here to read terms & conditions</span
+        >
+      </div>
+    </form>
+  </mat-dialog-content>
+  <br />
+
+  <mat-dialog-actions>
+    <app-form-button [color]="'blue'" (click)="close()">Close</app-form-button>
+    <app-form-button (click)="save()">Save</app-form-button>
+  </mat-dialog-actions>
+  <br />
+
+  <div class="mango-logo">
+    <a routerLink="/mangoTC" target="_blank">Terms & Conditions</a>
+    <img src="assets/images/mangopay-terms.png" />
+  </div>
+</div>

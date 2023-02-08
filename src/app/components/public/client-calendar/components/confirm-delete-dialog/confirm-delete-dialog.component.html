@@ -1,0 +1,16 @@
+<div class="app-container">
+  <div class="app-content">
+    <div class="header">
+        Are you sure you want to cancel this booking?
+    </div>
+  </div>
+  <div class="btns" fxLayout="row" fxLayoutAlign="end center">
+    <div class="cancel-btn" fxFlex="initial" (click)="close()">
+      No
+    </div>
+    <div fxFlex="10px"></div>
+    <div class="continue-btn" fxFlex="initial" (click)="accept()">
+      Yes
+    </div>
+  </div>
+</div>

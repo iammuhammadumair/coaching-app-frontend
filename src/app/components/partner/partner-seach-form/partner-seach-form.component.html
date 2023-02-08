@@ -1,0 +1,108 @@
+<div
+  fxFlex="100"
+  fxLayout="row"
+  fxLayout.xs="column"
+  fxLayoutAlign="space-around center"
+  class="box-container"
+  style="margin-bottom: 10px"
+>
+  <!-- <div class="app-form-control">
+    <mat-form-field>
+      <mat-select
+        placeholder="Continento"
+        [(ngModel)]="selectedCountry"
+        name="slSearchCountry"
+      >
+        <mat-option value="">All</mat-option>
+        <mat-option
+          *ngFor="let country of countriesList | async"
+          [value]="country.name"
+        >
+          {{ country.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div> -->
+
+  <!-- <div class="app-form-control">
+      <mat-form-field>
+        <mat-select placeholder="Preferred city?" [(ngModel)]="selectedCity" name="slSearchCity">
+          <mat-option value=''>All</mat-option>
+          <mat-option *ngFor="let searchCity of cityList | async" [value]="searchCity.Name">
+            {{searchCity.Name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div> -->
+  <div class="app-form-control">
+    <mat-form-field>
+      <mat-select
+        placeholder="Tipo de coaching?"
+        [(ngModel)]="coachTopic"
+        name="slSearchCoachTopic"
+      >
+        <mat-option value=""> All </mat-option>
+        <mat-option
+          *ngFor="let specialty of specialtiesTranslations"
+          [value]="specialty.value"
+        >
+          {{ specialty.text }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="app-form-control">
+    <mat-form-field>
+      <mat-select
+        placeholder="Precio"
+        [(ngModel)]="maxPrice"
+        name="slSearchCity"
+      >
+        <mat-option value="All">All</mat-option>
+        <mat-option value="sponsor">Pro-bono</mat-option>
+        <mat-option value="100">Personal € 100</mat-option>
+        <mat-option value="125"> Business € 125</mat-option>
+        <mat-option value="250">Executive € 250</mat-option>
+        <mat-option value="475">Boardroom € 475</mat-option>
+        <!-- <mat-option value='500'>€ 500</mat-option> -->
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="app-form-control">
+    <mat-form-field>
+      <mat-select
+        placeholder="Idioma preferida?"
+        [(ngModel)]="selectedLanguage"
+        name="slSearchLanguage"
+      >
+        <mat-option value="">All</mat-option>
+        <mat-option
+          *ngFor="let language of languagesList | async"
+          [value]="language.name"
+        >
+          {{ language.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+   <div class="app-form-control">
+    <mat-form-field>
+      <mat-select
+        placeholder="nombre del entrenador?"
+        [(ngModel)]="selectedCoachName"
+        name="slSearchCoachName"
+      >
+        <mat-option value="">All</mat-option>
+        <mat-option
+          *ngFor="let CoachName of coachNameList | async"
+          [value]="CoachName.coachName"
+        >
+          {{ CoachName.coachName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <app-form-button (click)="searchRe()">Buscar</app-form-button>
+</div>

@@ -1,0 +1,66 @@
+<div class="contact">
+  <p class="jubilat jubilat-header">
+    Subcribe Now
+  </p>
+  <div>
+    <form [formGroup]="formGroup" (ngSubmit)="send()" fxLayout="column">
+      <br />
+      <app-form-control>
+        <input placeholder="First Name" formControlName="first">
+        <app-form-error>
+          <span *ngIf="form.first.invalid && form.first.errors.required && (form.first.dirty || form.first.touched)">
+            {{validationMessages['field']['required']}}
+          </span>
+        </app-form-error>
+      </app-form-control>
+      <br />
+      <app-form-control>
+        <input placeholder="Last Name" formControlName="last">
+        <app-form-error>
+          <span *ngIf="form.last.invalid && form.last.errors.required && (form.last.dirty || form.last.touched)">
+            {{validationMessages['field']['required']}}
+          </span>
+        </app-form-error>
+      </app-form-control>
+      <br />
+      <app-form-control>
+        <input placeholder="Email" formControlName="email">
+        <app-form-error>
+          <span *ngIf="form.email.invalid && form.email.errors.required && (form.email.dirty || form.email.touched)">
+            {{validationMessages['field']['required']}}
+          </span>
+          <span *ngIf="form.email.invalid && form.email.errors.email && (form.email.dirty || form.email.touched)">
+            {{validationMessages['field']['email']}}
+          </span>
+        </app-form-error>
+      </app-form-control>
+      <br />
+     
+      <div>
+        <mat-checkbox formControlName="privacyCtrl">Accept privacy policy</mat-checkbox><br>
+        <span style="font-size: 13px; cursor:pointer; padding-top:0px;" (click)="openBottomSheetPrivacy()">
+          Click here to read our privacy policy
+        </span>
+        <app-form-error>
+          <span style="font-size: 13px;"
+            *ngIf="form.privacyCtrl.invalid && form.privacyCtrl.errors.required && (form.privacyCtrl.dirty || form.privacyCtrl.touched)">
+            Accepting Privicy Policy is mandatory
+          </span>
+        </app-form-error>
+      </div>
+    </form>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <ng-container *ngIf="!submitting">
+        <app-form-button (click)="send()" [color]="'orange'">
+            Submit
+        </app-form-button>
+        <app-form-button (click)="close()" [color]="'blue'">
+            Cancel
+        </app-form-button>
+      </ng-container>
+      <div fxLayout="row" fxLayoutAlign="center center" *ngIf="submitting">
+        <mat-spinner diameter="30"></mat-spinner>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<br /><br />
+<div>
+  <div>
+    <app-form-button [color]="'orange'" (click)="toggleShowDiv()">Filter</app-form-button>
+  </div>
+  <br />
+  <div [@slideInOut]="animationState">
+    <app-search-form source="home"></app-search-form>
+  </div>
+  <div class="separator"></div>
+  <br />
+</div>
+<br /><br />
+<div class="carouselDiv" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="start center">
+  <div fxFlex="initial">
+    <app-form-button [color]="'blue'"
+                     [matMenuTriggerFor]="menu"
+                     fxShow="false"
+                     fxShow.gt-sm="true">
+      My Story
+    </app-form-button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <div mat-menu-item routerLink="/client-calendar">Calendar</div>
+      <div mat-menu-item><a [routerLink]="'/timeline/' + client">Timeline</a></div>
+       <div mat-menu-item><a [routerLink]="['/payment-details']">Payment</a></div>
+      <div mat-menu-item>
+        <a class="no-style-anchor" routerLink="/home">
+          Home
+        </a>
+      </div>
+    </mat-menu>
+  </div>
+  <div fxFlex="grow" class="jubilat jubilat-header client-sub-header">
+    NLP Coaching
+  </div>
+  <div fxFlex="10" fxShow="false" fxShow.gt-sm="true">
+    <app-badge class="badge" source="header" refNumber=""></app-badge>
+  </div>
+</div>
+<div class="carouselDiv" fxLayout="row" fxLayoutAlign="start center">
+  <div fxFlex="50" fxLayout="row" fxLayoutAlign="center center">
+    <app-form-button [color]="'blue'"
+                     fxShow="true"
+                     fxShow.gt-sm="false"
+                     [matMenuTriggerFor]="menu">
+      My Story
+    </app-form-button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <div mat-menu-item routerLink="/client-calendar">Calendar</div>
+      <div mat-menu-item><a [routerLink]="'/timeline/' + client">Timeline</a></div>
+      <div mat-menu-item><a [routerLink]="['/payment-details']">Payment</a></div>
+      <div mat-menu-item>
+        <a class="no-style-anchor" routerLink="/home">
+          Home
+        </a>
+      </div>
+    </mat-menu>
+  </div>
+  <div fxFlex="50" fxShow="true" fxShow.gt-sm="false"
+  fxLayout="row" fxLayoutAlign="center center">
+    <app-badge class="badge" source="header" refNumber=""></app-badge>
+  </div>
+</div>
+<br />
+<div class="carouselDiv">
+  <app-carousel source="client"></app-carousel>
+</div>
+<br />
+<div style="text-align: center;">
+  <span style="font-size: 20px; color: rgb(92, 92, 95);">
+    Tap on any image to see more of the coach
+  </span>
+</div>
+<br>
+<div style="text-align: center;">
+  <span class="jubilat jubilat-header">
+    Happiness is in the palm of your hand
+  </span>
+</div>

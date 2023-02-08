@@ -1,0 +1,58 @@
+<br />
+<p>
+  Google Calendar Syncronization is
+  <b>
+    {{ user?.gcEnabled ? 'Enabled' : 'Disabled' }}
+  </b>
+</p>
+<mat-spinner *ngIf="loading" diameter="15"></mat-spinner>
+<div>
+  <ng-container *ngIf="!user?.gcEnabled">
+    <button
+                      (click)="syncGoogleCalendar(SycnCalendar)">
+                      <mat-icon style="width: 50px; height:30px; color:black"
+                svgIcon="logo"></mat-icon>
+      Enable Sync
+  </button>
+  </ng-container>
+  <ng-container *ngIf="user?.gcEnabled">
+    <app-form-button [color]="'orange'"
+                      (click)="disableGoogleCalendarSync()">
+      Disable Sync
+    </app-form-button>
+    <br /><br />
+    <app-form-button [color]="'orange'"
+                      (click)="enableGoogleCalendarSync(true)">
+      Change Account
+    </app-form-button>
+  </ng-container>
+</div>
+<ng-template #SycnCalendar>
+  <div class="Free-Book-Session">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div fxFlex="grow" fxLayout="row" fxLayoutAlign="end center">
+        <app-form-button class="closebtn" (click)="closeDialog()" [color]="'blue'">
+          x
+        </app-form-button>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <p class="free-session">
+        Grant succeed.world permission to</p></div>
+        <div fxLayout="row" fxLayoutAlign="center center">
+      <p class="free-session">view and edit all events on all your calendars
+      </p>
+    </div>
+
+    <div class="text txtcenter" fxLayout="row" fxLayoutAlign="center start">
+      <div fxFlex="100%" fxFlex.gt-sm="70%">
+        <app-form-button (click)="closeDialog()">
+          <div class="free-booking-session">Deny</div>
+        </app-form-button>
+        <app-form-button  (click)="enableGoogleCalendarSync()">
+          <div class="free-booking-session">Allow</div>
+        </app-form-button>
+      </div>
+    </div>
+  </div>
+</ng-template>

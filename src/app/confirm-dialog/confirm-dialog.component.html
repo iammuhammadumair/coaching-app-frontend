@@ -1,0 +1,23 @@
+<div class="app-container">
+  <div class="app-content">
+    <div class="header">
+        {{data.title}}
+    </div>
+  </div>
+  <div class="btns" fxLayout="row" fxLayoutAlign="end center">
+    <ng-container *ngIf="!data.onlyClose">
+      <div class="cancel-btn" fxFlex="initial" (click)="no()">
+        No
+      </div>
+      <div fxFlex="10px"></div>
+      <div class="continue-btn" fxFlex="initial" (click)="yes()">
+        Yes
+      </div>
+    </ng-container>
+    <ng-container *ngIf="data.onlyClose">
+      <div class="continue-btn" fxFlex="initial" (click)="yes()">
+        Close
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+.container {
+    padding: 15px;
+    position: relative;
+    max-height: 600px;
+}
+
+.calendar-type {
+    width: 200px;
+    padding: 5px;
+    text-align: center;
+    border: 2px solid #ff9966;
+    cursor: pointer;
+}
+
+.calendar-type.active {
+    background: #ff9966;
+    color: #fff;
+}
+
+.disabled .calendar-type.active,
+.disabled .calendar-type {
+    border: 2px solid gray;
+    color: gray;
+    background: none;
+}
+
+.close {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.mobile-types {
+    display: none;
+}
+
+.desktop-types {
+    display: block;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+.info {
+    padding: 20px;
+    color: #000;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .mobile-types {
+        display: flex;
+        padding: 20px 10px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .desktop-types {
+        display: none;
+    }
+}
+@media (max-width: 768px) {
+  ::ng-deep .ngb-dp-months {
+    flex-direction: column;
+  }
+
+  ::ng-deep .ngb-dp-month {
+    margin: 20px 0;
+    border: 1px solid lightgray;
+  }
+}

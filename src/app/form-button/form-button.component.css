@@ -1,0 +1,46 @@
+.btn {
+    font-family: 'avenir';
+    padding: 5px 40px;
+    border-radius: 12px;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.btn:active,
+.btn:focus {
+    color: #fff;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.small {
+    padding: 0px 17px;
+    font-size: 13px;
+}
+
+.medium {
+    padding: 5px 40px;
+}
+
+.large {
+    padding: 5px 40px;
+}
+
+.violet {
+    background: #993399;
+}
+
+.orange {
+    background: #FF9966;
+}
+
+.blue {
+    background: #A9CCF1;
+}
+
+.no-padding {
+    padding: 5px 10px;
+}

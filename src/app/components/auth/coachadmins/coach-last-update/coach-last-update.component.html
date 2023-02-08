@@ -1,0 +1,10 @@
+<mat-card style="background-size: cover;" [style.backgroundImage]="getSavePipeImg(coachImage)" (mouseenter) ="mouseEnter()">
+  <mat-card-content>
+    <div class="transbox">
+          <p>{{ coach.city }} {{coach.currency | symbolByCurrency }}{{ coach.price }}</p>
+          <p>Last Update: {{ update }}</p>
+       </div>
+
+    </mat-card-content>
+
+  </mat-card>

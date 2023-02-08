@@ -1,0 +1,95 @@
+<div fxLayout="row">
+  <div class="modal_header" fxFlex="20%">
+    <div class="backbtn" fxLayout="column" fxLayoutGap="20px">
+      <app-form-button [color]="'blue'" (click)="close()">
+        < Back </app-form-button>
+    </div>
+  </div>
+</div>
+<h2 class="text-align-center">Title of Blog Page</h2>
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="50%">
+    <div fxLayout="column">
+      <ng-template matStepLabel>Add Title</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Page Title" [(ngModel)]="PageTitle">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Description " [(ngModel)]="PageDescription">
+      </mat-form-field>
+      <!-- <mat-form-field>
+        <input matInput placeholder="Description 2"  [(ngModel)]="PageDescription2">
+      </mat-form-field> -->
+
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <app-form-button (click)="SavePageTitle()">
+        Save
+      </app-form-button>
+    </div>
+  </div>
+</div>
+<hr>
+<hr>
+
+<br />
+<br />
+<br />
+<!-- Update Blog Title and Description -->
+<div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="3px">
+  <div class="align" fxFlex="16%"><span class="index">Page Title</span></div>
+  <div class="align" fxFlex="16%"><span class="index">Description</span></div>
+  <!-- <div class="align" fxFlex="16%"><span class="index">Second Description</span></div> -->
+  <div fxFlex="10%"></div>
+</div>
+<hr>
+<div *ngFor="let Data of PageContentData" id="PageContentData.ID">
+  <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="3px">
+
+    <div class="align" fxFlex="16%">{{ Data.PageTitle }}</div>
+    <div class="align" fxFlex="16%">{{ Data.PageDescription }}</div>
+    <!-- <div class="align" fxFlex="16%">{{ Data.PageDescription2}} </div> -->
+
+    <div fxFlex="10%">
+      <a style="color: black;">
+        <mat-icon class="icon" svgIcon="update" (click)="UpdatePageContext(UpdatePageContent,Data)"></mat-icon>
+      </a> &nbsp;
+      <mat-icon class="icon" style="color: #F44336" svgIcon="delete" (click)="openDeletePageTitleDialog(Data.ID)">
+      </mat-icon>
+    </div>
+  </div>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="center center" class="updateVideos">
+  <div fxFlex="50%">
+    <ng-template #UpdatePageContent class="updateVideos">
+      <h2 matDialogTitle>Update Page Tile And description!</h2>
+
+
+      <div fxLayout="column" id="{{ UpdatePageContet.ID}}">
+
+        <mat-form-field>
+          <input matInput placeholder="Page Title" [(ngModel)]="UpdatePageContet.PageTitle">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="page First description" [(ngModel)]="UpdatePageContet.PageDescription">
+        </mat-form-field>
+        <!-- <mat-form-field>
+          <input matInput placeholder="Page Second description" [(ngModel)]="UpdatePageContet.PageDescription2">
+        </mat-form-field> -->
+
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center">
+
+        <app-form-button [color]="'blue'" (click)="closeDialog()">Close</app-form-button>
+
+        &nbsp;&nbsp;
+        <app-form-button (click)="UpdatePagetitle(UpdatePageContet,UpdatePageContet.ID)">
+          Save
+        </app-form-button>
+      </div>
+
+    </ng-template>
+  </div>
+</div>
+<hr>

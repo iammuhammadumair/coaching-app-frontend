@@ -1,0 +1,6 @@
+
+
+<!-- <app-add-card-in-mangopay *ngIf="continent === 'Europe'" (closePaymentModal)="closePaymentModal.emit()"  (signupPaymentEvent)="payment.emit($event)" [userProfile]="user" ></app-add-card-in-mangopay> -->
+<app-add-card-in-mangopay *ngIf="user.paymentType === 'mangopay'" (closePaymentModal)="closePaymentModal.emit()"  (signupPaymentEvent)="payment.emit($event)" [userProfile]="user" ></app-add-card-in-mangopay>
+
+<app-add-card-in-paypal *ngIf="user.paymentType === 'paypal'" paypalButtonHeadingText (closePaymentModal)="closePaymentModal.emit()" (payment)="payment.emit($event)" (paymentMade)="paymentMade.emit($event)"  [profile]="profile" [coach]="coach"></app-add-card-in-paypal>

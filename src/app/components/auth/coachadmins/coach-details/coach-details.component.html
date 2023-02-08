@@ -1,0 +1,37 @@
+<div *ngIf="coach && coach!=null && coach.reReferenceNumber">
+  <h2>DETAILS</h2>
+
+  <p><b>Reference Number: </b><span *ngIf="coach.reReferenceNumber">{{coach.reReferenceNumber}}</span></p>
+  <div *ngIf="coach.reReferenceNumber"><img *ngIf="coach?.coachImage" src="{{ coach.coachImage }}" /></div>
+  <p><b>Title: </b><span *ngIf="coach.reReferenceNumber">{{coach.title}}</span></p>
+  <p><b>Price: </b> <span *ngIf="coach.reReferenceNumber">{{coach.currency | symbolByCurrency }}{{ coach.price }}</span>
+  </p>
+  <p><b>Type: </b><span *ngIf="coach.reReferenceNumber">{{coach.reType.replace('_',' ')}}</span></p>
+  <p><b>Address: </b><span *ngIf="coach.reReferenceNumber">{{coach.address}}</span></p>
+  <p><b>ZipCode: </b><span *ngIf="coach.reReferenceNumber">{{coach.zipCode}}</span></p>
+  <p><b>Region: </b><span *ngIf="coach.reReferenceNumber">{{coach.region}}</span></p>
+  <p><b>Country: </b><span *ngIf="coach.reReferenceNumber">{{coach.country}}</span></p>
+  <p><b>Quote: </b><span *ngIf="coach.reReferenceNumber">{{coach.quote}}</span></p>
+  <p><b>Bedrooms: </b> <span *ngIf="coach.reReferenceNumber">{{ coach.bedrooms }}</span></p>
+  <p><b>Bathrooms: </b> <span *ngIf="coach.reReferenceNumber">{{ coach.bathrooms }}</span></p>
+  <p><b>Property Square meters :</b><span *ngIf="coach.reReferenceNumber">{{ coach.reSqm }}</span></p>
+  <p><b>Land Square meters: </b> <span *ngIf="coach.reReferenceNumber">{{ coach.landSqm }}</span></p>
+  <p>
+    <mat-icon>local_airport</mat-icon> <span *ngIf="coach.reReferenceNumber"> {{ coach.nearestAirport }}</span> - KM:
+    <span *ngIf="coach.reReferenceNumber">{{ coach.airportDistance }}</span>
+  </p>
+  <p>
+    <mat-icon>beach_access</mat-icon> <span *ngIf="coach.reReferenceNumber"> {{ coach.nearestBeach }}</span> - KM:<span
+      *ngIf="coach.reReferenceNumber"> {{ coach.beachDistance }}</span>
+  </p>
+  <p>
+    <mat-icon> my_location</mat-icon> <span *ngIf="coach.reReferenceNumber"> {{ coach.city }}</span> - KM: <span
+      *ngIf="coach.reReferenceNumber">{{ coach.centerDistance }}</span>
+  </p>
+
+  <br><br>
+  <p><b>Property Video URL: </b> <span *ngIf="coach.reReferenceNumber && coach.coachVideoUrl">
+      <app-form-button *ngIf="video != ''" (click)="openDialog(coach,'video')">See Coach</app-form-button>
+    </span></p>
+  <p><b>Id Coach Agent: </b> <span *ngIf="coach.reReferenceNumber">{{ coach.coachAgent }}</span></p>
+</div>

@@ -1,0 +1,15 @@
+<div class="app-container">
+  <div class="app-close" (click)="close()">x</div>
+  <p>
+    Well done! You have scheduled with <b>{{coachName}}</b>. When the time has come
+    to talk with <b>{{coachName}}</b>, just tap on the booking in your calendar. <b>{{coachName}}</b> waits for you
+    then and there. If something comes up and you need to reschedule, no problem.
+    We must ask you to do so 24 hours in advance.
+  </p>
+  <br />
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div (click)="goToCalendar()" class="app-button">
+      See Calendar
+    </div>
+  </div>
+</div>

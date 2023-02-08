@@ -1,0 +1,52 @@
+:host {
+    padding: 25px;
+    display: block;
+}
+
+.card {
+    border: 1px solid #e4e4e4;
+    box-shadow: 3px 0px 10px 3px #ccc;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.mat-icon-button {
+    margin: 0px !important;
+}
+
+.float-right {
+    float: right;
+}
+
+.payment-type {
+    display: flex;
+    justify-content: space-between;
+}
+
+.payment-radios {
+    margin-bottom: 25px;
+    display: flex;
+}
+
+.payment-radios .radio {
+    /* margin: 2.5vh 1vw; */
+    margin-right: 1vw;
+}
+
+@media only screen and (max-width: 600px) {
+    .payment-type {
+        display: flex;
+        flex-direction: column;
+    }
+    .save-button {
+        display: flex;
+        justify-content: flex-end;
+        /* margin: 3vh; */
+    }
+}
+
+.spinner {
+    top: 5px;
+    right: 10px;
+    display: inline-block;
+}

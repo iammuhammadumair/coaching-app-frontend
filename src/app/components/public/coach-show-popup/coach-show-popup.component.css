@@ -1,0 +1,150 @@
+:host {
+  /*display: block;*/
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.IIV::-webkit-media-controls-play-button,
+.IIV::-webkit-media-controls-start-playback-button {
+    opacity: 0;
+    pointer-events: none;
+    width: 5px;
+}
+
+.framevideo {
+  width: 100%;
+  height: 100%;
+}
+
+.modal_header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+
+.modal_content {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal_footer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.modal_header {
+  margin-bottom: 8px;
+}
+
+.column-padding {
+  padding: 10px 20px;
+}
+
+.image-width {
+  width: 90%;
+}
+
+.detail-container {
+  white-space: nowrap;
+}
+
+.video-container {
+  margin-left: auto; margin-right: auto;
+  width: 50%;
+  text-align: center;
+  display: flex; flex-direction: column;
+  flex-grow: 1;
+}
+
+.video-container[hidden] {
+  display: none;
+}
+
+.coach-header {
+  font-size: 25px;
+  margin-left: 10%;
+  font-weight: 600;
+}
+.county-margin{
+margin-top: 13px;
+}
+.Coach-div{
+
+  font-size: 25px;
+  font-family: jubilat-thin, serif !important;
+  font-weight: 500 !important;
+  color: #3c3c3b;
+}
+
+@media (max-width: 736px) {
+  .video-container {
+    width: 100%;
+  }
+  .Seecv{
+    display: none !important;
+  }
+  .a1{
+    display: none !important;
+  }
+  .a2{
+    margin-top: 26px;
+    display: flex !important;
+  }
+}
+@media (max-width: 100%) {
+.coach-headertitle {
+  margin-left: 19%;
+}
+}
+@media (min-width: 736px) {
+  .video-container {
+    width: 100%;
+  }
+  .a2{
+    display: none !important;
+  }
+  .a1{
+    display: flex !important;
+  }
+  .Seecv1{
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 750px) {
+
+  .coach-header-align{
+    margin-left: 10% !important;
+    font-size: 25px;
+    font-family: jubilat-thin, serif !important;
+    font-weight: 500 !important;
+    color: #3c3c3b;
+  }
+
+}
+
+@media screen and (max-width: 749px) {
+
+  .coach-header-align{
+    margin-left: 4% !important;
+    font-size: 25px;
+    font-family: jubilat-thin, serif !important;
+    font-weight: 500 !important;
+    color: #3c3c3b;
+
+  }
+
+}
+.freeintake{
+  border-radius: 15px;
+  background: #FF9966;
+}
+.reviews{
+  display: grid !important;
+}
+

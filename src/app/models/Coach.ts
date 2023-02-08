@@ -1,0 +1,41 @@
+import  firebase from 'firebase/app';
+import GeoPoint = firebase.firestore.GeoPoint;
+
+export class Coach {
+  id?: string;
+  username?: string;
+  address: string;
+  dateOfBirth: string;
+  gender: 'male' | 'female';
+  city: string;
+  country: string;
+  creationDate: number;
+  currency: string;
+  deleted: boolean;
+  quote: string;
+  formattedAddress: string;
+  isFeatured: string;
+  lastUpdate: number;
+  place_id: string;
+  price: number;
+  coachVideoUrl?: string;
+  coachImage: string;
+  reReferenceNumber: string;
+  sponsoring: boolean;
+  specialty?: any;
+  coachAgent: string;
+  name: string;
+  zipCode: string;
+  coachName: string;
+  language:string[];
+  email: string;
+  timeSlotsInverted?: boolean;
+  timezone?: string;
+  mangoBankAccountId?: string;
+  coachCV?: string;
+  mangoWallet?:string;
+  paymentGateway?: string;
+  paypalEmail?: string;
+  paypalPayerId?: string;
+  coachKyc?: string;
+}

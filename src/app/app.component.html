@@ -1,0 +1,53 @@
+<div class="app-sidebar" [ngStyle]="{'left': sidenavLeft }" #sidebar>
+  <app-sidebar-list (menuClick)="toggleSidenav()"></app-sidebar-list>
+</div>
+
+<div class="app-overlay"
+     [hidden]="sidenavLeft !== '0px'"
+     [ngStyle]="{'opacity': overlayOpacity }"
+     (click)="toggleSidenav()">
+</div>
+
+<div class="app-container">
+  <app-header (menuClick)="toggleSidenav()"></app-header>
+
+  <div class="app-content">
+    <app-left-sidebar [class]="'app-right-sidebar ' + page"></app-left-sidebar>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+    <app-right-sidebar [class]="'app-right-sidebar ' + page"></app-right-sidebar>
+  </div>
+  <ng-template #cookies>
+    <div class="Free-Book-Session">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <div fxFlex="grow" fxLayout="row" fxLayoutAlign="end center">
+          <app-form-button class="closebtn" (click)="closeDialog()" [color]="'blue'">
+            x
+          </app-form-button>
+        </div>
+      </div>
+      <h1
+class="top jubilat jubilat-header"
+fxLayout="row"
+fxLayoutAlign="center start"
+>
+Allow Cookies
+</h1>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <p class="free-session">
+          succeed! cookies ensure a seamless experience with us.
+        </p>
+      </div>
+  
+      <div class="text txtcenter" fxLayout="row" fxLayoutAlign="center start">
+        <div fxFlex="100%" fxFlex.gt-sm="70%">
+          <app-form-button (click)="setCookie()">
+            <div class="free-booking-session">Okay</div>
+          </app-form-button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <app-footer></app-footer>
+</div>

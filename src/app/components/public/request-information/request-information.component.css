@@ -1,0 +1,22 @@
+.popup-container {
+  padding: 25px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container > * {
+  width: 100%;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+}
+
+.no-margin-radio button {
+  min-height: 36px;
+  height: 36px;
+}

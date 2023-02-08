@@ -1,0 +1,13 @@
+<h3>Request information</h3>
+
+<div *ngIf="sending" style="width: 300px">
+    <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar><br><br><br>
+    <span style="font-size: 16px;"><mat-icon>send</mat-icon> sending message in progress...</span>
+
+</div>
+<div *ngIf="!sending">
+    <span style="font-size: 16px;"><mat-icon>check</mat-icon> Your message "{{sentMessage.subject}}" has been sent.</span><br><br>
+    <a routerLink="/probono-coaching">
+        <app-form-button class="default-btn">Back</app-form-button>
+    </a>
+</div>

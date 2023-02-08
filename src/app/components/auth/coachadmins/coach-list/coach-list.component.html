@@ -1,0 +1,44 @@
+<table mat-table [dataSource]="coaches">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef class="hideResp"> Email </th>
+    <td mat-cell *matCellDef="let row" class="hideResp"> {{row.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> Price </th>
+    <td mat-cell *matCellDef="let row"> {{row.currency | symbolByCurrency }}{{ row.price }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="sponsor">
+    <th mat-header-cell *matHeaderCellDef> </th>
+    <td mat-cell *matCellDef="let row"> {{row.sponsoring ? 'Pro-bono' : '' }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let row">
+      <mat-icon style="cursor: pointer;"
+                color="primary"
+                (click)="openDeleteDialog(row.reReferenceNumber, row.id)">
+        delete
+      </mat-icon>
+      &nbsp;&nbsp;
+      <a [routerLink]="['/coach-form', row.id]">
+        <mat-icon color="primary">create</mat-icon>
+      </a>
+      &nbsp;&nbsp;
+      <a [routerLink]="['/logs', row.id]">
+        <mat-icon color="primary">history</mat-icon>
+      </a>
+    </td>
+  </ng-container>
+
+  <!-- Header and Row Declarations -->
+  <tr mat-header-row *matHeaderRowDef="['name', 'email', 'price', 'sponsor', 'action']"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['name', 'email', 'price', 'sponsor', 'action']"  (click)="mouseEnter(row)"></tr>
+</table>

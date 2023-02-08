@@ -1,0 +1,77 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content class="form-container" [formGroup]="form">
+
+    <mat-form-field>
+        <input matInput
+                placeholder="Address"
+               formControlName="address">
+    </mat-form-field>
+    <mat-form-field>
+            <input matInput
+                    placeholder="Zip Code"
+                   formControlName="zipCode">
+        </mat-form-field>
+    <mat-form-field>
+        <input matInput
+                placeholder="City"
+               formControlName="city">
+    </mat-form-field>
+    <mat-form-field>
+            <input matInput
+                    placeholder="Region"
+                   formControlName="region">
+        </mat-form-field>
+    <mat-form-field>
+        <input matInput
+                placeholder="Country"
+               formControlName="country">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="number"
+                placeholder="Real Estate Sqm"
+               formControlName="reSqm">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="number"
+                placeholder="Land Sqm"
+               formControlName="landSqm">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="number"
+                placeholder="Price"
+               formControlName="price">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput
+                placeholder="Currency"
+               formControlName="currency">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput
+                placeholder="Reference Number"
+               formControlName="reReferenceNumber">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput
+                placeholder="Agent Web Site Url"
+               formControlName="reAgentWebSiteUrl">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput
+                placeholder="Agent Register Form Url"
+               formControlName="agentRegisterFormUrl">
+    </mat-form-field>
+    <mat-form-field>
+            <input matInput
+                    placeholder="Email Address"
+                   formControlName="emailAddress">
+
+        </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <app-form-button [color]="'blue'" (click)="close()">Close</app-form-button>
+    <app-form-button (click)="save()">Save</app-form-button>
+</mat-dialog-actions>

@@ -1,0 +1,42 @@
+.custom-day {
+    text-align: center;
+    padding: 0.185rem 0.25rem;
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    transition: .3s;
+}
+
+.custom-day:active,
+.custom-day:focus {
+    outline: none;
+}
+
+.custom-day.showing,
+.custom-day.faded {
+    background: #993399;
+    color: #fff;
+}
+
+.custom-day.circled {
+    border: 2px solid #ff9966;
+}
+
+.custom-day.selected.past {
+    background: #993399;
+}
+
+.custom-day.selected {
+    background: #ff9966;
+    color: #fff;
+}
+
+.custom-day.faded.disabled {
+    background: none;
+}
+
+.custom-day.disabled {
+    color: #ccc;
+    cursor: pointer;
+}

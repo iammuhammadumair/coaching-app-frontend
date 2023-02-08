@@ -1,0 +1,64 @@
+
+<div class="container">
+
+  <br/><br/>
+
+  <h3>Account Info</h3>
+
+  <form [formGroup]="accountInfoFormGroup" fxLayout="column">
+      <mat-error *ngIf="saveError && saveError != ''">
+          {{saveError}}
+      </mat-error>
+      <mat-form-field>
+        <input matInput autocomplete="Email" placeholder="Email" formControlName="emailCtrl" readonly>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="password" autocomplete="Password" placeholder="Password" formControlName="passwordCtrl">
+        <mat-error>
+          <span *ngIf="account.passwordCtrl.invalid && account.passwordCtrl.errors.required && (account.passwordCtrl.dirty || account.passwordCtrl.touched)">
+              {{validationMessages['password']['required']}}
+          </span>
+          <span *ngIf="account.passwordCtrl.invalid && account.passwordCtrl.errors.pattern && (account.passwordCtrl.dirty || account.passwordCtrl.touched)">
+              {{validationMessages['password']['pattern']}}
+          </span>
+          <span *ngIf="account.passwordCtrl.invalid && account.passwordCtrl.errors.minlength && (account.passwordCtrl.dirty || account.passwordCtrl.touched)">
+              {{validationMessages['password']['minlength']}}
+          </span>
+          <span *ngIf="account.passwordCtrl.invalid && account.passwordCtrl.errors.maxlength && (account.passwordCtrl.dirty || account.passwordCtrl.touched)">
+              {{validationMessages['password']['maxlength']}}
+          </span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="password" autocomplete="Confirm_Password" placeholder="Confirm Password" formControlName="confirmPasswordCtrl">
+        <mat-error>
+          <span *ngIf="account.confirmPasswordCtrl.invalid && account.confirmPasswordCtrl.errors.mismatch && (account.confirmPasswordCtrl.dirty || account.confirmPasswordCtrl.touched)">
+              Password does not match the confirm password</span>
+        </mat-error>
+      </mat-form-field>
+  </form>
+  <!-- Account Info Form End -->
+
+  <div>
+    <a [routerLink]="['/welcome']">
+      <app-form-button>
+        <mat-icon>home</mat-icon>Home
+      </app-form-button>
+    </a>
+    &nbsp;&nbsp;
+    <app-form-button (click)="onSignUpFormSubmit()">Submit</app-form-button>
+  </div>
+</div>
+
+<div class="gc-backdrop" *ngIf="loading">
+  <div>
+    <div>
+      Enabling Google Calendar Syncronization...
+    </div>
+    <div class="gc-backdrop-spinner">
+      <mat-spinner diameter="20"></mat-spinner>
+    </div>
+  </div>
+</div>

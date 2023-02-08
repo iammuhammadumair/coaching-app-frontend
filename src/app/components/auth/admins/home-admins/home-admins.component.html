@@ -1,0 +1,149 @@
+<h2 class="profiles">Welcome {{ admin?.firstname }}</h2>
+
+<div fxLayout="row" fxLayout.xs="column" fxLayoutWrap>
+  <div fxFlex="10%">
+  </div>
+  <div fxFlex="30%">
+    <p class="adminData"><b>Firstname: </b> {{ admin ? admin.firstname : ""}} </p>
+    <p class="adminData"><b>Email: </b> {{ admin ? admin.email : "" }} </p>
+    <p class="adminData"><b>Telephone: </b> {{ admin ? admin.telephone : "" }} </p>
+  </div>
+  <div fxFlex="22%">
+    <p class="adminData"><b>Lastname: </b> {{ admin ? admin.lastname : "" }} </p>
+    <p class="adminData"><b>Uid: </b> {{ admin ? admin.uid : "" }} </p>
+    <p class="adminData"><b>Gender: </b> {{ admin ? admin.gender : "" }} </p>
+  </div>
+  <div fxFlex="5%">
+    <mat-icon class="icon" (click)="goToProfileInfo()" svgIcon="update"></mat-icon> &nbsp;
+  </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="start center">
+  <div fxFlex="initial">
+    <h2 class="profiles">Manage Blogs</h2>
+  </div>
+  <div fxFlex="initial" fxFlexOffset="20px">
+    <a  [routerLink]="['/manage-blog']">
+      <app-form-button>Manage Blogs</app-form-button>
+    </a>
+  </div>
+</div>
+<br/>
+<br/>
+<div fxLayout="row" fxLayoutAlign="start center">
+  <div fxFlex="initial">
+    <h2 class="profiles">Display Videos</h2>
+  </div>
+  <div fxFlex="initial" fxFlexOffset="20px">
+    <a  [routerLink]="['/add-videos']">
+      <app-form-button>Add New Videos</app-form-button>
+    </a>
+  </div>
+</div>
+<br /><br />
+<!--    COACH AGENTS     -->
+<div fxLayout="row" fxLayoutAlign="start center">
+  <div fxFlex="initial">
+    <h2 class="profiles">Coach Agents</h2>
+  </div>
+  <div fxFlex="initial" fxFlexOffset="20px">
+    <a (click)="showCreateDialog()">
+      <app-form-button>Add New Coach Agent</app-form-button>
+    </a>
+  </div>
+</div>
+<br />
+<div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="3px">
+  <div fxFlex="5%"></div>
+  <div class="align" fxFlex="20%"><span class="index">Firstname</span></div>
+  <div class="align" fxFlex="20%"><span class="index">Lastname</span></div>
+  <div class="align" fxFlex="20%"><span class="index">Email</span></div>
+  <div class="align" fxFlex="20%"><span class="index">Confirmed</span></div>
+  <div class="align" fxFlex="20%"><span class="index">Enabled</span></div>
+  <div fxFlex="10%"></div>
+</div>
+<hr>
+<div *ngFor="let coachAgent of coachAgents | async">
+  <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="3px">
+    <div fxFlex="5%">
+      <mat-checkbox color="warn" class="example-margin"></mat-checkbox>
+    </div>
+    <div class="align" fxFlex="20%">{{ coachAgent.firstname }}</div>
+    <div class="align" fxFlex="20%">{{ coachAgent.lastname }}</div>
+    <div class="align" fxFlex="20%">{{ coachAgent.email }}</div>
+    <div class="align" fxFlex="20%">{{ coachAgent.confirmEmail }}</div>
+    <div class="align" fxFlex="20%">{{ coachAgent.enable }}</div>
+    <div fxFlex="10%" fxLayout="row" fxLayoutAlign="center center">
+      <mat-icon class="icon" svgIcon="update" (click)="showUserDetail(coachAgent)"></mat-icon> &nbsp;
+      <mat-icon class="icon" style="color: #F44336" svgIcon="delete" (click)="openDeleteUserDialog(coachAgent)">
+      </mat-icon> &nbsp;
+      <mat-icon class="icon" [routerLink]="['/caProfile', coachAgent.uid]">history</mat-icon>
+    </div>
+  </div>
+  <hr>
+</div>
+
+<!--    CLIENTS     -->
+<br /><br />
+<h2 class="profiles">Clients</h2>
+<br />
+<div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="3px">
+  <div fxFlex="5%"></div>
+  <div class="align" fxFlex="20%"><span class="index">Firstname</span></div>
+  <div class="align" fxFlex="20%"><span class="index">Lastname</span></div>
+  <div class="align" fxFlex="20%"><span class="index">Email</span></div>
+  <div class="align" fxFlex="20%"><span class="index">Pro-bono</span></div>
+  <div class="align" fxFlex="20%"><span class="index">Paid</span></div>
+  <div fxFlex="10%"></div>
+</div>
+<hr>
+<div *ngFor="let client of clients | async">
+  <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="3px">
+    <div fxFlex="5%">
+      <mat-checkbox color="warn" class="example-margin"></mat-checkbox>
+    </div>
+    <div class="align" fxFlex="20%">{{ client.firstname }}</div>
+    <div class="align" fxFlex="20%">{{ client.lastname }}</div>
+    <div class="align" fxFlex="20%">{{ client.email }}</div>
+    <div class="align" fxFlex="20%">{{ client.sponsored ? 'yes': 'no' }}</div>
+    <div fxFlex="10%">
+      <mat-icon class="icon" svgIcon="update" (click)="showUserDetail(client)"></mat-icon> &nbsp;
+      <mat-icon class="icon" style="color: #F44336" svgIcon="delete" (click)="openDeleteUserDialog(client)"></mat-icon>
+    </div>
+  </div>
+  <hr>
+</div>
+
+<!--    COACHES     -->
+<br /><br />
+<h2 class="profiles">Coaches</h2>
+<br />
+<div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="3px">
+  <div fxFlex="5%"></div>
+  <div class="align" fxFlex="16%"><span class="index">Name</span></div>
+  <div class="align" fxFlex="16%"><span class="index">Country</span></div>
+  <div class="align" fxFlex="16%"><span class="index">City</span></div>
+  <div class="align" fxFlex="16%"><span class="index">Email address</span></div>
+  <div class="align" fxFlex="16%"><span class="index">Coach Agent</span></div>
+  <div fxFlex="10%"></div>
+</div>
+<hr>
+<div *ngFor="let coach of coaches | async">
+  <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="3px">
+    <div fxFlex="5%">
+      <mat-checkbox color="warn" class="example-margin"></mat-checkbox>
+    </div>
+    <div class="align" fxFlex="16%">{{ coach.coachName }}</div>
+    <div class="align" fxFlex="16%">{{ coach.country }}</div>
+    <div class="align" fxFlex="16%">{{ coach.city }}</div>
+    <div class="align" fxFlex="16%">{{ coach.email }}</div>
+    <div class="align" fxFlex="16%">{{ getCoachAgentNameByUid(coach.coachAgent)}}</div>
+    <div fxFlex="10%">
+      <a style="color: black" [routerLink]="['/coach-form',coach.id]">
+        <mat-icon class="icon" svgIcon="update"></mat-icon>
+      </a> &nbsp;
+      <mat-icon class="icon" style="color: #F44336" svgIcon="delete"
+        (click)="openDeleteREDialog(coach.reReferenceNumber, coach.id)"></mat-icon>
+    </div>
+  </div>
+  <hr>
+</div>

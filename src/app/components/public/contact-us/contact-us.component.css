@@ -1,0 +1,9 @@
+.text {
+  text-align: left;
+}
+
+.empty-image img {
+  width: 100%;
+  padding: 20px;
+  background: #A9CCF1;
+}

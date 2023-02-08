@@ -1,0 +1,37 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="90" fxFlex.gt-sm="60">
+    <app-page-header [gray]="true">Sign In</app-page-header>
+
+    <p class="description">
+      Not a member? Please <a routerLink="/signup">signup</a> instead.
+    </p>
+
+    <div>
+      <form [formGroup]="signInFormGroup" (ngSubmit)="onSignInWithEmailAndPassword()" fxLayout="column">
+
+        <app-form-control>
+          <input placeholder="Email" formControlName="emailCtrl" required>
+        </app-form-control>
+
+        <br />
+
+        <app-form-control>
+          <input type="password" placeholder="Password" formControlName="passwordCtrl" required>
+        </app-form-control>
+
+        <br />
+        <div class="description">
+            <a class="reset-password" (click)="forgotPassword()">Forgot password</a>
+        </div>
+        <br />
+        <mat-error *ngIf="errorLogin && errorLogin != ''">
+          {{errorLogin}}
+        </mat-error>
+        <br />
+        <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+          <app-form-button> Next </app-form-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

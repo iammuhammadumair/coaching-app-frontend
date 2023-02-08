@@ -1,0 +1,8 @@
+.mat-list .mat-list-item.app .mat-list-item-content{
+  top: 295px;
+}
+@media (max-width: 800px) {
+  .mat-list .mat-list-item.app .mat-list-item-content{
+  top: 375px;
+}
+}

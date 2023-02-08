@@ -1,0 +1,10 @@
+.review {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.date {
+    font-size: 11px;
+    color: #6f6f6f;
+}

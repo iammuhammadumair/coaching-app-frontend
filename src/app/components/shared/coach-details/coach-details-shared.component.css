@@ -1,0 +1,11 @@
+.coachDetailsFlexContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.coachDetailsFlexContainer > div {
+  padding-left: 10px;
+  padding-right: 10px;
+}

@@ -1,0 +1,75 @@
+<div class="contact">
+  <p class="jubilat jubilat-header">
+    Contact Us
+  </p>
+  <div>
+    <form [formGroup]="formGroup" (ngSubmit)="send()" fxLayout="column">
+      <br />
+      <app-form-control>
+        <input placeholder="First Name" formControlName="first">
+        <app-form-error>
+          <span *ngIf="form.first.invalid && form.first.errors.required && (form.first.dirty || form.first.touched)">
+            {{validationMessages['field']['required']}}
+          </span>
+        </app-form-error>
+      </app-form-control>
+      <br />
+      <app-form-control>
+        <input placeholder="Last Name" formControlName="last">
+        <app-form-error>
+          <span *ngIf="form.last.invalid && form.last.errors.required && (form.last.dirty || form.last.touched)">
+            {{validationMessages['field']['required']}}
+          </span>
+        </app-form-error>
+      </app-form-control>
+      <br />
+      <app-form-control>
+        <input placeholder="Email" formControlName="email">
+        <app-form-error>
+          <span *ngIf="form.email.invalid && form.email.errors.required && (form.email.dirty || form.email.touched)">
+            {{validationMessages['field']['required']}}
+          </span>
+          <span *ngIf="form.email.invalid && form.email.errors.email && (form.email.dirty || form.email.touched)">
+            {{validationMessages['field']['email']}}
+          </span>
+        </app-form-error>
+      </app-form-control>
+      <br />
+      <app-form-control>
+        <mat-select formControlName="country" placeholder="Country">
+          <mat-option *ngFor="let option of countries" [value]="option.code">
+            {{option.name}}
+          </mat-option>
+        </mat-select>
+        <app-form-error>
+          <span *ngIf="form.country.invalid && form.country.errors.required && (form.country.dirty || form.country.touched)">
+            {{validationMessages['field']['required']}}
+          </span>
+        </app-form-error>
+      </app-form-control>
+      <br />
+      <app-form-control [textarea]="true">
+        <textarea placeholder="Your story..." formControlName="description" max="750"></textarea>
+        <app-form-error>
+          <span *ngIf="form.description.invalid && form.description.errors.required && (form.description.dirty || form.description.touched)">
+            {{validationMessages['field']['required']}}
+          </span>
+        </app-form-error>
+      </app-form-control>
+      <br />
+    </form>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <ng-container *ngIf="!submitting">
+        <app-form-button (click)="send()" [color]="'orange'">
+            Submit
+        </app-form-button>
+        <app-form-button (click)="close()" [color]="'blue'">
+            Cancel
+        </app-form-button>
+      </ng-container>
+      <div fxLayout="row" fxLayoutAlign="center center" *ngIf="submitting">
+        <mat-spinner diameter="30"></mat-spinner>
+      </div>
+    </div>
+  </div>
+</div>

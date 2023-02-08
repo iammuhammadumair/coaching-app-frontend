@@ -1,0 +1,44 @@
+<div class="container">
+  <a class="close" (click)="close()">x</a>
+  <div class="jubilat jubilat-header">
+    {{coach?.name}} Calendar
+  </div>
+  <br />
+  <div fxLayout="row" fxLayout.xs="column">
+    <div fxFlex="initial" fxFlex.xs="initial">
+      <app-booking-datepicker (selectedDateOutput)="showDate($event)"
+                              [slots]="timeSlots"
+                              [bookings]="bookings"
+                              *ngIf="!coach?.timeSlotsInverted">
+      </app-booking-datepicker>
+      <app-booking-datepicker-inverted (selectedDateOutput)="showDate($event)"
+                                       [slots]="timeSlots"
+                                       [bookings]="bookings"
+                                       *ngIf="coach?.timeSlotsInverted">
+      </app-booking-datepicker-inverted>
+    </div>
+    <div fxFlex="2%"></div>
+    <div fxFlex="grow" fxFlex.xs="initial" class="time-section" [hidden]="!selectedDate">
+      <app-booking-slots [selectedDate]="selectedDate"
+                         [coach]="coach"
+                         [slots]="timeSlots"
+                         [bookings]="bookings"
+                         [continent]="inputData?.continent"
+                         [sessionType]="inputData?.type"
+                         [FreeIntakeData]="ClientData"
+                         (bookingCreated)="bookingCreated($event)"
+                         *ngIf="!coach?.timeSlotsInverted">
+      </app-booking-slots>
+      <app-booking-slots-inverted [selectedDate]="selectedDate"
+                                  [coach]="coach"
+                                  [slots]="timeSlots"
+                                  [bookings]="bookings"
+                                  [continent]="inputData?.continent"
+                                  [sessionType]="inputData?.type"
+                                  [FreeIntakeData]="ClientData"
+                                  (bookingCreated)="bookingCreated($event)"
+                                  *ngIf="coach?.timeSlotsInverted">
+      </app-booking-slots-inverted>
+    </div>
+  </div>
+</div>

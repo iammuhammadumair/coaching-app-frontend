@@ -1,0 +1,70 @@
+.page-header {
+  overflow: hidden;
+  display: block;
+  padding-bottom: 25px;
+  position: relative;
+}
+
+.blue-box {
+  border: 4px solid #a9ccf1;
+  padding: 5px;
+  background: white;
+}
+
+.orange-box {
+  border: 4px solid #ff9966;
+  padding: 5px;
+  background: white;
+}
+
+.stripes {
+  position: absolute;
+  width: 30px;
+  height: 100%;
+  display: flex;
+  left: calc(50% - 16px);
+  z-index: -1;
+}
+.flex_left_margin {
+  margin-right: 23px;
+}
+
+.stripes > div {
+  width: 10px;
+  height: 100%;
+}
+
+.stripes .violet {
+  background: #993399;
+}
+
+.stripes .orange {
+  background: #ff9966;
+}
+
+.stripes .blue {
+  background: #a9ccf1;
+}
+
+.mat-spinner {
+  margin-left: 10px;
+  margin-top: 2px;
+}
+
+.audio-icon {
+  width: 10px;
+  height: 10px;
+  margin: 0px 5px;
+}
+
+.VideoMP4Button {
+  padding: 0px 12px !important;
+}
+@media (max-width: 601px) {
+  .flexblock {
+    display: block !important;
+  }
+}
+.train-image {
+  max-width: 100%;
+}

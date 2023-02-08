@@ -1,0 +1,442 @@
+<br /><br />
+<app-page-header [gray]="true">Sign up</app-page-header>
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="100" fxFlex.gt-sm="60">
+    <mat-horizontal-stepper [linear]="isLinear" #signUpStepper>
+
+      <mat-step [stepControl]="accountInfoFormGroup">
+        <!-- Account Info Form Start -->
+        <form class="form-container" [formGroup]="accountInfoFormGroup" (ngSubmit)="onAccountInfoFormNext()"
+          fxLayout="column" fxLayoutGap="32px">
+
+          <ng-template matStepLabel>Account Info</ng-template>
+          <app-form-error *ngIf="saveError && saveError != ''">
+            {{saveError}}
+          </app-form-error>
+
+          <p>
+            Ready to sign up with us? Wonderful, please fill in your details and
+            hit the NEXT button
+          </p>
+
+          <app-form-control>
+            <input matInput placeholder="Email" formControlName="emailCtrl">
+            <app-form-error>
+              <span
+                *ngIf="account.emailCtrl.invalid && account.emailCtrl.errors.required && (account.emailCtrl.dirty || account.emailCtrl.touched)">
+                {{validationMessages['email']['required']}}
+              </span>
+              <span
+                *ngIf="account.emailCtrl.invalid && account.emailCtrl.errors.email && (account.emailCtrl.dirty || account.emailCtrl.touched)">
+                {{validationMessages['email']['email']}}
+              </span>
+            </app-form-error>
+          </app-form-control>
+
+          <app-form-control>
+            <input matInput type="password" placeholder="Password" formControlName="passwordCtrl">
+            <app-form-error>
+              <span
+                *ngIf="account.passwordCtrl.invalid && account.passwordCtrl.errors.required && (account.passwordCtrl.dirty || account.passwordCtrl.touched)">
+                {{validationMessages['password']['required']}}
+              </span>
+              <span
+                *ngIf="account.passwordCtrl.invalid && account.passwordCtrl.errors.pattern && (account.passwordCtrl.dirty || account.passwordCtrl.touched)">
+                {{validationMessages['password']['pattern']}}
+              </span>
+              <span
+                *ngIf="account.passwordCtrl.invalid && account.passwordCtrl.errors.minlength && (account.passwordCtrl.dirty || account.passwordCtrl.touched)">
+                {{validationMessages['password']['minlength']}}
+              </span>
+              <span
+                *ngIf="account.passwordCtrl.invalid && account.passwordCtrl.errors.maxlength && (account.passwordCtrl.dirty || account.passwordCtrl.touched)">
+                {{validationMessages['password']['maxlength']}}
+              </span>
+            </app-form-error>
+          </app-form-control>
+
+          <app-form-control>
+            <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPasswordCtrl">
+            <app-form-error>
+              <span *ngIf="account.confirmPasswordCtrl.invalid && account.confirmPasswordCtrl.errors.mismatch && (account.confirmPasswordCtrl.dirty || account.confirmPasswordCtrl.touched)">
+                Oops, something went wrong, the passwords do not match, can you have another look?
+              </span>
+            </app-form-error>
+          </app-form-control>
+        </form>
+        <br>
+        <!-- Account Info Form End -->
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <app-form-button (click)="signUpStepper.next()">
+            Next
+          </app-form-button>
+        </div>
+      </mat-step>
+
+      <mat-step [stepControl]="profileInfoFormGroup" fxLayout="column wrap" fxLayout.xs="row wrap">
+        <!-- Profile Info Form Start -->
+        <div class="signUpForm" fxFlex="0 1 calc(25%)">
+          <form class="form-container" [formGroup]="profileInfoFormGroup" fxLayout="column" fxLayoutGap="32px">
+
+            <ng-template matStepLabel>Profile Info</ng-template>
+
+            <app-form-control>
+              <mat-select formControlName="profileTypeCtrl" placeholder="Profile Type">
+                <mat-option *ngFor="let option of formTypes" [value]="option.value">
+                  {{option.text}}
+                </mat-option>
+              </mat-select>
+              <app-form-error>
+                <span
+                  *ngIf="profile.profileTypeCtrl.invalid && profile.profileTypeCtrl.errors.required && (profile.profileTypeCtrl.dirty || profile.profileTypeCtrl.touched)">
+                  {{validationMessages['field']['required']}}
+                </span>
+              </app-form-error>
+            </app-form-control>
+
+            <app-form-control *ngIf="isSponsoredSelected">
+              <input matInput placeholder="Fill in the name of your company or sponsor" formControlName="coachAgentNameCtrl">
+              <app-form-error>
+                <span *ngIf="profile.coachAgentNameCtrl.invalid && profile.coachAgentNameCtrl.errors.required && (profile.coachAgentNameCtrl.dirty || profile.coachAgentNameCtrl.touched)">
+                  {{validationMessages['field']['required']}}
+                </span>
+              </app-form-error>
+            </app-form-control>
+
+            <app-form-control>
+              <input matInput placeholder="First Name" formControlName="firstnameCtrl">
+              <app-form-error>
+                <span
+                  *ngIf="profile.firstnameCtrl.invalid && profile.firstnameCtrl.errors.required && (profile.firstnameCtrl.dirty || profile.firstnameCtrl.touched)">
+                  {{validationMessages['field']['required']}}
+                </span>
+              </app-form-error>
+            </app-form-control>
+
+            <app-form-control>
+              <input matInput placeholder="Last Name" formControlName="lastnameCtrl">
+              <app-form-error>
+                <span
+                  *ngIf="profile.lastnameCtrl.invalid && profile.lastnameCtrl.errors.required && (profile.lastnameCtrl.dirty || profile.lastnameCtrl.touched)">
+                  {{validationMessages['field']['required']}}
+                </span>
+              </app-form-error>
+            </app-form-control>
+
+            <ng-container *ngIf="profile.profileTypeCtrl.value === 'regular' || profile.profileTypeCtrl.value === 'coach'">
+              <app-form-control>
+                <input matInput formControlName="birthdayCtrl" [matDatepicker]="picker" placeholder="Birthday">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <app-form-error>
+                  <span
+                    *ngIf="profile.birthdayCtrl.invalid && profile.birthdayCtrl.errors.required && (profile.birthdayCtrl.dirty || profile.birthdayCtrl.touched)">
+                    {{validationMessages['field']['required']}}
+                  </span>
+                </app-form-error>
+              </app-form-control>
+
+              <app-form-control>
+                <mat-select formControlName="nationalityCtrl" placeholder="Nationality">
+                  <mat-option *ngFor="let option of countries" [value]="option.code">
+                    {{option.name}}
+                  </mat-option>
+                </mat-select>
+                <app-form-error>
+                  <span
+                    *ngIf="profile.nationalityCtrl.invalid && profile.nationalityCtrl.errors.required && (profile.nationalityCtrl.dirty || profile.nationalityCtrl.touched)">
+                    {{validationMessages['field']['required']}}
+                  </span>
+                </app-form-error>
+              </app-form-control>
+
+              <app-form-control>
+                <mat-select formControlName="countryOfResidenceCtrl" placeholder="Country of residence">
+                  <mat-option *ngFor="let option of countries" [value]="option.code">
+                    {{option.name}}
+                  </mat-option>
+                </mat-select>
+                <app-form-error>
+                  <span
+                    *ngIf="profile.countryOfResidenceCtrl.invalid && profile.countryOfResidenceCtrl.errors.required && (profile.countryOfResidenceCtrl.dirty || profile.countryOfResidenceCtrl.touched)">
+                    {{validationMessages['field']['required']}}
+                  </span>
+                </app-form-error>
+              </app-form-control>
+            </ng-container>
+
+            <div>
+              <mat-checkbox formControlName="privacyCtrl">Accept privacy policy</mat-checkbox><br>
+              <span style="font-size: 13px; cursor:pointer; padding-top:0px;" (click)="openBottomSheetPrivacy()">
+                Click here to read our privacy policy
+              </span>
+              <app-form-error>
+                <span style="font-size: 13px;"
+                  *ngIf="profile.privacyCtrl.invalid && profile.privacyCtrl.errors.required && (profile.privacyCtrl.dirty || profile.privacyCtrl.touched)">
+                  Accepting Privicy Policy is mandatory
+                </span>
+              </app-form-error>
+            </div>
+            <br><br>
+          </form>
+        </div>
+
+        <!-- Profile Info Form End -->
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <app-form-button (click)="signUpStepper.previous()">
+            Previous
+          </app-form-button>
+          <ng-container *ngIf="profile.profileTypeCtrl.value === 'coach'; else submit">
+            <app-form-button (click)="signUpStepper.next()">
+              Next
+            </app-form-button>
+          </ng-container>
+          <ng-template #submit>
+            <app-form-button (click)="onSignUpFormSubmit()">
+              Submit
+            </app-form-button>
+          </ng-template>
+        </div>
+      </mat-step>
+
+      <mat-step *ngIf="profile.profileTypeCtrl.value === 'regular'" [stepControl]="paymentDetailsFormGroup"
+        fxLayout="column wrap" fxLayout.xs="row wrap">
+        <div fxLayout="column">
+          <div class="signUpForm" fxFlex="0 1 calc(25%)" *ngIf="profile.countryOfResidenceCtrl.value">
+            <ng-template matStepLabel>Payment details</ng-template>
+            <form class="form-container" [formGroup]="paymentDetailsFormGroup" fxLayout="column" fxLayoutGap="16px"
+              *ngIf="!submitting">
+
+
+              <!-- <app-payment-gateway (payment)="paymentUpdate($event)" [profile]="profile" [account]="account">
+              </app-payment-gateway> -->
+              <!-- <app-form-control>
+                <input matInput maxlength="16" placeholder="Card Number" formControlName="cardNumber">
+                <app-form-error>
+                  <span *ngIf="payment.cardNumber.invalid && payment.cardNumber.errors.required && (payment.cardNumber.dirty || payment.cardNumber.touched)">
+                    {{validationMessages['field']['required']}}
+                  </span>
+                </app-form-error>
+              </app-form-control>
+              <app-form-control>
+                <input matInput maxlength="4" placeholder="Expiration MMYY" formControlName="cardExpirationDate">
+                <app-form-error>
+                  <span *ngIf="payment.cardExpirationDate.invalid && payment.cardExpirationDate.errors.required && (payment.cardExpirationDate.dirty || payment.cardExpirationDate.touched)">
+                    {{validationMessages['field']['required']}}
+                  </span>
+                </app-form-error>
+              </app-form-control>
+              <app-form-control>
+                <input matInput maxlength="4" placeholder="CSV" formControlName="cardCvx">
+                <app-form-error>
+                  <span *ngIf="payment.cardCvx.invalid && payment.cardCvx.errors.required && (payment.cardCvx.dirty || payment.cardCvx.touched)">
+                    {{validationMessages['field']['required']}}
+                  </span>
+                </app-form-error>
+              </app-form-control> -->
+
+              <!-- <div>
+                <span style="font-size: 13px; cursor:pointer; padding-top:0px;">
+                  We are storing your payment details to collect the payments after each session.
+                </span>
+              </div> -->
+              <br><br>
+            </form>
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <app-form-button (click)="signUpStepper.previous()" *ngIf="!submitting">
+            Previous
+          </app-form-button>
+          <app-form-button (click)="onSignUpFormSubmit()" *ngIf="!submitting">
+            Submit
+          </app-form-button>
+
+          <mat-spinner *ngIf="submitting" diameter="15"></mat-spinner>
+
+        </div>
+        <!-- <div class="mango-logo">
+          <a routerLink="/mangoTC" target="_blank">Terms & Conditions</a>
+          <img src="assets/images/mangopay-terms.png" />
+        </div> -->
+      </mat-step>
+
+      <mat-step [stepControl]="bankingDetailsFormGroup" fxLayout="column wrap" fxLayout.xs="row wrap"
+        *ngIf="profile.profileTypeCtrl.value === 'coach'">
+        <div class="signUpForm" fxFlex="0 1 calc(25%)">
+
+          <ng-template matStepLabel>Payment details</ng-template>
+
+
+          <!-- <form *ngIf="continent && continent !== 'Europe'" class="form-container" [formGroup]="bankingDetailsFormGroup" fxLayout="column" fxLayoutGap="32px">
+            <app-form-control>
+              <input matInput placeholder="Paypal Email" formControlName="PaypalEmail">
+              <app-form-error>
+                <span *ngIf="banking.PaypalEmail.invalid && banking.PaypalEmail.errors.required && (banking.PaypalEmail.dirty || banking.PaypalEmail.touched)">
+                  {{validationMessages['field']['required']}}
+                </span>
+              </app-form-error>
+            </app-form-control>
+          </form> -->
+
+          <!-- <form *ngIf="continent && continent == 'Europe'" class="form-container" [formGroup]="bankingDetailsFormGroup" fxLayout="column" fxLayoutGap="32px"> -->
+          <form class="form-container" [formGroup]="bankingDetailsFormGroup" fxLayout="column" fxLayoutGap="32px">
+ <app-form-control>
+              <mat-select
+                formControlName="Type"
+                placeholder="Account Type"
+              >
+                <mat-option
+                  *ngFor="let option of AccountType"
+                  [value]="option.value"
+                >
+                  {{ option.text }}
+                </mat-option>
+              </mat-select>
+              <app-form-error>
+                <span
+                  *ngIf="
+                    banking.Type.invalid &&
+                    banking.Type.errors.required &&
+                    (banking.Type.dirty ||
+                      banking.Type.touched)
+                  "
+                >
+                  {{ validationMessages["field"]["required"] }}
+                </span>
+              </app-form-error>
+            </app-form-control>
+
+            <app-form-control *ngIf="OtherAccount">
+              <input
+                matInput
+                placeholder="Account Number"
+                formControlName="AccountNumber"
+              />
+              <app-form-error>
+                <span
+                  *ngIf="
+                    banking.AccountNumber.invalid &&
+                    banking.AccountNumber.errors.required &&
+                    (banking.AccountNumber.dirty || banking.AccountNumber.touched)
+                  "
+                >
+                  {{ validationMessages["field"]["required"] }}
+                </span>
+              </app-form-error>
+            </app-form-control>
+
+            <app-form-control *ngIf="!OtherAccount">
+              <input matInput placeholder="Account Number (IBAN)" formControlName="IBAN">
+              <app-form-error>
+                <span
+                  *ngIf="banking.IBAN.invalid && banking.IBAN.errors.required && (banking.IBAN.dirty || banking.IBAN.touched)">
+                  {{validationMessages['field']['required']}}
+                </span>
+              </app-form-error>
+
+              <app-form-error *ngIf="banking.IBAN.invalid && (banking.IBAN.dirty || banking.IBAN.touched)">
+
+                <span *ngIf="banking.IBAN.errors.required">
+                  IBAN is required.
+                </span>
+                <span *ngIf="banking.IBAN.errors.iban">
+                  IBAN is invalid
+                </span>
+
+                <span *ngIf="banking.IBAN.valid && (banking.IBAN.dirty || banking.IBAN.touched)"
+                  class="alert alert-danger">
+                  IBAN is valid.
+                </span>
+              </app-form-error>
+            </app-form-control>
+
+            <app-form-control>
+              <input matInput placeholder="Bank Identifier Code - BIC (Optional)" formControlName="BIC">
+            </app-form-control>
+
+            <app-form-control>
+              <input matInput placeholder="Owner Name" formControlName="OwnerName">
+              <app-form-error>
+                <span *ngIf="banking.OwnerName.invalid && banking.OwnerName.errors.required && (banking.OwnerName.dirty || banking.OwnerName.touched)">
+                  {{validationMessages['field']['required']}}
+                </span>
+              </app-form-error>
+            </app-form-control>
+
+            <div formGroupName="OwnerAddress" fxLayout="column" fxLayoutGap="32px">
+              <app-form-control>
+                <input matInput placeholder="Address Line 1" formControlName="AddressLine1">
+                <app-form-error>
+                  <span *ngIf="ownerAddress.AddressLine1.invalid && ownerAddress.AddressLine1.errors.required && (ownerAddress.AddressLine1.dirty || ownerAddress.AddressLine1.touched)">
+                    {{validationMessages['field']['required']}}
+                  </span>
+                </app-form-error>
+              </app-form-control>
+
+              <app-form-control>
+                <input matInput placeholder="Address Line 2 (Optional)" formControlName="AddressLine2">
+              </app-form-control>
+
+              <app-form-control>
+                <input matInput placeholder="City" formControlName="City">
+                <app-form-error>
+                  <span *ngIf="ownerAddress.City.invalid && ownerAddress.City.errors.required && (ownerAddress.City.dirty || ownerAddress.City.touched)">
+                    {{validationMessages['field']['required']}}
+                  </span>
+                </app-form-error>
+              </app-form-control>
+
+              <app-form-control>
+                <input matInput placeholder="Region" formControlName="Region">
+                <app-form-error>
+                  <span *ngIf="ownerAddress.Region.invalid && ownerAddress.Region.errors.required && (ownerAddress.Region.dirty || ownerAddress.Region.touched)">
+                    {{validationMessages['field']['required']}}
+                  </span>
+                </app-form-error>
+              </app-form-control>
+
+              <app-form-control>
+                <input matInput placeholder="Postal Code" formControlName="PostalCode">
+                <app-form-error>
+                  <span *ngIf="ownerAddress.PostalCode.invalid && ownerAddress.PostalCode.errors.required && (ownerAddress.PostalCode.dirty || ownerAddress.PostalCode.touched)">
+                    {{validationMessages['field']['required']}}
+                  </span>
+                </app-form-error>
+              </app-form-control>
+
+              <app-form-control>
+                <mat-select formControlName="Country" placeholder="Country of residence">
+                  <mat-option *ngFor="let option of countries" [value]="option.code">
+                    {{option.name}}
+                  </mat-option>
+                </mat-select>
+                <app-form-error>
+                  <span
+                    *ngIf="ownerAddress.Country.invalid && ownerAddress.Country.errors.required && (ownerAddress.Country.dirty || ownerAddress.Country.touched)">
+                    {{validationMessages['field']['required']}}
+                  </span>
+                </app-form-error>
+              </app-form-control>
+            </div>
+            <br><br>
+          </form>
+        </div>
+        <br/>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <app-form-button *ngIf="!submitting" (click)="signUpStepper.previous()">Previous</app-form-button>
+          <!-- <app-form-button *ngIf="!submitting && continent && continent === 'Europe'" (click)="onSignUpFormSubmit()">Submit</app-form-button> -->
+          <app-form-button *ngIf="!submitting" (click)="onSignUpFormSubmit()">Submit</app-form-button>
+          <mat-spinner *ngIf="submitting" diameter="15"></mat-spinner>
+        </div>
+        <!-- <div *ngIf="continent === 'Europe'" class="mango-logo"> -->
+        <div class="mango-logo">
+          <a routerLink="/mangoTC" target="_blank">Terms & Conditions</a>
+          <img src="assets/images/mangopay-terms.png" />
+        </div>
+      </mat-step>
+
+    </mat-horizontal-stepper>
+  </div>
+</div>

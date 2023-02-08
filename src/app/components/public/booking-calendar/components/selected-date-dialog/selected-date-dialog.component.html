@@ -1,0 +1,39 @@
+<div class="app-container">
+  <div class="submitting" *ngIf="submitting">
+    <p>
+      We are establishing your booking with {{data?.coach?.name}}
+    </p>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <mat-spinner diameter="30"></mat-spinner>
+    </div>
+  </div>
+  <div class="app-close" (click)="close()">x</div>
+  <div class="app-content">
+    <div class="jubilat jubilat-header">
+      Selected date and time
+    </div>
+    <span class="error" *ngIf="showError">
+      We could not book your session due to an error. Please try again later.
+    </span>
+    <p class="error" *ngIf="showFreeError">
+        It seems you had already had your free intake session with <b>{{data?.coach?.name}}</b>.
+        <br />
+        Please schedule a session in stead of an intake. Thank you for choosing CoachTalk.
+    </p>
+    <div>
+      {{ jsdateStarts | date }},
+      {{ jsdateStarts | date:'h:mm a' }} -
+      {{ jsdateEnds | date:'h:mm a' }}
+    </div>
+  </div>
+  <div class="btns" fxLayout="row" fxLayoutAlign="end center">
+    <app-form-button [color]="'blue'" (click)="close()">
+      Cancel
+    </app-form-button>
+    <div fxFlex="10px"></div>
+    <app-form-button (click)="schedule()">
+      <span *ngIf="!showError">Continue</span>
+      <span *ngIf="showError">Retry</span>
+    </app-form-button>
+  </div>
+</div>

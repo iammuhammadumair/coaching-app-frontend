@@ -1,0 +1,43 @@
+.pointerIcon{
+    cursor:pointer;
+}
+
+.defaultIcon{
+    font-size:36px;
+}
+
+.mat-myaccent {
+    color: #FF9966;
+}
+
+.mat-myprimary {
+    color: #bfdada;
+}
+
+.mat-badge-medium.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    color: #fff;
+}
+
+.mat-badge-mywarn .mat-badge-content {
+    background: #441111;
+}
+
+.mat-icon.mat-selected {
+    color: #FF9966;
+}
+
+.mat-icon.mat-unselected {
+    color: #441111;
+}
+
+.icon-container {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.icon-container mat-icon {
+    position: absolute;
+}

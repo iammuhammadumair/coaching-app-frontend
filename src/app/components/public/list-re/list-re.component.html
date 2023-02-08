@@ -1,0 +1,36 @@
+<h1>
+  Real Estate List for {{ country }}
+</h1>
+
+<div *ngIf="coaches" fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center stretch" fxLayoutGap="10px" class="grid-container">
+
+  <div>
+    <mat-form-field>
+      <mat-select placeholder="Select a country ...">
+        <mat-option *ngFor="let country of countries | async" [value]="country.name">
+          {{ country.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+  <div id="list-re" fxLayout="column" fxFlex="1 1 80%">
+    <ul>
+      <mat-list>
+        <mat-list-item *ngFor="let coach of coaches | async" (click)="onSelect(coach)">
+          <mat-icon matListIcon>home</mat-icon>
+          <h3 matLine>{{ coach.address }}</h3>
+          <h3 matLine>{{ coach.zipCode }} - {{ coach.city }} - {{ coach.country }}</h3>
+          <h3 matLine>LAT: {{ coach.latitude }} / LNG: {{ coach.longitude }}</h3>
+        </mat-list-item>
+      </mat-list>
+    </ul>
+  </div>
+
+  <div id="detail-re" fxLayout="row" fxFlex="1 1 20%">
+    <app-detail-re [coach]="selectedCoach"></app-detail-re>
+  </div>
+</div>
+
+
+

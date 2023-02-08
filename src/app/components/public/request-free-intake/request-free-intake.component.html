@@ -1,0 +1,69 @@
+<div class="popup-container">
+  <div *ngIf="!showSentMessage">
+      <mat-dialog-content class="form-container" [formGroup]="form">
+
+          <br />
+          <div>
+            Wonderful that you are trying out what {{coach.name}} can do for you! In order to
+            make the session happen, we need your name and email address. And
+            remember, your first session with any coach is always free of charge.
+          </div>
+          <br />
+          <br />
+
+            <mat-form-field>
+                <input matInput placeholder="Your Name" formControlName="ClientName" required>
+            </mat-form-field>
+
+          <mat-form-field>
+              <input matInput placeholder="Email" formControlName="ClientEmail" required>
+              <mat-error>
+                  <!-- <span *ngIf="!form.get('email').valid && form.get('email').touched">
+                      There is something wrong with this email address, please check again.
+                  </span> .-->
+              </mat-error>
+          </mat-form-field>
+        </mat-dialog-content>
+          <!--- <mat-form-field>
+              <input matInput placeholder="Eamil" formControlName="Email">
+          </mat-form-field> -->
+          <div fxLayout.xs="column"
+          fxLayout="row"
+          fxLayoutAlign.xs="center center"
+          fxLayoutAlign="start center"
+          class="no-margin-radio">
+         <app-form-button (click)="openCalendar('free')"
+                          [padding]="false">
+             Next
+         </app-form-button>
+         &nbsp;&nbsp;
+         <app-form-button [color]="'violet'"
+                          (click)="openCalendar('free')"
+                          *ngIf="data?.canBookFreeSession"
+                          [padding]="false">
+              Free Intake
+         </app-form-button>
+     </div>
+          <!-- <app-form-button (click)="openContactDialog()">
+            Next
+          </app-form-button> -->
+
+
+
+  </div>
+  <!-- <div *ngIf="showSentMessage">
+      <h3>Request information</h3>
+      <div *ngIf="sending">
+          <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar><br><br><br>
+          <span style="font-size: 16px;">
+              <mat-icon color="accent">send</mat-icon> sending message in progress...
+          </span>
+      </div>
+      <div *ngIf="!sending">
+          <span style="font-size: 16px;">
+              <mat-icon color="accent">check</mat-icon> Your message "{{subject}}" has been sent.
+          </span><br><br>
+          <app-form-button [color]="'blue'" (click)="close()">Close</app-form-button>
+      </div>
+  </div>
+</div> -->

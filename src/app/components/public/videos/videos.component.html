@@ -1,0 +1,42 @@
+<div *ngFor="let PageTitle of PageContentData">
+<div class="jubilat jubilat-header" fxLayout="row" fxLayoutAlign="center start">
+  {{PageTitle.PageTitle}}
+</div>
+<div class="text  Videotitle" fxLayout="row" fxLayoutAlign="center start" >
+  <div fxFlex="100%" fxFlex.gt-sm="70%">
+    <p>
+      {{PageTitle.PageDescription1}},  <a href="https://www.facebook.com/sharer/sharer.php?u=https://succeed.world/nlpvideos">share the love.</a>
+       {{PageTitle.PageDescription2}}
+    </p>
+  </div>
+
+  <div fxLayout="row wrap" fxLayoutAlign="center center" class="Subscribe">
+    <div class="detail-container">
+      <app-form-button (click)="Subscribe()">
+       Subscribe
+      </app-form-button>
+    </div>
+  </div>
+</div>
+
+<div fxLayout="row wrap" fxLayoutAlign="center center" class="Subscribe-A">
+  <div class="detail-container">
+    <app-form-button (click)="Subscribe()">
+     Subscribe
+    </app-form-button>
+  </div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 " *ngFor="let videosdetail of VideosData">
+    <div class="jubilat jubilat-header" style="background-color:rgb(173 201 252);" fxLayout="row"
+      fxLayoutAlign="center start">
+      {{videosdetail.videotitle}}
+    </div>
+    <video controls (click)="toggleVideo()" #videoPlayer class="video-frame">
+      <source src="{{videosdetail.videoUrl}}" type="video/mp4" />
+      Browser not supported
+    </video>
+  </div>
+</div>

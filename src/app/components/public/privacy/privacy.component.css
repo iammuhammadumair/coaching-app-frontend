@@ -1,0 +1,117 @@
+
+  .image-who{
+    padding: 10px;
+  }
+
+  .header{
+    color: #ff9966;
+    font-weight: 400;
+    font-size: 24px;
+    padding-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .precontent{
+
+    font-size: 15px;
+    padding-left: 30px;
+  }
+
+  .content{
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  ul {
+    list-style: none; /* Remove default bullets */
+  }
+
+  ul li::before {
+    content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: #ff9966; /* Change the color */
+    /*font-weight: 200;  If you want it to be bold */
+    font-size:  16px;
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1em; /* Also needed for space (tweak if needed) */
+    margin-left: -1em;  /*Also needed for space (tweak if needed) */
+   list-style-position: outside;
+  }
+
+
+
+  @media (min-width: 736px) {
+
+    .pageC {
+      width:70%;
+      margin-right:auto;
+      margin-left:auto;
+    }
+    .boxp {
+
+      width: 60%;
+      border-left-style: solid !important;
+      border-left-color: rgba(182, 182, 182, 1) !important;
+      border-left-width: 6px !important;
+    }
+
+    .boxl{
+      font-size:25px;
+      max-width: 247px !important;
+      height: auto !important;
+      padding-top: 2px !important;
+      padding-bottom: 2px !important;
+      padding-right: 30px;
+      min-width: 25px !important;
+      text-align: right !important;
+      float: right;
+    }
+
+    .boxBorder {
+     display: none;
+    }
+
+  }
+
+  /*
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+  */
+
+  @media (min-width: 320px) and (max-width: 736px) {
+    .pageC {
+      width:100%;
+
+    }
+    .boxl{
+      font-size:20px;
+      max-width: 207px !important;
+      height: auto !important;
+      padding-top: 0px !important;
+      padding-bottom: 10px !important;
+      text-align: center !important;
+      margin-left:auto;
+      margin-right: auto;
+
+    }
+
+    .boxBorder {
+
+      height: 3px;
+      width: 70% !important;
+      background-color: rgba(182, 182, 182, 1) !important;
+      margin-bottom: 20px !important;
+      margin-top:10px;
+      margin-left:auto;
+      margin-right: auto;
+    }
+
+    .boxp {
+
+      max-width: 90%;
+
+    }
+
+  }
+

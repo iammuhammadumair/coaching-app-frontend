@@ -1,0 +1,135 @@
+<div fxLayout="row" fxLayoutAlign="start center">
+   <div class="modal_header" fxFlex="20%">
+     <div class="backbtn" fxLayout="column" fxLayoutGap="20px" >
+       <app-form-button [color]="'blue'" (click)="close()">
+         < Back </app-form-button>
+        </div>
+        <div class="blog-PageButton">
+        <a  [routerLink]="['/BlogPageTitle']">
+         <app-form-button>Blogs Page Title</app-form-button>
+       </a>
+      </div>
+   </div>
+</div>
+<h2 class="text-align-center">Add Blog</h2>
+<div fxLayout="row" fxLayoutAlign="center center">
+   <div fxFlex="50%">
+      <form [formGroup]="form">
+         <div fxLayout="column">
+            <ng-template>Add blog</ng-template>
+            <mat-form-field>
+               <input matInput placeholder="Blog Title" formControlName="BlogTitle">
+               <mat-error>
+                  <span *ngIf="f.BlogTitle.hasError('required')">blog title is required</span>
+               </mat-error>
+            </mat-form-field>
+            <mat-form-field >
+               <input matInput  placeholder="Blog Short description Max 465 Character" formControlName="ShortDescription" >
+
+               <mat-error>
+                  <span *ngIf="f.ShortDescription.hasError('required')">Blog Description is required </span>
+               </mat-error>
+            </mat-form-field>
+            <mat-form-field >
+               <input matInput  placeholder="Blog Url" formControlName="BlogUrl">
+            </mat-form-field>
+            <angular-editor [placeholder]="'Enter blog description here...'" formControlName="BlogDescription">
+            </angular-editor>
+            <mat-form-field><input matInput placeholder="Image url" formControlName="BlogImage">
+            </mat-form-field>
+            <input type="file" (change)="startUpload($event); false" style="display: none" #fileInput>
+            <span (click)="fileInput.click(); false" style="vertical-align:top;">
+               <mat-icon color="primary">cloud_upload</mat-icon>
+               Select Image File
+            </span>
+            <br>
+            <mat-progress-bar *ngIf="showPerc" mode="determinate" [value]="percentage" color="primary">
+            </mat-progress-bar>
+            <br>
+         </div>
+      </form>
+      <div fxLayout="row" fxLayoutAlign="center center">
+         <a routerLink="/welcome">
+            <app-form-button [color]="'blue'">Close</app-form-button>
+         </a>
+         &nbsp;&nbsp;
+         <app-form-button (click)="SaveBlog()">
+            Save
+         </app-form-button>
+      </div>
+   </div>
+</div>
+<br />
+<br />
+<hr>
+<hr>
+<!--   Display Blog    -->
+<div fxLayout="row" fxLayoutAlign="start center">
+   <div fxFlex="initial">
+      <h2 class="profiles">Blogs</h2>
+   </div>
+</div>
+<div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="3px">
+   <div fxFlex="5%"></div>
+   <div class="align" fxFlex="16%"><span class="index">Blog Title</span></div>
+   <div class="align" fxFlex="16%"><span class="index">Blog Short Description</span></div>
+   <div class="align" fxFlex="30%"><span class="index">Blog Description</span></div>
+   <div class="align" fxFlex="16%"><span class="index">Blog Url</span></div>
+   <div class="align" fxFlex="16%"><span class="index">Image Url</span></div>
+   <div fxFlex="10%"></div>
+</div>
+<hr>
+<div *ngFor="let Data of GetBlogData " id="{{ Data.ID}}">
+   <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="3px" style="margin-bottom: 20px;">
+      <div fxFlex="5%">
+         <mat-checkbox color="warn" class="example-margin"></mat-checkbox>
+      </div>
+      <div class="align" fxFlex="16%">{{ Data.BlogTitle }}</div>
+      <div class="align" fxFlex="16%">{{ Data.ShortDescription }}</div>
+      <div class="align" fxFlex="30%">{{ Data.BlogDescription }}</div>
+      <div class="align" fxFlex="16%">{{ Data.BlogUrl }}</div>
+      <div class="align" fxFlex="16%">
+         <img src={{Data.BlogImage}} style="width: 64px;" />
+      </div>
+
+      <div fxFlex="10%">
+         <a style="color: black;">
+            <mat-icon class="icon" svgIcon="update" (click)="UpdateBlogPopup(UpdateBlogDialog,Data)"></mat-icon>
+         </a>
+         &nbsp;
+         <mat-icon class="icon" style="color: #F44336" svgIcon="delete" (click)="DeleteBlogPopupDialog(Data.ID)">
+         </mat-icon>
+      </div>
+   </div>
+</div>
+<hr>
+<!--    Edit Blog PopUp  -->
+<div fxLayout="row" fxLayoutAlign="center center" class="updateVideos">
+   <div fxFlex="50%">
+      <ng-template #UpdateBlogDialog class="updateBlogs">
+         <h2 matDialogTitle>Update Blog!</h2>
+         <div fxLayout="column" id="{{updateBlog.ID}}">
+            <mat-form-field>
+               <input matInput placeholder="Blog Title" [(ngModel)]="updateBlog.BlogTitle">
+            </mat-form-field>
+            <mat-form-field>
+               <input matInput placeholder="Blog Url" [(ngModel)]="updateBlog.BlogUrl">
+            </mat-form-field>
+             <mat-form-field>
+               <input matInput placeholder="Blog ShortDescription" [(ngModel)]="updateBlog.ShortDescription">
+            </mat-form-field>
+            <angular-editor [placeholder]="'Enter blog description here...'" [(ngModel)]="updateBlog.BlogDescription">
+            </angular-editor>
+         </div>
+         <div fxLayout="row" fxLayoutAlign="center center">
+            <app-form-button [color]="'blue'" (click)="closeDialog()">Close</app-form-button>
+            &nbsp;&nbsp;
+            <app-form-button (click)="UpdateBlogs(updateBlog,updateBlog.ID)">
+               Save
+            </app-form-button>
+         </div>
+      </ng-template>
+   </div>
+</div>
+
+

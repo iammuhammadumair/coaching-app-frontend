@@ -1,0 +1,50 @@
+<mat-list>
+  <mat-list-item [routerLink]="['/home']" (click)="toggleSidenav()"
+    >Home</mat-list-item
+  >
+  <mat-list-item
+    *ngIf="auth?.user | async"
+    (click)="userprofile()"
+    >My Account</mat-list-item
+  >
+  <mat-list-item [routerLink]="['/about-and-contact']" (click)="toggleSidenav()"
+    >About & Contact</mat-list-item
+  >
+  <ng-container *ngIf="user?.profileType == 'Client'">
+    <mat-list-item [routerLink]="['/payment-details']" (click)="toggleSidenav()"
+      >Payment details</mat-list-item
+    >
+  </ng-container>
+  <mat-list-item [routerLink]="['/public/nlp']" (click)="toggleSidenav()"
+    >Training</mat-list-item
+  >
+  <mat-list-item [routerLink]="['/public/nlpvideos']" (click)="toggleSidenav()"
+    >Videos</mat-list-item
+  >
+  <mat-list-item [routerLink]="['/public/blog']" (click)="toggleSidenav()"
+    >Blog</mat-list-item
+  >
+  <mat-list-item [routerLink]="['/public/services']" (click)="toggleSidenav()"
+    >Coach Topics</mat-list-item
+  >
+  <mat-list-item
+    [routerLink]="['/public/probono-coaching']"
+    (click)="toggleSidenav()"
+    >Giving Back</mat-list-item
+  >
+  <mat-list-item class="IosAppIcon">
+    <a
+      href="https://apps.apple.com/us/app/succeed-world/id1557222993"
+      target="_blank"
+    >
+      <img src="/assets/images/IosApp.png" alt="" width="118px" /> </a
+  ></mat-list-item>
+
+  <mat-list-item class="app">
+    <a
+      href="https://play.google.com/store/apps/details?id=com.succeed&hl=en"
+      target="_blank"
+    >
+      <img src="/assets/images/app.png" alt="" width="118px" /> </a
+  ></mat-list-item>
+</mat-list>

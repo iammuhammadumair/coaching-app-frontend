@@ -1,0 +1,37 @@
+<div class="time-section-header">
+  <b>
+    {{ displayDate | date }}
+  </b>
+</div>
+<br />
+<div fxLayout="row">
+  <div fxFlex="grow">
+    <div class="time-section-header">
+      Before 12.00
+    </div>
+    <br />
+    <ng-container *ngFor="let slot of availableSlots; let index = index;">
+      <div *ngIf="isSlotAm(slot)"
+           class="time-slot circled"
+           [ngClass]="{'selected': isSlotSelected(slot)}"
+           (click)="slotSelected(index)">
+        {{slot.date | date:'h:mm'}}
+      </div>
+    </ng-container>
+  </div>
+  <div fxFlex="30px"></div>
+  <div fxFlex="grow">
+    <div class="time-section-header">
+      After 12.00
+    </div>
+    <br />
+    <ng-container *ngFor="let slot of availableSlots; let index = index;">
+      <div *ngIf="isSlotPm(slot)"
+           class="time-slot circled"
+           [ngClass]="{'selected': isSlotSelected(slot)}"
+           (click)="slotSelected(index)">
+        {{slot.date | date:'h:mm'}}
+      </div>
+    </ng-container>
+  </div>
+</div>

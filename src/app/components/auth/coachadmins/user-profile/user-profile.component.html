@@ -1,0 +1,112 @@
+<mat-horizontal-stepper [linear]="isLinear" #signUpStepper>
+
+    <mat-step [stepControl]="accountInfoFormGroup">
+      <!-- Account Info Form Start -->
+      <form class="form-container"
+            [formGroup]="accountInfoFormGroup"
+            (ngSubmit)="onAccountInfoFormNext()"
+            fxLayout="column" fxLayoutGap="32px">
+
+        <ng-template matStepLabel>Account Info</ng-template>
+
+        <mat-form-field>
+          <input matInput placeholder="Email" formControlName="emailCtrl" readonly>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="password" placeholder="Password" formControlName="passwordCtrl">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPasswordCtrl">
+        </mat-form-field>
+      </form>
+
+      <!-- Account Info Form End -->
+      <div>
+        <a [routerLink]="['/welcome']"><app-form-button><mat-icon>home</mat-icon>Home</app-form-button></a>
+        <app-form-button (click)="signUpStepper.reset()">Reset</app-form-button>
+        <app-form-button matStepperNext (click)="onAccountInfoFormNext()" color="primary">Next</app-form-button>
+      </div>
+
+    </mat-step>
+
+    <mat-step [stepControl]="profileInfoFormGroup" fxLayout="column wrap" fxLayout.xs="row wrap">
+      <!-- Profile Info Form Start -->
+      <div class="signUpForm" fxFlex="0 1 calc(25%)">
+        <form class="form-container"
+              [formGroup]="profileInfoFormGroup"
+              fxLayout="column" fxLayoutGap="32px">
+
+          <ng-template matStepLabel>Profile Info</ng-template>
+
+          <mat-form-field>
+            <mat-select formControlName="profileTypeCtrl" placeholder="Profile Type" required [(value)]="selectedProfile">
+              <mat-option *ngFor="let profileType of profileTypeList | async" [value]="profileType.name" >{{ profileType.name }}</mat-option>
+
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Firstname" formControlName="firstnameCtrl" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Lastname" formControlName="lastnameCtrl" required>
+          </mat-form-field>
+
+          <div fxLayout="row wrap" fxLayoutGap="20px">
+            <div fxFlex="">
+              <div fxLayout="column" fxLayoutGap="32px">
+                <mat-form-field>
+                  <input matInput placeholder="Address" formControlName="addressCtrl" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <input matInput placeholder="Zip Code" formControlName="zipCodeCtrl" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <input matInput placeholder="City" formControlName="cityCtrl" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <input matInput placeholder="Country" formControlName="countryCtrl" required>
+                </mat-form-field>
+
+                <app-form-button matStepperNext (click)="onAddressLookup()">Address Lookup</app-form-button>
+            </div>
+          </div>
+        </div>
+          <mat-form-field>
+            <input matInput placeholder="Telephone" formControlName="telephoneCtrl" required>
+          </mat-form-field>
+
+          <mat-radio-group formControlName="genderCtrl" [(value)]="selectedGender">
+            <mat-radio-button value="F">F</mat-radio-button>
+            <mat-radio-button value="M">M</mat-radio-button>
+          </mat-radio-group>
+
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Date of Birth" formControlName="dobCtrl">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+        </form>
+      </div>
+      <div class="mapLookup" fxFlex="0 1 calc(25%)">
+
+
+      </div>
+      <!-- Profile Info Form End -->
+      <div>
+        <a [routerLink]="['/welcome']"><app-form-button>Home</app-form-button></a>
+        <app-form-button matStepperPrevious>Previous</app-form-button>
+        <app-form-button (click)="signUpStepper.reset()">Reset</app-form-button>
+        <app-form-button matStepperNext (click)="onSignUpFormSubmit()">Submit</app-form-button>
+      </div>
+
+    </mat-step>
+
+  </mat-horizontal-stepper>

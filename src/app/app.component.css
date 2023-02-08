@@ -1,0 +1,58 @@
+::ng-deep .si-content-wrapper {
+  padding: 5px;
+  background-color: #fff!important;
+}
+
+.app-content {
+  display: flex;
+  flex-direction: row;
+}
+
+main {
+  width: 80%;
+}
+
+.toolbarClass {
+  width:99%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  box-sizing: border-box;
+  min-height: 43px;
+}
+
+.logoNavbar {
+  width: 40px;
+}
+
+.logoNavbar:hover {
+  cursor: pointer;
+}
+
+.app-sidebar {
+  position: fixed;
+  left: -102%;
+  height: 100%;
+  transition: .6s;
+  z-index: 99;
+  background: #FF9966;
+}
+
+.app-overlay {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 98;
+  position: fixed;
+  transition: .6s;
+}
+
+mat-list-item {
+  color: #fff;
+}
+
+@media (max-width: 736px) {
+  main {
+    width: 100%;
+  }
+}

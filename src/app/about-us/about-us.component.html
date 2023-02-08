@@ -1,0 +1,129 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="100" fxFlex.gt-sm="60" class="page-header">
+    <div class="jubilat jubilat-header">
+      <app-page-header [gray]="true">Training</app-page-header>
+    </div>
+    <br />
+    <br />
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div fxFlex="50">
+        <img width="100%" src="assets/images/yosara.jpeg" />
+      </div>
+    </div>
+    <!-- <div class="stripes">
+      <div class="violet"></div>
+      <div class="orange"></div>
+      <div class="blue"></div>
+    </div>
+    <br />
+    <div class="blue-box">
+      NLP (Neuro Linguistic Programming) is a way of thinking that brings about
+      innate qualities that bring you further in life and at work.
+    </div>
+    <br />
+    <div class="orange-box">
+      By looking into your subconscious, you reveal characteristics that enable
+      you to transform showstoppers into motivators.
+    </div>
+    <br />
+    <div class="blue-box">
+      A NLP coach asks questions that derive from your subconscious experience.
+      Your answers demonstrate your unique steps and style in reaching your
+      outcome.
+    </div>
+    <br />
+    <div class="orange-box">
+      The result of such looking into your subconscious is that you continuously
+      grow as a person and as a professional. You know that your world changes,
+      you change with it.
+    </div> -->
+  </div>
+</div>
+<br /><br />
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div layout-align="center center">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      class="jubilat jubilat-header flexblock"
+    >
+      Leadership Audio
+    </div>
+    <p fxLayout="row" fxLayoutAlign="center center">
+      Discover your excellence by Sue Knight
+    </p>
+    <p>
+      Sue Knight is an NLP Master trainer and high-performance coach who works
+      with individuals, corporates and teams. Her book NLP at Work is translated
+      in 27 languages. Enjoy an audio session with Sue!
+    </p>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <app-form-button [color]="'orange'" (click)="openAudio()">
+        <span fxLayout="row" fxLayoutAlign="center center">
+          Sue Knight
+          <img
+            *ngIf="!playing && !audioLoading"
+            class="audio-icon"
+            src="assets/images/icon/play.png"
+          />
+          <img
+            *ngIf="playing && !audioLoading"
+            class="audio-icon"
+            src="assets/images/icon/pause.png"
+          />
+          <mat-spinner *ngIf="audioLoading" diameter="15"></mat-spinner>
+        </span>
+      </app-form-button>
+    </div>
+    <br />
+    <div
+      class="jubilat jubilat-header flexblock"
+      fxLayout="row"
+      fxLayoutAlign="center center"
+    >
+      Videos
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      Watch videos that are offered to you by our coaches and trainers.
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center" style="margin-top: 18px">
+      <app-form-button [color]="'orange'">
+        <span
+          fxLayout="row"
+          fxLayoutAlign="center center"
+          class="VideoMP4Button"
+        >
+          <a [routerLink]="['/public/nlpvideos']" style="color: white"
+            >Videos</a
+          >
+          <img class="audio-icon" src="assets/images/icon/play.png" />
+        </span>
+      </app-form-button>
+    </div>
+    <br />
+    <div
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      class="jubilat jubilat-header"
+    >
+      Training
+    </div>
+
+    <p class="avenir align-left">
+      We offer online training for leaders and coaches of every kind. You can
+      choose the 6-day edition, or the All-Year edition. On either training you
+      learn about growth at personal and professional levels. During the
+      sessions you discover about your style and influence. If you lead or coach
+      others and would like to apply for a sponsored seat, you are very welcome
+      to send us a message. We will get back to you as soon as we can. For more
+      information and dates,
+      <a href="https://www.yosara.com/" target="_blank">please tap here</a>
+    </p>
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <app-form-button [color]="'orange'" (click)="openSendMessage()">
+        Send message
+      </app-form-button>
+    </div>
+  </div>
+</div>

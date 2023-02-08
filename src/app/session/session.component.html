@@ -1,0 +1,60 @@
+<div class="session-container">
+  <div class="loading" *ngIf="loading" fxLayout="row" fxLayoutAlign="center center">
+    <mat-progress-spinner mode="indeterminate" diameter="30"></mat-progress-spinner>
+  </div>
+  <div *ngIf="validSession && session">
+    <div fxLayout="row" fxLayoutAlign="center center" class="finish">
+      <ng-container *ngIf="user?.profileType === 'Coach'">
+        <app-form-button [color]="'blue'" (click)="finish()">
+          Finish session
+        </app-form-button>
+      </ng-container>
+      <ng-container *ngIf="user?.profileType === 'Client'">
+        <ng-container >
+          <app-form-button [color]="'blue'" (click)="rate()">
+            Close and rate session
+          </app-form-button>
+        </ng-container>
+        <ng-container *ngIf="booking?.isFree">
+          <app-form-button [color]="'blue'" (click)="finish()">
+            Finish session
+          </app-form-button>
+        </ng-container>
+      </ng-container>
+    </div>
+    <div class="video-container">
+      <ng-container>
+        <app-publisher [session]="session"></app-publisher>
+        <app-subscriber *ngFor="let stream of streams"
+                        [stream]="stream"
+                        [session]="session"
+                        [ngStyle]="{'width.px': width, 'height.px': height}">
+        </app-subscriber>
+        <div class="no-streams" *ngIf="!streams?.length" fxLayout="row" fxLayoutAlign="center center">
+          Waiting for the other user to join the session.
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="text-align-center" *ngIf="sessionError == 'accessDenied'">
+    <br />
+    Access denied to this session.
+  </div>
+  <div class="text-align-center" *ngIf="sessionError == 'passed'">
+    <br />
+    This session has ended.
+  </div>
+  <div class="text-align-center" *ngIf="sessionError == 'future'">
+    <br />
+    This session will start on
+    <b>{{sessionDate | date:'mediumDate'}}</b>
+    at
+    <b>{{sessionDate | date:'shortTime'}}</b>
+
+    ({{timezone}})
+  </div>
+  <div class="text-align-center" *ngIf="sessionError == 'invalid'">
+    <br />
+    Invalid session
+  </div>
+</div>

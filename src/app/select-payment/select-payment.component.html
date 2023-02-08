@@ -1,0 +1,30 @@
+<!-- <h4 *ngIf="!paymentMethod">
+  Select Payment Gateway
+</h4> -->
+<div class="signUpForm">
+  <div>
+    <div class="payment-type">
+      <h5 class="payment-heading">Please select a payment type</h5>
+      <div class="payment-radios">
+        <div [style.display]="!envPaymentType.paypal && 'none'" class="radio">
+           <input [attr.checked]="user.paymentType == 'paypal' ? 'checked' : null" type="radio" (change)="changePaymentType($event)" id="paypal" name="paymentType" value="paypal" />
+             <label for="paypal">Paypal Account </label>
+        </div>
+        <div class="radio">
+           <input [attr.checked]="user.paymentType == 'mangopay' ? 'checked' : null" type="radio" (change)="changePaymentType($event)" id="mangopay" name="paymentType"
+            value="mangopay" />
+            <label for="mangopay">Credit Card</label>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="buttons" fxLayout="row" fxLayoutAlign="center center">
+    <button class="btn btn-blue" (click)="close(false)">
+      Cancel
+    </button>
+    <button class="btn btn-violet" (click)="updatePreferredPayment()">
+      Save
+    </button>
+  </div>
+</div>

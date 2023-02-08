@@ -1,0 +1,14 @@
+<button class="btn"
+[disabled]="disabled"
+        [attr.type]="type"
+        [ngClass]="{
+          'violet': color == 'violet',
+          'orange': color == 'orange',
+          'blue': color == 'blue',
+          'small': size == 's',
+          'medium': size == 'm',
+          'large': size == 'l',
+          'no-padding': !padding
+        }">
+  <ng-content></ng-content>
+</button>

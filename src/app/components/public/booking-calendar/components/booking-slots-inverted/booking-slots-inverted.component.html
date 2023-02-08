@@ -1,0 +1,47 @@
+<div class="time-section-header">
+  <b>
+    {{ displayDate | date }}
+  </b>
+</div>
+<br />
+<div fxLayout="row">
+  <div fxFlex="grow">
+    <div class="time-section-header">
+      Before 12.00
+    </div>
+    <br />
+    <ng-container *ngFor="let slot of availableSlots; let index = index;">
+      <div class="time-slot"
+           [ngClass]="{'selected': isSlotSelected(slot)}"
+           (click)="slotSelected(index)"
+           *ngIf="isSlotAm(slot)">
+        <ng-container *ngIf="slot.booking">
+          {{slot.jsdate | date:'HH:mm'}}
+        </ng-container>
+        <ng-container *ngIf="!slot.booking">
+          {{slot.starts}}
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+  <div fxFlex="30px"></div>
+  <div fxFlex="grow">
+    <div class="time-section-header">
+      After 12.00
+    </div>
+    <br />
+    <ng-container *ngFor="let slot of availableSlots; let index = index;">
+      <div class="time-slot"
+           [ngClass]="{'selected': isSlotSelected(slot)}"
+           (click)="slotSelected(index)"
+           *ngIf="isSlotPm(slot)">
+        <ng-container *ngIf="slot.booking">
+          {{slot.jsdate | date:'HH:mm'}}
+        </ng-container>
+        <ng-container *ngIf="!slot.booking">
+          {{slot.starts}}
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</div>

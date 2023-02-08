@@ -1,0 +1,138 @@
+.transbox {
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    min-height: 140px;
+    cursor: pointer;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.transbox-bg {
+  background: rgba(0, 0, 0, 0.46);
+  opacity: 0;
+  transition: .3s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.transbox-data {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 99;
+  padding-top: 20px;
+}
+
+.transbox-hover {
+  opacity: 0;
+  transition: .1s;
+}
+
+.transbox:hover .transbox-bg {
+  opacity: 1;
+}
+
+.transbox:hover .transbox-hover {
+  opacity: 1;
+}
+
+p {
+    color: white;
+}
+
+.mat-myaccent {
+  color: #FF9966;
+}
+
+.mat-myprimary {
+  color: #bfdada;
+}
+
+.mat-badge-medium.mat-badge-overlap.mat-badge-after .mat-badge-content {
+  color: #fff;
+}
+
+.mat-badge-mywarn .mat-badge-content {
+  background: #fff;
+}
+
+.mat-icon.mat-selected {
+  color: #FF9966;
+}
+
+.mat-icon.mat-unselected {
+  color: #fff;
+}
+
+.tile-footer,
+.tile-header {
+  background: #993399;
+  color: #fff;
+}
+
+.tile-footer {
+  padding: 5px
+}
+
+.tile-header {
+  text-align: center;
+  padding: 10px;
+  white-space: nowrap;
+}
+
+.separator {
+  height: 3px;
+  background: #FF9966;
+}
+
+.tile-description {
+  background: #A9CCF1;
+  color: #3c3c3b;
+  text-align: center;
+  /* padding: 5px;
+  min-height: 60px; */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-family: jubilat, serif;
+}
+
+.defaultIcon {
+  z-index: 100;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 601px) {
+    .tile-footer,
+    .tile-description,
+    .tile-header {
+      font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+  .tile-footer,
+  .tile-description,
+  .tile-header {
+    font-size: 11px;
+  }
+}
+
+.mat-card{
+    padding: 0px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.badge {
+    position: absolute;;
+    z-index: 100;
+    right: -15px;
+}

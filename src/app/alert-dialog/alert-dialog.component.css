@@ -1,0 +1,33 @@
+.app-container {
+    min-width: 400px;
+}
+
+.app-content {
+    padding: 10px 40px 10px 10px;
+}
+
+.header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.cancel-btn {
+    background: #dcdcdc;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.continue-btn {
+    border: 1px solid #000;
+    background: #FF9800;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    font-weight: bold;
+}
+
+.btns {
+    padding: 10px;
+}

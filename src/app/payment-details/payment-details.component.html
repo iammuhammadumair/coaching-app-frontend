@@ -1,0 +1,215 @@
+<h2>Payment Methods:</h2>
+<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="25px">
+  Please select your preferred payment method.
+</div>
+ <div class="payment-type">
+  <div class="payment-radios">
+    <div [style.display]="!envPaymentType.paypal && 'none'" class="radio">
+      <input type="radio"
+        [attr.checked]="paymentType == 'paypal' ? 'checked' : null" (change)="changePaymentType($event)" id="paypal"
+        name="paymentType" value="paypal" />
+        <label for="paypal">Paypal Account </label>
+    </div>
+    <div class="radio">
+        <input [attr.checked]="paymentType == 'mangopay' ? 'checked' : null" type="radio"
+        (change)="changePaymentType($event)" id="mangopay" name="paymentType" value="mangopay" />
+        <label for="mangopay">Credit Card</label>
+    </div>
+  </div>
+  <div class="save-button">
+    
+    <mat-spinner *ngIf="loading" class="spinner" diameter="15"></mat-spinner>
+    <app-form-button [disabled]="loading" (click)="updatePreferredPayment()">
+      Save
+    </app-form-button>
+  </div>
+</div>
+
+<div *ngIf="done && paymentType === 'mangopay'">
+  <app-form-button (click)="openAddCard()">
+    Add new card
+  </app-form-button>
+</div>
+<br /><br />
+<!-- <div *ngIf="card.paypal || card.mangoPay" fxLayout="row" fxLayout.xs="row" fxLayout.sm="row" fxLayoutAlign="start start"> -->
+<div *ngIf="card.mangoPay" fxLayout="row" fxLayout.xs="row" fxLayout.sm="row" fxLayoutAlign="start start">
+  <!-- <div fxFlex="60" fxFlex.sm="100" fxFlex.xs="100" *ngIf="card.mangoPay || card.paypal"> -->
+  <div fxFlex="60" fxFlex.sm="100" fxFlex.xs="100" *ngIf="card.mangoPay">
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="25px">
+      <!-- <b>Mango Pay</b><br /> -->
+      <b>Active payment methods</b>&nbsp;&nbsp;&nbsp;
+      <!-- <div>
+        <app-form-button (click)="openAddCard()">
+          Add new card
+        </app-form-button>
+      </div> -->
+    </div>
+    <br />
+    <ng-container *ngFor="let card of cards">
+      <div class="active-card card" *ngIf="card.Id === user.mangoCardId && user.paymentGateway === 'mangopay'">
+        <div fxLayout="row" fxLayoutGap="25px">
+          <div>{{ card.Alias }}</div>
+          <div>{{ card.CardProvider }}</div>
+        </div>
+        <br />
+        <div>
+          <span>Expiration: {{ card.ExpirationDate }}</span>
+          <span class="float-right"><img src="assets/images/mangopay.png" style="width: 50px;" /></span>
+        </div>
+
+      </div>
+    </ng-container>
+    <!-- <ng-container *ngFor="let card of paypal">
+      <div class="active-card card" *ngIf="card.token === user.paymentId && user.paymentGateway === 'paypal' && user.paymentType === 'PayPalCard'">
+        <div fxLayout="row" fxLayoutGap="25px">
+          <div>{{ card.maskedNumber }}</div>
+          <div>{{ card.cardType }}</div>
+        </div>
+        <br />
+        <div>
+          <span>
+            Expiration: {{ card.expirationDate }}
+          </span>
+          <span class="float-right"><img src="assets/images/paypal.png" style="width: 50px;"/></span>
+        </div>
+      </div>
+
+      <div class="active-card card" *ngIf="card.token === user.paymentId && user.paymentGateway === 'paypal' && user.paymentType === 'PayPalAccount'">
+        <div fxLayout="row" fxLayoutGap="25px">
+          <div>{{ card.email }}</div>
+        </div>
+        <br />
+        <div>
+          <span>
+            PayPal Account
+          </span>
+          <span class="float-right"><img src="assets/images/paypal.png" style="width: 50px;"/></span>
+        </div>
+      </div>
+    </ng-container> -->
+    <!-- <br /><br /> -->
+    <!-- <ng-container *ngIf="cards?.length || paypal?.length"> -->
+    <ng-container *ngIf="cards?.length">
+      <div>
+        <b>Other payment methods</b>
+      </div>
+      <br />
+      <ng-container *ngFor="let card of cards">
+        <div class="card" *ngIf="card.Id !== user.mangoCardId">
+          <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="25px">
+            <div>{{ card.Alias }}</div>
+            <div>{{ card.CardProvider }}</div>
+            <div fxFlex="1 0 auto"></div>
+            <a mat-icon-button [matMenuTriggerFor]="menuUser">
+              <mat-icon class="md-24">more_vert</mat-icon>
+            </a>
+            <mat-menu #menuUser="matMenu">
+              <div mat-menu-item color="primary" (click)="makeActive(card,'mangopay')">
+                <span>Make active</span>
+              </div>
+            </mat-menu>
+          </div>
+          <br />
+          <div>
+            <span>Expiration: {{ card.ExpirationDate }}</span>
+            <span class="float-right"><img src="assets/images/mangopay.png" style="width: 50px;" /></span>
+          </div>
+
+        </div>
+      </ng-container>
+      <!-- <ng-container *ngFor="let card of paypal">
+        <div class="card" *ngIf="card.token !== user.paymentId && !card['email']">
+          <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="25px">
+            <div>{{ card.maskedNumber }}</div>
+            <div>{{ card.cardType }}</div>
+            <div fxFlex="1 0 auto"></div>
+            <a mat-icon-button [matMenuTriggerFor]="menuUser">
+              <mat-icon class="md-24">more_vert</mat-icon>
+            </a>
+            <mat-menu #menuUser="matMenu">
+              <div mat-menu-item color="primary" (click)="makeActive(card,'paypal','PayPalCard')">
+                <span>Make active</span>
+              </div>
+            </mat-menu>
+          </div>
+          <br />
+          <div>
+            <span>
+              Expiration: {{ card.expirationDate }}
+            </span>
+            <span class="float-right"><img src="assets/images/paypal.png" style="width: 50px;"/></span>
+          </div>
+    
+        </div>
+        <div class="card" *ngIf="card.token !== user.paymentId && card['email']">
+          <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="25px">
+            <div>{{ card.email }}</div>
+            <div fxFlex="1 0 auto"></div>
+            <a mat-icon-button [matMenuTriggerFor]="menuUser">
+              <mat-icon class="md-24">more_vert</mat-icon>
+            </a>
+            <mat-menu #menuUser="matMenu">
+              <div mat-menu-item color="primary" (click)="makeActive(card,'paypal','PayPalAccount')">
+                <span>Make active</span>
+              </div>
+            </mat-menu>
+          </div>
+          <br />
+          <div>
+            <span>
+              PayPal Account
+            </span>
+            <span class="float-right"><img src="assets/images/paypal.png" style="width: 50px;"/></span>
+          </div>
+    
+        </div>
+      </ng-container> -->
+    </ng-container>
+    <!-- <ng-container *ngIf="paypal?.length">
+      <div>
+        <b>Other payment methods</b>
+      </div>
+      <br />
+      <ng-container *ngFor="let card of paypal">
+        <div class="card" *ngIf="card.token !== user.paymentId">
+          <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="25px">
+            <div>{{ card.maskedNumber }}</div>
+            <div>{{ card.cardType }}</div>
+            <div fxFlex="1 0 auto"></div>
+            <a mat-icon-button [matMenuTriggerFor]="menuUser">
+              <mat-icon class="md-24">more_vert</mat-icon>
+            </a>
+            <mat-menu #menuUser="matMenu">
+              <div mat-menu-item color="primary" (click)="makeActive(card,'paypal')">
+                <span>Make active</span>
+              </div>
+            </mat-menu>
+          </div>
+          <br />
+          <div>
+            <span>
+              Expiration: {{ card.expirationDate }}
+            </span>
+            <span class="float-right"><img src="assets/images/paypal.png" style="width: 50px;"/></span>
+          </div>
+    
+        </div>
+      </ng-container>
+    </ng-container> -->
+  </div>
+
+</div>
+<div *ngIf="!done" fxLayout="row" fxLayoutAlign="center center">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
+<!-- <div *ngIf="done && (!card.paypal && !card.mangoPay)"> -->
+<div *ngIf="done && !card.mangoPay && paymentType === 'mangopay'">
+  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="25px">
+    No Payment Methods were found.&nbsp;&nbsp;&nbsp;
+  </div>
+</div>
+<!-- <div *ngIf="done">
+  <app-form-button (click)="openAddCard()">
+    Add new card
+  </app-form-button>
+</div> -->

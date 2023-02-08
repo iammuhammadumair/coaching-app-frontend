@@ -1,0 +1,210 @@
+<div fxLayout="row">
+  <div class="modal_header" fxFlex="20%">
+    <div class="backbtn" fxLayout="column" fxLayoutGap="20px">
+      <app-form-button [color]="'blue'" (click)="close()">
+        < Back </app-form-button>
+    </div>
+  </div>
+</div>
+<h2 class="text-align-center">Upload Video</h2>
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="50%">
+
+    <div fxLayout="column">
+      <ng-template matStepLabel>Upload Video</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Video Title" [(ngModel)]="videotitle">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Video description" [(ngModel)]="videoDescription">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Video url" [disabled]="true" [(ngModel)]="videoUrl">
+      </mat-form-field>
+      <input type="file" (change)="startUploadVideo($event); false" style="display: none" #fileInputVideo>
+      <span (click)="fileInputVideo.click(); false" style="vertical-align:top;">
+        <mat-icon color="primary">cloud_upload</mat-icon>
+        Select Video File
+      </span>
+      <br>
+
+      <div *ngIf="videoShowPerc">{{videoPercentageString}}</div>
+      <mat-progress-bar *ngIf="videoShowPerc" mode="determinate" [value]="videoPercentage" color="primary">
+      </mat-progress-bar>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <a routerLink="/welcome">
+        <app-form-button [color]="'blue'">Close</app-form-button>
+      </a>
+
+      &nbsp;&nbsp;
+      <app-form-button (click)="saveVideo()">
+        Save
+      </app-form-button>
+    </div>
+  </div>
+</div>
+<br />
+<br />
+<!--    Add Home page videos     -->
+
+<div fxLayout="row" fxLayoutAlign="start center">
+  <div fxFlex="initial">
+    <h2 class="profiles">Videos</h2>
+  </div>
+</div>
+
+<div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="3px">
+  <div fxFlex="5%"></div>
+  <div class="align" fxFlex="16%"><span class="index">Video Title</span></div>
+  <div class="align" fxFlex="16%"><span class="index">Video Description</span></div>
+  <div class="align" fxFlex="16%"><span class="index">Video Url</span></div>
+  <div fxFlex="10%"></div>
+</div>
+<hr>
+<div *ngFor="let videosdetail of VideosRecords " id="{{ videosdetail.ID}}">
+  <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="3px">
+    <div fxFlex="5%">
+      <mat-checkbox color="warn" class="example-margin"></mat-checkbox>
+    </div>
+    <div class="align" fxFlex="16%">{{ videosdetail.videotitle }}</div>
+    <div class="align" fxFlex="16%">{{ videosdetail.videoDescription }}</div>
+    <div class="align" fxFlex="16%">
+      <a routerLink="{{videosdetail.videoUrl}}"></a>
+      <!-- <img src="videosdetail.videoUrl" />  -->
+      <mat-icon class="icon" style="color: #F44336"></mat-icon>
+    </div>
+
+    <div fxFlex="10%">
+      <a style="color: black;">
+        <mat-icon class="icon" svgIcon="update" (click)="UpdateRecords(myDialog,videosdetail)"></mat-icon>
+      </a> &nbsp;
+      <mat-icon class="icon" style="color: #F44336" svgIcon="delete" (click)="openDeleteREDialog(videosdetail.ID)">
+      </mat-icon>
+    </div>
+  </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="center center" class="updateVideos">
+  <div fxFlex="50%">
+    <ng-template #myDialog class="updateVideos">
+      <h2 matDialogTitle>Update Video!</h2>
+
+
+      <div fxLayout="column" id="{{ updateRecord.ID}}">
+
+        <mat-form-field>
+          <input matInput placeholder="Video Title" [(ngModel)]="updateRecord.videotitle">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Video description" [(ngModel)]="updateRecord.videoDescription">
+        </mat-form-field>
+
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center">
+
+        <app-form-button [color]="'blue'" (click)="closeDialog()">Close</app-form-button>
+
+        &nbsp;&nbsp;
+        <app-form-button (click)="UpdateVideo(updateRecord,updateRecord.ID)">
+          Save
+        </app-form-button>
+      </div>
+
+    </ng-template>
+  </div>
+</div>
+<br/>
+<br />
+<br />
+
+
+<div fxLayout="row" fxLayoutAlign="start center">
+  <div fxFlex="initial">
+    <h2 class="profiles">Video Page Title</h2>
+  </div>
+</div>
+<!-- Video Page Title and Description -->
+<h2 class="text-align-center">Title of Video Page</h2>
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="50%">
+
+    <div fxLayout="column">
+      <ng-template matStepLabel>Add Title</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Page Title" [(ngModel)]="PageTitle">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Description 1 " [(ngModel)]="PageDescription1">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Description 2"  [(ngModel)]="PageDescription2">
+      </mat-form-field>
+      <app-form-button (click)="SavePageTitle()">
+        Save
+      </app-form-button>
+    </div>
+  </div>
+</div>
+<br/>
+<br/>
+<br/>
+<!-- Update Video Title and Description -->
+<div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="3px">
+  <div fxFlex="5%"></div>
+  <div class="align" fxFlex="16%"><span class="index">Page Title</span></div>
+  <div class="align" fxFlex="16%"><span class="index">Fist Description</span></div>
+  <div class="align" fxFlex="16%"><span class="index">Second Description</span></div>
+  <div fxFlex="10%"></div>
+</div>
+<hr>
+<div *ngFor="let Data of PageContentData" id="PageContentData.ID">
+  <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="3px">
+    <div fxFlex="5%">
+      <mat-checkbox color="warn" class="example-margin"></mat-checkbox>
+    </div>
+    <div class="align" fxFlex="16%">{{ Data.PageTitle }}</div>
+    <div class="align" fxFlex="16%">{{ Data.PageDescription1 }}</div>
+    <div class="align" fxFlex="16%">{{ Data.PageDescription2}} </div>
+
+    <div fxFlex="10%">
+      <a style="color: black;">
+        <mat-icon class="icon" svgIcon="update" (click)="UpdatePageContext(UpdatePageContent,Data)"></mat-icon>
+      </a> &nbsp;
+      <mat-icon class="icon" style="color: #F44336" svgIcon="delete" (click)="openDeletePageTitleDialog(Data.ID)">
+      </mat-icon>
+    </div>
+  </div>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="center center" class="updateVideos">
+  <div fxFlex="50%">
+    <ng-template #UpdatePageContent class="updateVideos">
+      <h2 matDialogTitle>Update Page Tile And description!</h2>
+
+
+      <div fxLayout="column" id="{{ UpdatePageContet.ID}}">
+
+        <mat-form-field>
+          <input matInput placeholder="Page Title" [(ngModel)]="UpdatePageContet.PageTitle">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="page First description" [(ngModel)]="UpdatePageContet.PageDescription1">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Page Second description" [(ngModel)]="UpdatePageContet.PageDescription2">
+        </mat-form-field>
+
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center">
+
+        <app-form-button [color]="'blue'" (click)="closeDialog()">Close</app-form-button>
+
+        &nbsp;&nbsp;
+        <app-form-button (click)="UpdatePagetitle(UpdatePageContet,UpdatePageContet.ID)">
+          Save
+        </app-form-button>
+      </div>
+
+    </ng-template>
+  </div>
+</div>

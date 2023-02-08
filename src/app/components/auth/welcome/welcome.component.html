@@ -1,0 +1,7 @@
+<!-- <app-clients *ngIf="role === 'client'"></app-clients> -->
+<app-public-home *ngIf="role === 'client'" ></app-public-home>
+<app-home-coach-admins *ngIf="role === 'coach agent'"></app-home-coach-admins>
+
+<app-home-admins *ngIf="role === 'admin'"></app-home-admins>
+
+<app-coach-account *ngIf="role === 'coach'"></app-coach-account>

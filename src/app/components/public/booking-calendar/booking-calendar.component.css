@@ -1,0 +1,25 @@
+.container {
+    padding: 15px;
+    position: relative;
+    max-height: 600px;
+}
+
+.calendar-type {
+    width: 200px;
+    padding: 5px;
+    text-align: center;
+    border: 2px solid #ff9966;
+    cursor: pointer;
+}
+
+.calendar-type.active {
+    background: #ff9966;
+    color: #fff;
+}
+
+.close {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}

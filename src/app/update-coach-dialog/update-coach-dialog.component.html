@@ -1,0 +1,43 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="90%">
+    <br />
+    <div class="header">
+      <h2 mat-dialog-title>Update coach</h2>
+    </div>
+    <br />
+    <div [formGroup]="updateCoachForm" (ngSubmit)="save()"
+      fxLayout="column" fxLayoutAlign="center center">
+      <div fxLayout="row" class="form-row">
+        <mat-form-field fxFlex="100%">
+          <input matInput placeholder="Quote by coach" formControlName="quote">
+        </mat-form-field>
+      </div>
+      <br />
+      <div fxLayout="row" class="form-row">
+        <mat-form-field fxFlex="100%">
+             <mat-select placeholder="Specialty" formControlName="specialty" multiple>
+            <mat-option *ngFor="let specialty of specialtiesTranslations" [value]="specialty.value"[disabled]="formControls.specialty.value?.length > 1 && !formControls.specialty.value?.includes(specialty.value)">
+                {{specialty.text}}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+              <span *ngIf="formControls.specialty.hasError('required')">
+                Specialty is required
+              </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <br /><br />
+      <div fxLayout="row">
+        <app-form-button (click)="save()">
+          Update Coach
+        </app-form-button>
+        <div fxFlex="20px"></div>
+        <app-form-button [color]="'blue'" (click)="close()">
+          Close
+        </app-form-button>
+      </div>
+    </div>
+    <br /><br />
+  </div>
+</div>

@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  flex: 1 0 10%;
+  width: 10%;
+}
+
+img {
+  width: 100%;
+  object-fit: contain;
+}

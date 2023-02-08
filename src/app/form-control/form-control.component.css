@@ -1,0 +1,14 @@
+.field {
+    border: 1px solid #FF9966;
+    border-radius: 2px;
+    display: flex;
+    overflow: hidden;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+}
+
+.field.textarea {
+    height: unset;
+}

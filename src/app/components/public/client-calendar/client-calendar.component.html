@@ -1,0 +1,43 @@
+<div class="container">
+  <div fxLayout.gt-sm="row" fxLayout="column">
+    <div fxFlex="initial" fxFlex.gt-sm="30">
+      <app-form-button routerLink="/welcome" [color]="'blue'">
+        < Back
+      </app-form-button>
+      <br /><br />
+      <div class="jubilat jubilat-header">
+        <div>
+          My Calendar
+        </div>
+        <div>
+          <app-calendar-sync [currentUrl]="'client-calendar'">
+          </app-calendar-sync>
+        </div>
+      </div>
+    </div>
+    <div class="info" fxFlex.gt-sm="60">
+        When the time has come to talk with your coach, just tap on the booking. Your coach waits for you on the other side. If something comes up and you need to reschedule, no problem. We must ask you to do so 24 hours in advance.
+    </div>
+  </div>
+  <br />
+  <div fxLayout="row" fxLayout.xs="column">
+    <div fxFlex="initial" fxFlex.xs="initial">
+      <app-client-datepicker (selectedDateOutput)="showDate($event)"
+                             [selectedDates]="bookedDates"
+                             [showDisabledDates]="true"
+                             #calendar>
+      </app-client-datepicker>
+    </div>
+    <div fxFlex="2%"></div>
+    <div fxFlex="grow" fxFlex.xs="initial" class="time-section">
+      <div class="overlay" [hidden]="!loading">
+        <mat-progress-spinner mode="indeterminate" diameter="50"></mat-progress-spinner>
+      </div>
+      <app-client-slots [selectedDate]="selectedDate"
+                        [bookedSlots]="currentBookedSlots"
+                        (slotClickedOutput)="toggleDatetime($event)"
+                        *ngIf="currentBookedSlots?.length">
+      </app-client-slots>
+    </div>
+  </div>
+</div>

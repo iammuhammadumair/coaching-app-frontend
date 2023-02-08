@@ -1,0 +1,138 @@
+<!-- <h4>
+    Add payment method
+  </h4> -->
+  <mat-error>
+    {{ error }}
+  </mat-error>
+  <!-- <div *ngIf="!data?.user?.mangoUserId" [formGroup]="profileInfoFormGroup" fxLayout="column" fxLayoutGap="32px">
+    <div fxLayout="row">
+      <mat-form-field fxFlex="100%">
+        <input matInput formControlName="firstnameCtrl" placeholder="firstname">
+        <mat-error>
+          <span
+            *ngIf="profile.firstnameCtrl.invalid && profile.firstnameCtrl.errors.required && (profile.firstnameCtrl.dirty || profile.firstnameCtrl.touched)">
+            {{validationMessages['field']['required']}}
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row">
+      <mat-form-field fxFlex="100%">
+        <input matInput formControlName="lastnameCtrl" placeholder="lastname">
+        <mat-error>
+          <span
+            *ngIf="profile.lastnameCtrl.invalid && profile.lastnameCtrl.errors.required && (profile.lastnameCtrl.dirty || profile.lastnameCtrl.touched)">
+            {{validationMessages['field']['required']}}
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row">
+      <mat-form-field fxFlex="100%">
+        <input matInput formControlName="birthdayCtrl" [matDatepicker]="picker" placeholder="Birthday">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error>
+          <span
+            *ngIf="profile.birthdayCtrl.invalid && profile.birthdayCtrl.errors.required && (profile.birthdayCtrl.dirty || profile.birthdayCtrl.touched)">
+            {{validationMessages['field']['required']}}
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row">
+      <mat-form-field fxFlex="100%">
+        <mat-select formControlName="nationalityCtrl" placeholder="Nationality">
+          <mat-option *ngFor="let option of countries" [value]="option.code">
+            {{option.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          <span
+            *ngIf="profile.nationalityCtrl.invalid && profile.nationalityCtrl.errors.required && (profile.nationalityCtrl.dirty || profile.nationalityCtrl.touched)">
+            {{validationMessages['field']['required']}}
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row">
+      <mat-form-field fxFlex="100%">
+        <mat-select formControlName="countryOfResidenceCtrl" placeholder="Country of residence">
+          <mat-option *ngFor="let option of countries" [value]="option.code">
+            {{option.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          <span
+            *ngIf="profile.countryOfResidenceCtrl.invalid && profile.countryOfResidenceCtrl.errors.required && (profile.countryOfResidenceCtrl.dirty || profile.countryOfResidenceCtrl.touched)">
+            {{validationMessages['field']['required']}}
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div> -->
+  <div *ngIf="!loading" class="signUpForm">
+    <h6>Add the Credit Card</h6>
+
+    <form class="form-container" [formGroup]="paymentDetailsFormGroup" fxLayout="column" fxLayoutGap="32px">
+
+      <br/>
+      <b>Payment details</b>
+
+      <mat-form-field>
+        <input matInput maxlength="16" placeholder="Card Number" formControlName="cardNumber">
+        <mat-error>
+          <span *ngIf="payment.cardNumber.invalid && payment.cardNumber.errors.required && (payment.cardNumber.dirty || payment.cardNumber.touched)">
+            {{validationMessages['field']['required']}}
+          </span>
+          <span *ngIf="payment.cardNumber.errors?.Card">
+            {{validationMessages['Card']['card']}}
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput maxlength="4" placeholder="Expiration MMYY Please enter only numbers" formControlName="cardExpirationDate">
+        <mat-error>
+          <span *ngIf="payment.cardExpirationDate.invalid && payment.cardExpirationDate.errors.required && (payment.cardExpirationDate.dirty || payment.cardExpirationDate.touched)">
+            {{validationMessages['field']['required']}}
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput maxlength="4" placeholder="CSV" formControlName="cardCvx">
+        <mat-error>
+          <span *ngIf="payment.cardCvx.invalid && payment.cardCvx.errors.required && (payment.cardCvx.dirty || payment.cardCvx.touched)">
+            {{validationMessages['field']['required']}}
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <span style="font-size: 13px; cursor:pointer; padding-top:0px;">
+          We are storing your payment details to collect the payments after each session.
+        </span>
+      </div>
+      <br><br>
+    </form>
+    <br />
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <app-form-button (click)="saveCard()" [color]="'orange'">
+          Submit
+      </app-form-button>
+      <!-- <app-form-button (click)="close()" [color]="'blue'">
+          Cancel
+      </app-form-button> -->
+    </div>
+
+  </div>
+
+  <div class="mango-logo">
+    <a routerLink="/mangoTC" target="_blank">Terms & Conditions</a>
+    <img src="assets/images/mangopay-terms.png" />
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center" *ngIf="loading">
+    <mat-spinner class="spinner"  diameter="30"></mat-spinner>
+  </div>

@@ -1,0 +1,37 @@
+div.transbox {
+    background: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    padding: 2px 2px 3px 2px;
+}
+
+.headerbox{
+    width: 100%;
+    text-align: center;
+    background: #33aaaa;
+    padding: 5px 0px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.actionbox{
+    width: 100%;
+    text-align: center;
+    padding: 5px 0px 2px 0px;
+}
+
+span{
+    color:black;
+}
+
+.mat-card{
+    padding: 0px;
+    height:100%;
+}
+
+.popup-container {
+    position: relative;
+}
+
+.topbar {
+    padding: 10px;
+}

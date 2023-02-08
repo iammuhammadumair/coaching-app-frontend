@@ -1,0 +1,8 @@
+<div class="reviews">
+  <div *ngFor="let review of reviews | async" class="review">
+    <bar-rating [readOnly]="true" [(rate)]="review.rate" [max]="5" [theme]="'stars'"></bar-rating>
+    {{ review.review }}
+    <br />
+    <span class="date">{{ review.date }}</span>
+  </div>
+</div>

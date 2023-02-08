@@ -1,0 +1,51 @@
+<mat-card class="style-card" style="width:100%;">
+  <mat-card-header>
+    <img mat-card-avatar src='https://source.unsplash.com/random/200x200' >
+     <mat-card-title> {{ coach.name | titlecase }} </mat-card-title>
+     <mat-card-subtitle>{{ coach.city }} - {{ coach.country}}</mat-card-subtitle>
+
+  </mat-card-header>
+  <!--<ng-container *ngIf="source=='map'; then map; else list">
+  </ng-container>-->
+
+  <!--<ng-template #list>-->
+      <img *ngIf="imageRE && video != ''" class="img-card"
+      [src]="imageRE" (click)="openDialog(coach)">
+
+      <img *ngIf="imageRE && video == ''" class="img-card"
+      [src]="imageRE">
+
+      <div *ngIf="video != ''" class='note'>Click the image above to see video</div>
+  <!--</ng-template>-->
+
+   <mat-card-content>
+      <!--<ng-template #map>
+
+          <iframe *ngIf="video!=''" id="3dplayer" type="text/html"  [src]="video | urlSafePipe" frameborder="0" allowfullscreen>
+          </iframe>
+          <img *ngIf="video==''" src='assets/images/videonotavailableyet.jpg' class="img-card">
+     </ng-template>-->
+      <div>
+        <span><b>Reference N.:</b> {{ coach.reReferenceNumber }} </span><br>
+        <span><b>Price:</b> {{ coach.price }} - {{coach.currency }}</span><br>
+      </div>
+       <div>
+         <span><mat-icon> my_location</mat-icon> {{ coach.city }} - KM: 7</span><br>
+       </div>
+       <br>
+       <!-- <div>
+         <span><b>Agent Information</b></span><br>
+         <span>{{ coach.reAgentName }}</span><br>
+          <span>{{ coach.reAgentFullAddress }}</span><br>
+            <span>{{ coach.reAgentEmail }}</span><br>
+              <span>{{ coach.reAgentTelephone }}</span><br>
+       </div> -->
+   </mat-card-content>
+
+   <mat-card-actions>
+      <div style="text-align: center;">
+        <app-form-button>Contact or place offer</app-form-button>
+      </div>
+   </mat-card-actions>
+
+</mat-card>

@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "development": "name-marmac-3dhomes",
+    "integration": "app-3dhomes-int",
+    "production": "app-3dhomes-prod"
+  }
+}

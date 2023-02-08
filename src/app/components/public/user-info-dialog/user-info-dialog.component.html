@@ -1,0 +1,84 @@
+<div class="popup-container">
+  <mat-icon svgIcon="update" layout="column" layout-align=" end"></mat-icon>
+  <h2 mat-dialog-title>User Info Panel</h2>
+
+  <mat-dialog-content class="form-container">
+    <form [formGroup]="userForm" fxLayout="column">
+
+      <mat-form-field *ngIf="selectedProfile == 'Coach Agent'">
+        <mat-select placeholder="Profile Type" formControlName="profileType">
+          <mat-option *ngFor="let profileType of profileTypes | async" [value]="profileType.name">
+            {{ profileType.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Edit First name" formControlName="firstname">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Edit Last name" formControlName="lastname">
+      </mat-form-field>
+
+      <div>
+        <mat-form-field *ngIf="selectedProfile == 'Coach Agent'">
+          <input matInput placeholder="Address" formControlName="addressCtrl" (change)="onAddressLookup()">
+        </mat-form-field>
+
+        <mat-form-field *ngIf="selectedProfile == 'Coach Agent'">
+          <input matInput placeholder="Zip Code" formControlName="zipCodeCtrl" (change)="onAddressLookup()">
+        </mat-form-field>
+
+        <mat-form-field *ngIf="selectedProfile == 'Coach Agent'">
+          <input matInput placeholder="City" formControlName="cityCtrl" (change)="onAddressLookup()">
+        </mat-form-field>
+
+        <mat-form-field *ngIf="selectedProfile == 'Coach Agent'">
+          <input matInput placeholder="Country" formControlName="countryCtrl" (change)="onAddressLookup()">
+        </mat-form-field>
+      </div><br>
+
+      <mat-form-field *ngIf="selectedProfile == 'Coach Agent'">
+        <input matInput placeholder="Edit Telephone" formControlName="telephone">
+      </mat-form-field>
+
+      <mat-checkbox color="warn" formControlName="confirmEmail" class="example-margin" [checked]="confirmEmail">
+        &nbsp; Email confirmed
+      </mat-checkbox><br>
+
+      <mat-checkbox color="warn" formControlName="enable" class="example-margin" [checked]="enable">
+        &nbsp; User Enabled
+      </mat-checkbox><br>
+
+      <mat-radio-group formControlName="gender" [(value)]="selectedGender" *ngIf="selectedProfile == 'Coach Agent'">
+        <mat-radio-button value="F">F</mat-radio-button>&nbsp;
+        <mat-radio-button value="M">M</mat-radio-button>
+      </mat-radio-group><br>
+
+      <mat-form-field *ngIf="selectedProfile == 'Coach Agent'">
+        <input matInput [matDatepicker]="picker" placeholder="Edit Birth date" formControlName="birthDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div>
+        <mat-checkbox formControlName="privacyCtrl" color="warn">Accept privacy policy</mat-checkbox><br>
+        <span style="font-size: 13px; cursor:pointer; padding-top:0px;" (click)="openBottomSheetPrivacy()">Click here to
+          read our privacy policy</span>
+      </div><br>
+
+      <div *ngIf="selectedProfile == 'Coach Agent'">
+        <mat-checkbox formControlName="termCtrl" color="warn">Accept terms & condition</mat-checkbox><br>
+        <span style="font-size: 13px; cursor:pointer; padding-top:0px;" (click)="openBottomSheetTerms()">Click here to
+          read terms & condition</span>
+      </div>
+
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <app-form-button (click)="close()" [color]="'blue'">Close</app-form-button>
+    <app-form-button (click)="save()">Save</app-form-button>
+  </mat-dialog-actions>
+</div>

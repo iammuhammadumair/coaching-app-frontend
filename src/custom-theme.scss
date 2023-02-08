@@ -1,0 +1,344 @@
+@import '~@angular/material/theming';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import '~ngx-bar-rating/themes/br-stars-theme';
+
+@include mat-core();
+
+$custom-theme-primary: mat-palette($mat-grey, 700, 600);
+$custom-theme-accent:  mat-palette($mat-blue, 500, 400);
+$custom-theme-warn:    mat-palette($mat-amber, 400);
+
+$custom-theme: mat-light-theme($custom-theme-primary,$custom-theme-accent, $custom-theme-warn);
+
+$custom-typography: mat-typography-config(
+  $font-family: 'Oxygen, verdana'
+);
+
+@include mat-core-theme($custom-theme);
+@include angular-material-theme($custom-theme);
+@include mat-button-theme($custom-theme);
+@include angular-material-typography($custom-typography);
+@include mat-core($custom-typography);
+
+.footer {
+  // Get the default hue for a palette.
+  color: mat-color($custom-theme-warn);
+  // Get a specific hue for a palette.
+  // See https://material.io/archive/guidelines/style/color.html#color-color-palette for hues.
+  background-color: white;//mat-color($custom-theme-primary, 800);
+  font-size: 0.8em;
+
+  flex-shrink: 0;
+}
+
+.card-container{
+  background-color: mat-color($custom-theme-accent, 300);
+  width: 100%;
+  justify-content: center;
+}
+
+.footer-link{
+  width: 100%;
+  color: mat-color($custom-theme-primary, 400);
+  text-decoration: none;
+}
+
+.style-sidenav{
+  background-color: #33AAAA !important; // mat-color($custom-theme-warn, 500);
+  min-width: 150px;
+}
+
+.style-card{
+  background-color: mat-color($custom-theme-primary, 400);
+  width:100%;
+}
+
+.si-close-button{
+
+  z-index:100;
+}
+
+.wwd {
+
+  margin: 10px;
+
+
+}
+.wwdmainbody,
+.wwdheader{
+  padding: 5px;
+}
+.wwdmainbody {
+  margin-top: 0;
+
+  overflow: auto;
+}
+.wwdheader {
+
+  height: 40px;
+  text-align: center;
+}
+
+.wwdImg{
+  width: 100%;
+  height: 200px;
+}
+
+.wwdDivider{
+
+  color: rgb(255, 255, 255);
+     background:rgb(117, 112, 112);
+     width: 50%;
+     height: 2px;
+     margin-left: auto;
+     margin-right: auto;
+}
+
+
+.wwdbgImg{
+  background-image: url("https://irp-cdn.multiscreensite.com/223b9c0a/dms3rep/multi/desktop/fullsizeoutput_13da.jpeg") !important;
+}
+.wwabgImg
+{
+  background-image: url("https://irp-cdn.multiscreensite.com/223b9c0a/dms3rep/multi/desktop/fullsizeoutput_13e3.jpeg") !important;
+
+}
+.wwdbgImg,
+.wwabgImg
+{
+  height: 150px;
+
+  background-position: 50% -4.80769px;
+    float: none !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    position: relative !important;
+    height: auto !important;
+    padding-top: 116px !important;
+    padding-bottom: 116px !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    text-align: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    background-color: rgba(35, 35, 35, 1) !important;
+    opacity: 0.71 !important;
+}
+
+
+// ----- APP COMPONENT -----
+
+.all-wrap {
+  min-height: 100vh;
+}
+
+.page-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1 0 auto;
+  padding:5px;
+}
+
+/*
+ * Make the Component injected by Router Outlet full height:
+ */
+main {
+  display: flex;
+  flex-direction: column;
+  padding:5px;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+/*
+ * CSS CUSTOM
+ */
+
+.container {
+  min-height: 100%;
+  width: 100%;
+
+  padding:5px;
+}
+
+.logoNavbar{
+  max-height: 90%;
+
+}
+
+::ng-deep .si-content
+{
+  overflow-x: hidden;
+  padding: 0px;
+  margin: 0px;
+  min-width: 345px;
+}
+
+::ng-deep .si-wrapper-content
+{
+  overflow-x: hidden;
+  padding: 0px;
+  margin: 0px;
+  min-width: 100%;
+}
+
+::ng-deep .si-wrapper-top
+{
+  margin-top: -50px;
+  min-width: 350px;
+  max-width: 350px;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+::ng-deep .si-frame
+{
+
+  position: relative;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  border-radius: 0;
+  box-shadow: 0 4px 6px 0 #000;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+::ng-deep .si-shadow-pointer-top
+{
+  position: relative;
+  width: 15px;
+  height: 15px;
+  margin: auto;
+}
+::ng-deep .si-shadow-inner-pointer-top
+{
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
+  position: absolute;
+  width: 141%;
+  height: 141%;
+  box-shadow: -2.82843px 2.82843px 6px 0 #000;
+}
+::ng-deep .si-close-button
+{
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  color: inherit;
+  font-family: Arial, Baskerville, monospace;
+  font-size: 2.5em;
+  cursor: pointer;
+  opacity: 0.7;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  color: #333;
+  margin-right: 10px;
+  margin-top: -10px;
+}
+
+::ng-deep .si-pointer-bg-top
+{
+  border-top-color: #fff!important;
+}
+
+.username {
+  font-size: 0.8em;
+  position: relative;
+  left: 1.4em;
+  top: 0.7em;
+}
+
+.userInfo {
+  position: relative;
+  bottom: 0.15em;
+  right: 2em;
+}
+// ----- END APP COMPONENT -----
+/*  carousel css */
+.owl-prev,
+.owl-next {
+  position: absolute;
+  top: 40%;
+  margin-top: -10px;
+}
+
+.owl-prev {
+  left: -30px;
+}
+
+.owl-next {
+  right: -30px;
+}
+
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+}
+
+
+/* Rules for using icons as black on a light background. */
+
+.material-icons.md-dark {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+
+/* Rules for using icons as white on a dark background. */
+
+.material-icons.md-light {
+  color: rgba(255, 255, 255, 1);
+}
+
+.material-icons.md-light.md-inactive {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/*  carousel css */
+.owl-theme .owl-nav [class*=owl-] {
+ 
+   background: none !important;
+ 
+}

@@ -1,0 +1,40 @@
+.description {
+  padding: 10px;
+}
+
+.image-who{
+  padding: 10px;
+  
+  max-width: 100%;
+}
+
+.header{
+  color: #5f5c5c;
+ 
+  font-size: 24px;
+  padding-bottom: 10px;
+}
+
+.precontent{
+  color: #53a9d5;
+  font-size: 18px;
+}
+
+.content{
+  font-size: 14px;
+  font-weight: 300; 
+}
+
+ul {
+  list-style: none; /* Remove default bullets */
+}
+
+ul li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #53a9d5; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  font-size: 1.3em;
+  display: inline-block; /* Needed to add space between the bullet and the text */ 
+  width: 1em; /* Also needed for space (tweak if needed) */
+ /* margin-left: -1em;  Also needed for space (tweak if needed) */
+}

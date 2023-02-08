@@ -1,0 +1,32 @@
+<mat-card (mouseenter)="mouseEnter($event)" (mouseleave)="mouseLeave($event)">
+  <mat-card-content *ngIf="coach">
+    <div class="tile-header">
+        {{ coach.name }}
+    </div>
+    <div class="transbox"
+        (click)="goToCoach()"
+        style="background-size: cover;"
+        [lazyLoad]="imageRE">
+         <!-- [style.backgroundImage]="imageRE ? 'url('+ imageRE +')' : null"> -->
+      <div class="transbox-data">
+        <div class="transbox-hover">
+          <p>{{ coach.language }}</p>
+        </div>
+      </div>
+      <div class="transbox-bg"></div>
+    </div>
+    <div class="separator"></div>
+    <div class="tile-description" *ngFor="let special of specialities">
+      {{ specialtiesList[special] }}
+    </div>
+    <div class="tile-footer" fxLayout="row" fxLayoutAlign="start center">
+      <div fxFlex="1 0 auto">{{ (coach?.price || 0) | currency:coach.currency }}</div>
+
+      <div fxFlex="1 1 100%" class="icon-container" fxLayout="row" fxLayoutAlign="end center">
+        <mat-icon [color]="requestIcon.actual.selected ? 'selected' : 'unselected'" class="defaultIcon">
+          {{requestIcon.actual.icon}}
+        </mat-icon>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

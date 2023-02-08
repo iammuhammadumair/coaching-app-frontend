@@ -1,0 +1,138 @@
+<br />
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div class="account-container" fxFlex.gt-sm="70%" fxFlex="90%">
+    <h3>Welcome {{user?.firstname}}</h3>
+    <br /><br />
+    <div fxLayout.gt-sm="row" fxLayout="column">
+      <div fxFlex="40%" fxFlex.gt-sm="100%">
+        <div class="row-data">
+          Firstname: {{user?.firstname}}
+        </div>
+        <br/>
+        <div class="row-data">
+          Email: {{user?.email}}
+        </div>
+        <br/>
+        <div class="row-data">
+          Telephone: {{user?.telephone}}
+        </div>
+      </div>
+      <div fxFlex="5%"></div>
+      <div fxFlex="40%" fxFlex.gt-sm="100%">
+        <div class="row-data">
+          Lastname: {{user?.lastname}}
+        </div>
+        <br/>
+        <div class="row-data">
+          Uid: {{user?.uid}}
+        </div>
+        <br/>
+        <div class="row-data" *ngIf="coach">Gender: {{coach['genderShow']}}</div>
+      </div>
+      <div fxFlex="15%" fxLayout="row" fxLayoutAlign="end start"*ngIf="user.profileType != 'Coach'">
+        <mat-icon class="icon" (click)="goToProfileInfo()" svgIcon="update"></mat-icon> &nbsp;
+      </div>
+    </div>
+    <br /><br />
+    <div fxLayout="row">
+      <div fxFlex="initial">
+        <app-form-button [matMenuTriggerFor]="menu" [color]="'orange'">
+          My Office
+        </app-form-button>
+        <mat-menu #menu="matMenu" [overlapTrigger]="false">
+          <div mat-menu-item (click)="openCalendar()">
+            <a class="no-style-anchor">
+              Calendar
+            </a>
+          </div>
+          <div mat-menu-item>Payment</div>
+          <div mat-menu-item>Clients</div>
+          <div mat-menu-item>
+            <a class="no-style-anchor" [routerLink]="'/coach/' + coach?.username">
+              Profile
+            </a>
+          </div>
+        </mat-menu>
+      </div>
+      <div fxFlex="20px"></div>
+      <div fxFlex="initial">
+        <app-form-button (click)="openUpdateCoachDialog()">
+          Update Coach
+        </app-form-button>
+      </div>
+      <div fxFlex="20px"></div>
+<div fxFlex="initial">
+<app-form-button (click)="fileInput.click(); false">
+Upload CV
+</app-form-button>
+<input type="file" (change)="startUpload_Cv($event); false" style="display: none" #fileInput>
+</div>
+<div fxFlex="20px"></div>
+<div fxFlex="initial">
+  <app-form-button (click)="openKycOpen(Uploadkyc); false">
+  Upload Kyc
+  </app-form-button>
+  </div>
+    </div>
+    <br /><br />
+    <h4>Clients</h4>
+    <div class="clients-table">
+      <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="3px">
+        <div class="align" fxFlex="21%"><span class="index">Firstname</span></div>
+        <div class="align" fxFlex="16%"><span class="index">Lastname</span></div>
+        <div class="align" fxFlex="16%"><span class="index">Email</span></div>
+        <div class="align" fxFlex="16%"><span class="index">Paid Client</span></div>
+        <div class="align" fxFlex="16%"><span class="index">Pro-bono Client</span></div>
+        <div fxFlex="5%"></div>
+        <div fxFlex="10%"></div>
+      </div>
+      <hr>
+      <div *ngFor="let client of clients">
+        <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="3px">
+          <div class="align" fxFlex="21%">{{ client.firstname }}</div>
+          <div class="align" fxFlex="16%">{{ client.lastname }}</div>
+          <div class="align" fxFlex="16%">{{ client.email }}</div>
+          <div class="align" fxFlex="16%">{{ client.paid }}</div>
+          <div class="align" fxFlex="16%">{{ client.sponsored }}</div>
+          <div fxFlex="5%">
+              <mat-icon class="icon" style="color: #F44336" svgIcon="delete" (click)="openDeleteUserDialog(client)"></mat-icon>
+          </div>
+          <div fxFlex="10%">
+            <a class="timeline" [routerLink]="'/timeline/' + client.uid">Timeline</a>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #Uploadkyc>
+  <div
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    style="border-bottom: ridge"
+  >
+    <p >Please upload kyc documentation</p>
+    <hr />
+  </div>
+  <br />
+  <div fxLayout="row" fxLayoutAlign="center center">
+    
+    <div fxLayout="row">
+      <app-form-button (click)="fileInput.click(); false">
+        Upload Kyc
+        </app-form-button>
+        <input type="file" (change)="startUpload_KYC($event); false" style="display: none" #fileInput>   
+    </div>
+    <div fxFlex="20px"></div>
+    <div fxFlex="initial">
+      <app-form-button (click)="closeDialog()" [color]="'blue'">
+        Close
+      </app-form-button>
+    </div>
+  </div>
+</ng-template>
+
+
+<!-- <app-coach-details *ngIf="selectedCoach" [coach]="selectedCoach"></app-coach-details> -->

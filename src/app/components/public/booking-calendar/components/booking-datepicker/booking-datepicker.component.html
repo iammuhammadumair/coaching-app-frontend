@@ -1,0 +1,20 @@
+<ngb-datepicker #dp
+                [displayMonths]="displayMonths"
+                outsideDays="hidden"
+                [showWeekNumbers]="false"
+                (select)="showDate($event)"
+                [dayTemplate]="t"
+                [markDisabled]="isDisabled.bind(this)">
+</ngb-datepicker>
+<ng-template #t let-date let-focused="focused">
+  <span class="custom-day"
+        [class.faded]="isHovered(date)"
+        [class.circled]="isCircled(date)"
+        [class.selected]="isSelected(date)"
+        [class.showing]="isShowing(date)"
+        [class.disabled]="isDisabled(date)"
+        (mouseenter)="hoveredDate = date"
+        (mouseleave)="hoveredDate = null">
+    {{ date.day }}
+  </span>
+</ng-template>

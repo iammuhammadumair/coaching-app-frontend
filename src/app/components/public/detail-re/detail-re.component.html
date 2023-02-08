@@ -1,0 +1,41 @@
+<div id="details-re" *ngIf="coach" fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center stretch" fxLayoutGap="10px" >
+  <h2> {{ coach.address }}</h2>
+
+  <div>
+    <label>address:
+      <input [(ngModel)]="coach.address">
+    </label>
+    <label>zipCode:
+      <input [(ngModel)]="coach.zipCode">
+    </label>
+    <label>city:
+      <input [(ngModel)]="coach.city">
+    </label>
+    <label>region:
+      <input [(ngModel)]="coach.region">
+    </label>
+    <label>country:
+      <input [(ngModel)]="coach.country">
+    </label>
+    <label>latitude:  {{ coach.latitude }}</label>
+    <label>longitude: {{ coach.longitude }}</label>
+    <label>Real Estate sqm:
+      <input [(ngModel)]="coach.reSqm">
+    </label>
+    <label>Land sqm:
+      <input [(ngModel)]="coach.landSqm">
+    </label>
+    <label>price:
+      <input [(ngModel)]="coach.price">
+    </label>
+    <label>currency:
+      <input [(ngModel)]="coach.currency">
+    </label>
+    <label>r.e. agent ref. number:
+      <input [(ngModel)]="coach.reReferenceNumber">
+    </label>
+    <label>3D video URL:
+      <input [(ngModel)]="coach.reAgentWebSiteUrl">
+    </label>
+  </div>
+</div>

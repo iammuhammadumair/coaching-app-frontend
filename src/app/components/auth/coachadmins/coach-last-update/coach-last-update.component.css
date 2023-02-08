@@ -1,0 +1,25 @@
+.transbox {
+    
+    /* background: rgba(255, 255, 255, 0.7);*/
+    background: rgba(0, 0, 0, 0.46);
+    width: 100%;
+    padding: 2px 2px 3px 2px;
+    text-align: center;
+    vertical-align: middle;
+    min-height: 236px;
+    cursor: pointer;
+    
+}
+
+p {
+   /* background: rgba(0, 0, 0, 0.32);*/
+    color: white;
+    font-weight: bold;
+}
+
+.mat-card{
+    padding: 0px;
+    min-height: 240px;
+    padding-top: 2px;
+   
+}

@@ -1,0 +1,131 @@
+<ng-container *ngIf="coach; else loading">
+  <div class="Coach-div" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+    <div fxFlex="15%"></div>
+    <div fxFlex="20%" fxFlexOrder="3"></div>
+    <div fxFlex>
+      <div class="coach-headertitle coach-header-align ">
+        Words to you from {{ coach.name }}
+        <div></div>
+      </div>
+    </div>
+  </div>
+  <!-- Changes -->
+  <div class="top-nav-style" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+    <div class="modal_header" fxFlex="20%">
+      <div class="a1" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center center">
+        <app-form-button [color]="'blue'" (click)="close()">
+          < Back </app-form-button>
+            <!-- <app-form-button (click)="openContactDialog()">
+              Contact Coach
+            </app-form-button> -->
+            <app-form-button (click)="openCalendar('paid')">
+              Schedule a session
+            </app-form-button>
+            <app-form-button [color]="'violet'" (click)="openCalendar('free')" *ngIf="data?.canBookFreeSession"
+              [padding]="false">
+              Free Session
+            </app-form-button>
+            <app-form-button [color]="'orange'" (click)="openFreeIntakeDialog()">
+             Book a free session
+            </app-form-button>
+      </div>
+    </div>
+    <div fxFlex="35%" fxFlexOrder="3">
+      <div fxLayout="row wrap" fxLayoutAlign="center center">
+        <div class="detail-container" *ngIf="coach.language">
+          Language: {{coach.language}}
+          <ng-container *ngIf="coach.price || coach.sponsoring">
+            &nbsp;|&nbsp;
+          </ng-container>
+        </div>
+        <div class="detail-container" *ngIf="coach.price">
+          Price: €{{coach.price}}
+          &nbsp;|&nbsp;
+        </div>
+        <div class="detail-container" *ngIf="coach.sponsoring">
+          Pro-bono: {{coach.sponsoring ? 'yes' : 'no'}}
+        </div>
+      </div>
+      <div fxLayout="row wrap" fxLayoutAlign="center center" class="county-margin">
+        <div class="detail-container" *ngIf="coach.country">
+          Country: {{coach.country}}
+          <ng-container *ngIf="coach.city">
+            &nbsp;|&nbsp;
+          </ng-container>
+        </div>
+        <div class="detail-container" *ngIf="coach.city">
+          City: {{coach.city}}
+        </div>
+      </div>
+      <div fxLayout="row wrap" fxLayoutAlign="center center" class="county-margin Seecv">
+        <div class="detail-container">
+          <app-form-button (click)="openFile()">
+            See Cv
+          </app-form-button>
+        </div>
+      </div>
+    </div>
+    <div fxFlex>
+      <div class="coach-quote column-padding">
+        {{ coach.quote }}
+      </div>
+    </div>
+  </div>
+  <div class="a2" fxLayout="column" fxLayoutAlign="center center">
+    <app-form-button [color]="'blue'" (click)="close()">
+      < Back </app-form-button>
+        <div class="a2" fxLayout="row" fxLayoutGap="10px">
+          <!-- <app-form-button (click)="openContactDialog()">
+            Contact Coach
+          </app-form-button> -->
+          <app-form-button (click)="openCalendar('paid')">
+            Schedule a session
+          </app-form-button>
+          <app-form-button [color]="'violet'" (click)="openCalendar('free')" *ngIf="data?.canBookFreeSession"
+            [padding]="false">
+            Free Session
+          </app-form-button>
+          <app-form-button [color]="'orange'" (click)="openFreeIntakeDialog()">
+            Book a free session
+          </app-form-button>
+        </div>
+  </div>
+  <br /><br />
+  <div class="modal_content">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      You and your Coach talk via video call, but first, here is a short intro. And
+      don’t worry, no downloading is involved, everything you need is here.
+    </div>
+    <br />
+    <div class="video-container" *ngIf="coachVideoUrl">
+      <video id="video-el" style='max-height: 95vh' *ngIf="coach.coachVideoUrl" controls="true" class="framevideo"
+        controlsList="nodownload" playsinline muted>
+        <source [src]="coachVideoUrl" type="video/mp4">
+      </video>
+    </div>
+    <div style="width: 100%; text-align: center; ">
+      <img *ngIf="isNoMultimediaToDisplay" class="image-width" src="assets/images/videonotavailableyet.jpg">
+    </div>
+  </div>
+  <br />
+  <div fxLayout="row" fxLayoutAlign="center center" *ngIf="(ratings | async)?.length">
+    <div class="Seecv1">
+      <app-form-button (click)="openFile()">
+        See Cv
+      </app-form-button>
+    </div>
+  </div>
+</ng-container>
+<ng-template #loading>
+  Loading Coach…
+</ng-template>
+<div class="reviews" fxLayoutAlign="center center">
+  <div class="jubilat jubilat-header">
+    Client Reviews
+  </div>
+  <div *ngFor="let review of reviews | async" class="review">
+    <bar-rating [readOnly]="true" [(rate)]="review.rate" [max]="5" [theme]="'stars'"></bar-rating>
+    {{ review.review }}
+    <br />
+  </div>
+</div>

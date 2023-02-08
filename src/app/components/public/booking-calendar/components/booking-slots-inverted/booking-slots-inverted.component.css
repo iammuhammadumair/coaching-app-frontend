@@ -1,0 +1,30 @@
+.time-section-header {
+    text-align: center;
+}
+
+.time-slot {
+    border: 2px solid #ff9966;
+    color: #6f6f6f;
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.time-slot.circled {
+    color: #993399;
+    border: 2px solid #993399;
+}
+
+.time-slot.selected {
+    background: #ff9966;
+    color: #fff;
+    border: none;
+}
+
+.time-slot.inactive {
+    color: #ccc;
+    border-color: #ccc;
+    pointer-events: none;
+    cursor: default;
+}

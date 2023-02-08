@@ -1,0 +1,47 @@
+<div class="time-section-header">
+    <b>
+      {{ displayDate | date }} {{timezone}}
+    </b>
+  </div>
+  <br />
+  <div fxLayout="row">
+    <div fxFlex="grow">
+      <div class="time-section-header">
+        Before 12.00
+      </div>
+      <br />
+      <ng-container *ngFor="let slot of bookedSlots">
+        <a *ngIf="slot.jsdate.getHours() < 12"
+            class="time-slot"
+            (click)="redirectToSession($event,slot.booking.id)"
+            target="_blank">
+          <span (click)="toggleSlot(slot); $event.preventDefault()"
+                class="cancel-booking-icon"
+                *ngIf="canCancelSlot(slot)">
+            x
+          </span>
+          Session with {{ slot?.coach?.name }} at {{slot.jsdate | date:'h:mm'}}
+        </a>
+      </ng-container>
+    </div>
+    <div fxFlex="30px"></div>
+    <div fxFlex="grow">
+      <div class="time-section-header">
+        After 12.00
+      </div>
+      <br />
+      <ng-container *ngFor="let slot of bookedSlots">
+        <a clas="click" *ngIf="slot.jsdate.getHours() > 11"
+            class="time-slot"
+            (click)="redirectToSession($event,slot.booking.id)"
+            target="_blank">
+          <span (click)="toggleSlot(slot); $event.preventDefault()"
+                class="cancel-booking-icon"
+                *ngIf="canCancelSlot(slot)">
+            x
+          </span>
+          Session with {{ slot?.coach?.name }} at {{slot.jsdate | date:'h:mm'}}    
+    </a>
+      </ng-container>
+    </div>
+  </div>

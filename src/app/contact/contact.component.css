@@ -1,0 +1,12 @@
+.social-link {
+    width: 30px;
+    display: block;
+    cursor: pointer;
+}
+
+.social-link img {
+    width: 100%;
+}
+.gray {
+    font-weight: 800;
+}

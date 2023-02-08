@@ -1,0 +1,4 @@
+<div [ngClass]="{'publishing': publishing}" #publisherDiv id="publisher"></div>
+<div *ngIf="error" class="error">
+    {{ error?.message }}
+</div>

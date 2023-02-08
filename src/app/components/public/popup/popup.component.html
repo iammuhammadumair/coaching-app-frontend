@@ -1,0 +1,18 @@
+<div class="popup-container" style="background-size: cover;" [style.backgroundImage]="'url('+ imageRE +')'">
+  <div>
+    <div class="topbar" fxLayout="row" fxLayoutAlign="center center">
+      <app-form-button (click)="close()" [routerLink]="coachDetailsUrl">
+          See Coach
+      </app-form-button>
+      <span type="button" class="si-close-button" (click)="close()" *ngIf="closeVisible">×</span>
+    </div>
+
+    <div class="transbox">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <bar-rating [readOnly]="true" [(rate)]="rate" [max]="5" [theme]="'stars'"></bar-rating>
+      </div>
+
+      <app-coach-details-shared [coach]="coach" [coachAgent]="coachAgent"></app-coach-details-shared>
+    </div>
+  </div>
+</div>

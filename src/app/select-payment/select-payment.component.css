@@ -1,0 +1,60 @@
+:host {
+    display: block;
+    padding: 25px;
+}
+
+.paymentGatewayBox {
+    margin: 30px 0px;
+}
+
+.payment-heading {
+    margin-bottom: 0px;
+    font-size: 20px !important;
+}
+
+.payment-type .payment-radios {
+    display: flex;
+    padding: 20px 0;
+}
+
+.payment-type .payment-radios .radio {
+    /* width: 100%; */
+    /* margin: 2.5vh 1vw; */
+    margin-right: 1vw;
+}
+
+.btn {
+    font-family: "avenir";
+    font-size: 13px;
+    padding: 0px 17px;
+    border-radius: 12px;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-violet {
+    background-color: #993399;
+}
+
+.btn-blue {
+    background-color: #a9ccf1;
+}
+
+@media only screen and (max-width: 600px) {
+    .payment-type .payment-radios .radio {
+        /* width: 100%; */
+        margin: 1vh 1vw;
+    }
+    .payment-type .payment-radios {
+        flex-direction: column;
+    }
+    .btn {
+        margin: 1vh 0;
+        width: 40%;
+    }
+}

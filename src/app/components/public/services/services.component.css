@@ -1,0 +1,167 @@
+.page-header {
+    overflow: hidden;
+    display: block;
+    padding-bottom: 25px;
+    position: relative;
+}
+
+.stripes {
+    position: absolute;
+    width: 30px;
+    height: 100%;
+    display: flex;
+    left: calc(50% - 16px);
+    z-index: -1;
+}
+
+.stripes>div {
+    width: 10px;
+    height: 100%;
+}
+
+.stripes .violet {
+    background: #993399;
+}
+
+.stripes .orange {
+    background: #FF9966;
+}
+
+.stripes .blue {
+    background: #A9CCF1;
+}
+
+.text {
+    text-align: left;
+}
+
+.empty-image img {
+    width: 100%;
+    padding: 20px;
+    background: #A9CCF1;
+}
+
+.orange-box {
+    border: 4px solid #FF9966;
+    padding: 5px;
+    background: white;
+}
+
+.container {
+    margin-top: 100px
+}
+
+.section-title {
+    margin-bottom: 38px
+}
+
+.shadow,
+.subscription-wrapper {
+    box-shadow: 0px 15px 39px 0px rgba(8, 18, 109, 0.1) !important
+}
+
+.icon-primary {
+    color: #062caf
+}
+
+.icon-bg-circle {
+    position: relative
+}
+
+.icon-lg {
+    font-size: 50px
+}
+
+.icon-bg-circle::before {
+    z-index: 1;
+    position: relative
+}
+
+.icon-bg-primary::after {
+    background: #062caf !important
+}
+
+.icon-bg-circle::after {
+    content: '';
+    position: absolute;
+    width: 68px;
+    height: 68px;
+    top: -35px;
+    left: 15px;
+    border-radius: 50%;
+    background: inherit;
+    opacity: .1
+}
+
+p,
+.paragraph {
+    margin: 0;
+    font-family: 'avenir';
+    font-size: 14px;
+    background-color: white;
+    color: #3c3c3b;
+}
+
+.icon-bg-yellow::after {
+    background: #f6a622 !important
+}
+
+.icon-bg-purple::after {
+    background: #7952f5
+}
+
+.icon-yellow {
+    color: #f6a622
+}
+
+.icon-purple {
+    color: #7952f5
+}
+
+.icon-cyan {
+    color: #02d0a1
+}
+
+.icon-bg-cyan::after {
+    background: #02d0a1
+}
+
+.icon-bg-red::after {
+    background: #ff4949
+}
+
+.icon-red {
+    color: #ff4949
+}
+
+.icon-bg-green::after {
+    background: #66cc33
+}
+
+.icon-green {
+    color: #66cc33
+}
+
+.icon-bg-orange::after {
+    background: #ff7c17
+}
+
+.icon-orange {
+    color: #ff7c17
+}
+
+.icon-bg-blue::after {
+    background: #3682ff
+}
+
+.icon-blue {
+    color: #3682ff
+}
+
+.mt-4 {
+    color: #ff7c17;
+    font-family: jubilat-thin, serif !important;
+}
+.mb-4 {
+    margin-bottom: 0.2rem!important;
+}

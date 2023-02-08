@@ -1,0 +1,135 @@
+
+<div class="signUpForm" fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="60%" fxFlex.lt-sm="95%">
+    <form class="form-container" [formGroup]="profileInfoFormGroup" fxLayout="column" fxLayoutGap="32px">
+
+      <h3>Profile Info</h3>
+      <mat-error *ngIf="saveError && saveError != ''">
+        {{saveError}}
+      </mat-error>
+      <mat-form-field>
+        <input matInput formControlName="profileTypeCtrl"
+          placeholder="Profile Type" [value]="profileType" [(ngModel)]="user.profileType"
+          readonly>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Firstname" formControlName="firstnameCtrl"[(ngModel)]="user.firstname">
+        <mat-error>
+          <span
+            *ngIf="profile.firstnameCtrl.invalid && profile.firstnameCtrl.errors.required && (profile.firstnameCtrl.dirty || profile.firstnameCtrl.touched)">
+            {{validationMessages['field']['required']}}</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Lastname" formControlName="lastnameCtrl"[(ngModel)]="user.lastname">
+        <mat-error>
+          <span
+            *ngIf="profile.lastnameCtrl.invalid && profile.lastnameCtrl.errors.required && (profile.lastnameCtrl.dirty || profile.lastnameCtrl.touched)">
+            {{validationMessages['field']['required']}}</span>
+        </mat-error>
+      </mat-form-field>
+
+      <div fxLayout="row wrap" fxLayoutGap="20px" *ngIf="selectedProfile != 'Client'">
+        <div fxFlex="">
+          <div fxLayout="column" fxLayoutGap="32px">
+            <mat-form-field>
+              <input matInput placeholder="Address" formControlName="addressCtrl" (change)="onAddressLookup()">
+              <mat-error>
+                <span
+                  *ngIf="profile.addressCtrl.invalid && profile.addressCtrl.errors.required && (profile.addressCtrl.dirty || profile.addressCtrl.touched)">
+                  {{validationMessages['field']['required']}}</span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput placeholder="Zip Code" formControlName="zipCodeCtrl" (change)="onAddressLookup()">
+              <mat-error>
+                <span
+                  *ngIf="profile.zipCodeCtrl.invalid && profile.zipCodeCtrl.errors.required && (profile.zipCodeCtrl.dirty || profile.zipCodeCtrl.touched)">
+                  {{validationMessages['field']['required']}}</span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput placeholder="City" formControlName="cityCtrl" (change)="onAddressLookup()">
+              <mat-error>
+                <span
+                  *ngIf="profile.cityCtrl.invalid && profile.cityCtrl.errors.required && (profile.cityCtrl.dirty || profile.cityCtrl.touched)">
+                  {{validationMessages['field']['required']}}</span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput placeholder="Country" formControlName="countryCtrl" (change)="onAddressLookup()">
+              <mat-error>
+                <span
+                  *ngIf="profile.countryCtrl.invalid && profile.countryCtrl.errors.required && (profile.countryCtrl.dirty || profile.countryCtrl.touched)">
+                  {{validationMessages['field']['required']}}</span>
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+        </div>
+      </div>
+      <mat-form-field *ngIf="selectedProfile != 'Client'">
+        <input matInput placeholder="Telephone" formControlName="telephoneCtrl">
+        <mat-error>
+          <span
+            *ngIf="profile.telephoneCtrl.invalid && profile.telephoneCtrl.errors.required && (profile.telephoneCtrl.dirty || profile.telephoneCtrl.touched)">
+            {{validationMessages['field']['required']}}</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field *ngIf="selectedProfile != 'Client'">
+        <input matInput placeholder="Website Url" formControlName="websiteUrlCtrl">
+      </mat-form-field>
+      <mat-radio-group formControlName="genderCtrl" [(value)]="selectedGender" *ngIf="selectedProfile != 'Client'">
+        <mat-radio-button value="F">F</mat-radio-button>
+        &nbsp;&nbsp;&nbsp;
+        <mat-radio-button value="M">M</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field *ngIf="selectedProfile != 'Client'">
+        <input matInput [matDatepicker]="picker" placeholder="Date of Birth" formControlName="dobCtrl">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error>
+          <span
+            *ngIf="profile.dobCtrl.invalid && profile.dobCtrl.errors.required && (profile.dobCtrl.dirty || profile.dobCtrl.touched)">
+            {{validationMessages['field']['required']}}</span>
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <mat-checkbox formControlName="privacyCtrl">Accept privacy policy</mat-checkbox><br>
+        <span style="font-size: 13px; cursor:pointer; padding-top:0px;" (click)="openBottomSheetPrivacy()">Click here to
+          read our privacy policy</span>
+
+        <mat-error>
+          <span style="font-size: 13px;"
+            *ngIf="profile.privacyCtrl.invalid && profile.privacyCtrl.errors.required && (profile.privacyCtrl.dirty || profile.privacyCtrl.touched)">
+            Accepting Privicy Policy is mandatory</span>
+        </mat-error>
+      </div>
+      <div *ngIf="selectedProfile != 'Client'">
+        <mat-checkbox formControlName="termCtrl">Accept terms & conditions</mat-checkbox><br>
+        <span style="font-size: 13px; cursor:pointer; padding-top:0px;" (click)="openBottomSheetTerms()">Click here to
+          read terms & conditions</span>
+        <mat-error>
+          <span style="font-size: 13px;"
+            *ngIf="selectedProfile != 'Client' && profile.termCtrl.invalid && profile.termCtrl.errors.required && (profile.termCtrl.dirty || profile.termCtrl.touched)">
+            Accepting Term & Conditions is mandatory</span>
+        </mat-error>
+      </div>
+      <br><br>
+    </form>
+    <div>
+      <a [routerLink]="['/welcome']"><app-form-button>
+          Home
+        </app-form-button>
+      </a>
+      <app-form-button [color]="'blue'" (click)="buildForm()">Reset</app-form-button>
+      <app-form-button [color]="'orange'" (click)="onSignUpFormSubmit()">Submit</app-form-button>
+    </div>
+  </div>
+</div>

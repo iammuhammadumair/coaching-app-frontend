@@ -1,0 +1,78 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+    <div class="account-container" fxFlex.gt-sm="70%" fxFlex="90%">
+      <h3>Welcome {{user?.firstname}}</h3>
+      <br /><br />
+      <div fxLayout.gt-sm="row" fxLayout="column">
+        <div fxFlex="40%" fxFlex.gt-sm="100%">
+          <div class="row-data">
+            Firstname: {{user?.firstname}}
+          </div>
+          <br/>
+          <div class="row-data">
+            Email: {{user?.email}}
+          </div>
+          <br/>
+          <div class="row-data">
+            Telephone: {{user?.telephone}}
+          </div>
+        </div>
+        <div fxFlex="5%"></div>
+        <div fxFlex="40%" fxFlex.gt-sm="100%">
+          <div class="row-data">
+            Lastname: {{user?.lastname}}
+          </div>
+          <br/>
+          <div class="row-data">
+            Uid: {{user?.uid}}
+          </div>
+          <!-- <br/>
+          <div class="row-data" *ngIf="coach">Gender: {{coach['genderShow']}}</div> -->
+        </div>
+        <div fxFlex="15%" fxLayout="row" fxLayoutAlign="end start"*ngIf="user.profileType != 'Coach'">
+          <mat-icon class="icon" (click)="goToProfileInfo()" svgIcon="update"></mat-icon> &nbsp;
+        </div>
+      </div>
+      <br /><br />
+      <div fxLayout="row">
+        <div fxFlex="initial">
+          <app-form-button [matMenuTriggerFor]="menu">
+            My Bookings
+          </app-form-button>
+          <mat-menu #menu="matMenu" [overlapTrigger]="false">
+            <div mat-menu-item>
+              <a class="no-style-anchor" [routerLink]="'/client-calendar'">
+                Calendar
+              </a>
+            </div>
+            <div mat-menu-item><a class="no-style-anchor" [routerLink]="'/payment-details'">
+                Payment </a></div>
+      
+          </mat-menu>
+        </div>
+  <div fxFlex="20px"></div>
+  <div fxFlex="initial">
+    </div>
+      </div>
+      <br /><br />
+      <h4>My Coaches</h4>
+      <div class="clients-table">
+        <!-- <div   fxLayout  fxLayoutAlign="center" fxLayoutGap="16%">
+          <div class="align" fxFlex="14%"><span class="index">Coach Name</span></div>
+          <div class="align" fxFlex="16%"><span class="index">Schedule</span></div>
+          <div class="align" fxFlex="16%"><span class="index">Timeline</span></div>
+        </div> -->
+        <hr>
+        <div *ngFor="let Coach of coach">
+          <div fxLayout  fxLayoutAlign="center" fxLayoutGap="16%">
+            <div class="align" fxFlex="14%">{{ Coach.coachName }}</div>
+            <div class="align" fxFlex="16%"> 
+              <app-form-button [routerLink]="'/coach/' + Coach.username"> Schedule</app-form-button></div>
+            <div fxFlex="16%">
+              <app-form-button [color]="'blue'" [routerLink]="'/timeline/' + Coach.id">Timeline</app-form-button >
+            </div>    
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>

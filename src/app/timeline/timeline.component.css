@@ -1,0 +1,81 @@
+:host {
+    display: block;
+}
+
+.timeline {
+    padding: 20px;
+}
+
+.note {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.note mat-icon {
+    position: absolute;
+    left: -32px;
+    background: white;
+    color: #993399;
+}
+
+.date {
+    color: #993399;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.note-note {
+    white-space: pre-line;
+    margin-top: 12px;
+}
+
+.office-menu-btn {
+    background: #993399;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.notes-container {
+    position: relative;
+    padding-left: 20px;
+}
+
+.back-btn {
+    background: #441111;
+    color: #fff;
+}
+
+.stripes {
+    position: absolute;
+    height: 100%;
+    width: 5px;
+    top: 10px;
+}
+
+.stripes.violet {
+    background: #993399;
+    left: -15px;
+}
+
+.stripes.orange {
+    background: #FF9966;
+    left: -10px;
+}
+
+.stripes.blue {
+    background: #A9CCF1;
+    left: -5px;
+}
+
+.line {
+    width: 30px;
+    height: 3px;
+    background: #993399;
+    position: absolute;
+    left: -35px;
+    top: 10px;
+}
+
+.coach-name {
+    color: #993399;
+}

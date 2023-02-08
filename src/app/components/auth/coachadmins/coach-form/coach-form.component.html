@@ -1,0 +1,166 @@
+<h2 class="text-align-center">{{title}}</h2>
+<div fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex="50%" class="width-100">
+        <form [formGroup]="form">
+            <mat-vertical-stepper [linear]="false" #stepper>
+                <mat-step>
+                    <div fxLayout="column">
+                        <ng-template matStepLabel>Name & Quote</ng-template>
+                        <mat-form-field>
+                            <input matInput placeholder="Name & Last Name" formControlName="name">
+                            <mat-error>
+                                <span *ngIf="f.name.hasError('required')">Name is required</span>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field><input matInput placeholder="Quote by coach" formControlName="quote">
+                        </mat-form-field>
+                        <mat-form-field><input matInput placeholder="Username" formControlName="username">
+                        </mat-form-field>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <div fxLayout="column">
+                        <ng-template matStepLabel>Location</ng-template>
+                        <mat-form-field><input matInput placeholder="Address" formControlName="address">
+                            <mat-error>
+                                <span *ngIf="f.address.hasError('required')">Address is required</span>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field><input matInput placeholder="Zip Code" formControlName="zipCode" #zipField>
+                        </mat-form-field>
+                        <mat-form-field><input matInput placeholder="City" formControlName="city">
+                            <mat-error>
+                                <span *ngIf="f.city.hasError('required')">City is required</span>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="Country" formControlName="country">
+                            <mat-error>
+                                <span *ngIf="f.country.hasError('required')">Country is required</span>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <div fxLayout="column">
+                        <ng-template matStepLabel>Coach Info</ng-template>
+                        <div fxLayout="row">
+                            <div fxFlex="1 1 100%">
+                                <mat-form-field class="full-width">
+                                    <input matInput type="number" placeholder="Price" formControlName="price">
+                                    <mat-error>
+                                        <span *ngIf="f.price.hasError('required')">Price is required</span>
+                                    </mat-error>
+                                </mat-form-field>&nbsp;&nbsp;
+                            </div>
+                            <div fxFlex="10px;"></div>
+                            <div fxFlex="1 1 100%">
+                                <mat-form-field class="full-width">
+                                    <mat-select matInput placeholder="Currency" formControlName="currency">
+                                        <mat-option value="EUR" selected>Euro</mat-option>
+                                        <mat-option value="USD" >Dollar</mat-option>
+                                    </mat-select>
+                                    <mat-error>
+                                        <span *ngIf="f.currency.hasError('required')">Currency is required</span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <mat-form-field>
+                            <input matInput placeholder="Date of birth" formControlName="dateOfBirth">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-select placeholder="Gender" formControlName="gender">
+                                <mat-option value="male">
+                                    Male
+                                </mat-option>
+                                <mat-option value="female">
+                                    Female
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-select placeholder="Pro-bono" formControlName="sponsoring">
+                                <mat-option [value]="true">
+                                    Yes
+                                </mat-option>
+                                <mat-option [value]="false">
+                                    No
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                             <mat-select placeholder="Specialty" formControlName="specialty" multiple>
+                                <mat-option *ngFor="let specialty of specialtiesTranslations" [value]="specialty.value"[disabled]="f.specialty.value?.length > 1 && !f.specialty.value?.includes(specialty.value)">
+                                    {{specialty.text}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error>
+                                <span *ngIf="f.specialty.hasError('required')">Specialty is required</span>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <div fxLayout="column">
+                        <ng-template matStepLabel>Coach Data</ng-template>
+                        <mat-form-field>
+                            <input matInput placeholder="Coach Name" formControlName="coachName">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="Language" formControlName="language">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="Email" formControlName="email">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput placeholder="Video url" formControlName="coachVideoUrl">
+                        </mat-form-field>
+                        <input type="file" (change)="startUploadVideo($event); false" style="display: none"
+                            #fileInputVideo>
+                        <span (click)="fileInputVideo.click(); false" style="vertical-align:top;">
+                            <mat-icon color="primary">cloud_upload</mat-icon>
+                            Select Video File
+                        </span>
+                        <br>
+                        <div *ngIf="videoShowPerc">{{videoPercentageString}}</div>
+                        <mat-progress-bar *ngIf="videoShowPerc" mode="determinate" [value]="videoPercentage"
+                            color="primary">
+                        </mat-progress-bar>
+
+                        <mat-form-field><input matInput placeholder="Picture url"
+                            formControlName="coachImage">
+                        </mat-form-field>
+                        <input type="file" (change)="startUpload($event); false" style="display: none"
+                                #fileInput>
+                        <span (click)="fileInput.click(); false" style="vertical-align:top;">
+                            <mat-icon color="primary">cloud_upload</mat-icon>
+                            Select Image File
+                        </span>
+                        <br>
+                        <div *ngIf="showPerc">{{percentage}}</div>
+                        <mat-progress-bar *ngIf="showPerc" mode="determinate" [value]="percentage"
+                            color="primary">
+                        </mat-progress-bar>
+                    </div>
+                </mat-step>
+            </mat-vertical-stepper>
+        </form>
+
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <a routerLink="/welcome">
+                <app-form-button [color]="'blue'">Close</app-form-button>
+            </a>
+            &nbsp;&nbsp;
+            <app-form-button (click)="openDeleteDialog()" *ngIf="!isNew">
+                Delete
+            </app-form-button>
+            &nbsp;&nbsp;
+            <app-form-button (click)="save()">
+                {{ submitText }}
+            </app-form-button>
+        </div>
+    </div>
+</div>
+<br /><br /><br />

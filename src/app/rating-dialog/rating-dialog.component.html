@@ -1,0 +1,27 @@
+<br />
+<div fxLayout="row" fxLayoutAlign="center center">
+  <h2 mat-dialog-title>Rate your coach</h2>
+</div>
+<div *ngIf="showError">
+  <mat-error>An error occurred</mat-error>
+</div>
+<div class="rating-container" fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="70%" [formGroup]="rateForm">
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <bar-rating formControlName="rate" [max]="5" [theme]="'stars'"></bar-rating>
+      <mat-error *ngIf="(rate?.touched || rate?.dirty) && rate?.errors?.required">
+        Rate is required
+      </mat-error>
+    </div>
+    <br />
+    <textarea rows="10" formControlName="review" class="review" placeholder="Write a review...">
+    </textarea>
+  </div>
+</div>
+<br />
+<div fxLayout="row" fxLayoutAlign="center center">
+ <app-form-button [color]="'blue'" (click)="close()">Cancel</app-form-button>
+ &nbsp;&nbsp;
+ <app-form-button (click)="save()">Rate</app-form-button>
+</div>
+<br />

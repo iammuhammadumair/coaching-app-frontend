@@ -1,0 +1,179 @@
+<h1
+  class="top jubilat jubilat-header"
+  fxLayout="row"
+  fxLayoutAlign="center start"
+>
+  Estas en punto de encontrar al mejor coach para ti
+</h1>
+<div class="text txtcenter" fxLayout="row" fxLayoutAlign="center start">
+  <div fxFlex="100%" fxFlex.gt-sm="70%">
+    <p>
+      Quieres mejorar tu vida personal y profesional? Succeed te ofrece coaching
+      profesional para resolver retos de salud, mejorar relaciones, crecimiento
+      personal, éxito profesional, y coaching para problemas mentales. Usa el
+      filtro ahora para encontrar el coach que coincide con tu carácter y los
+      resultados que buscas. Tu primera sesión será siempre sin costes.
+    </p>
+    <p>
+      Si buscas fuera the America Latina
+      <a class="btn-to-home" [routerLink]="['/home']">pinche aquí</a>
+    </p>
+  </div>
+</div>
+<!-- <div class="text" fxLayout="row" fxLayoutAlign="center start">
+    <div fxFlex="100%" fxFlex.gt-sm="70%">
+      <p>
+       We are software that facilitates you to connect with an international group of certified
+      professionals in NLP coaching. We enable you to filter, schedule, see your coach, follow
+      your progress on a personal timeline, and pay for your sessions. A smooth journey in
+      coaching online. Are you ready to grow?
+      </p>
+    </div>
+  </div> -->
+<br />
+<div>
+  <a class="filter-btn" (click)="toggleShowDiv()">Filtro</a>
+  <div [@slideInOut]="animationState">
+    <!-- <app-search-form source="home"></app-search-form>-->
+    <app-partner-seach-form source="home"></app-partner-seach-form>
+  </div>
+  <div class="separator"></div>
+  <br />
+</div>
+<br /><br />
+<div class="carouselDiv">
+  <app-partner-carousel source="home"></app-partner-carousel>
+</div>
+<br />
+<div class="ig-container">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div class="jubilat jubilat-header txtcenter">
+      Tus pasos hacia la Felicidad
+    </div>
+  </div>
+  <br />
+  <div fxLayout="row" fxLayoutAlign="center center" class="timeline">
+    <div fxFlex="initial" class="notes-container">
+      <div class="stripes violet"></div>
+      <div class="stripes orange"></div>
+      <div class="stripes blue"></div>
+      <div class="note">
+        <ng-container>
+          <div class="line"></div>
+          <span class="date"
+            ><span class="steps" style="background-color: #a9ccf1"> 1 </span>
+            usa el filtro</span
+          >
+        </ng-container>
+      </div>
+
+      <div class="note">
+        <ng-container>
+          <div class="line"></div>
+          <span class="date"
+            ><span class="steps" style="background-color: #ff9966"> 2 </span>
+            selecciona tu coach</span
+          >
+        </ng-container>
+      </div>
+      <div class="note">
+        <ng-container>
+          <div class="line"></div>
+          <span class="date"
+            ><span class="steps" style="background-color: #993399"> 3 </span>
+            haga una cita</span
+          >
+        </ng-container>
+      </div>
+      <div class="note">
+        <ng-container>
+          <div class="line"></div>
+          <span class="date"
+            ><span class="steps" style="background-color: #a9ccf1"> 4 </span>
+            abre tu calendario y haga clic en el dato de la cita, y empezará el
+            video-call con tu coach</span
+          >
+        </ng-container>
+      </div>
+      <div class="note">
+        <ng-container>
+          <div class="line"></div>
+          <span class="date"
+            ><span class="steps" style="background-color: #ff9966"> 5 </span>
+            lea notas que escribe tu coach en tu timeline personal</span
+          >
+        </ng-container>
+      </div>
+      <div fxLayout="row" style="margin-top: 18px">
+        <app-form-button (click)="openCalendar(GuestPopUp)">
+          <span fxLayout="row" fxLayoutAlign="center center"> Mis citas </span>
+        </app-form-button>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<div class="ig-container">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div class="jubilat jubilat-header">Instagram</div>
+  </div>
+  <div fxLayout="column" fxLayoutGap="10px" class="ig-images" *ngIf="media">
+    <div fxLayout="row" fxLayoutGap="10px">
+      <div fxFlex="33%">
+        <img *ngIf="media[0]" [src]="media[0]?.media_url" />
+      </div>
+      <div fxFlex="33%">
+        <img *ngIf="media[1]" [src]="media[1]?.media_url" />
+      </div>
+      <div fxFlex="33%">
+        <img *ngIf="media[2]" [src]="media[2]?.media_url" />
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="10px">
+      <div fxFlex="33%">
+        <img *ngIf="media[3]" [src]="media[3]?.media_url" />
+      </div>
+      <div fxFlex="33%">
+        <img *ngIf="media[4]" [src]="media[4]?.media_url" />
+      </div>
+      <div fxFlex="33%">
+        <img *ngIf="media[5]" [src]="media[5]?.media_url" />
+      </div>
+    </div>
+  </div>
+</div>
+<br /><br />
+<ng-template #GuestPopUp>
+  <div
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    style="border-bottom: ridge"
+  >
+    <p class="jubilat CalederPopup">Please sign in to see your Calendar</p>
+    <hr />
+  </div>
+  <br />
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex="initial">
+      <app-form-button (click)="closeDialog()" [color]="'blue'">
+        Close
+      </app-form-button>
+    </div>
+    <div fxFlex="grow" fxLayout="row" fxLayoutAlign="end center">
+      <app-form-button
+        [routerLink]="['/signin', 'calendar']"
+        (click)="closeDialog()"
+      >
+        Sign in
+      </app-form-button>
+      &nbsp;&nbsp;
+      <app-form-button
+        [color]="'orange'"
+        [routerLink]="['/signup']"
+        (click)="closeDialog()"
+      >
+        Sign up
+      </app-form-button>
+    </div>
+  </div>
+</ng-template>

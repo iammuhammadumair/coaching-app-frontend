@@ -1,0 +1,23 @@
+<!-- <div class="image-wrapper"> -->
+<!--Main Footer-->
+<div fxLayout="row" fxLayoutAlign="center" *ngIf="!showHeaderB()">
+  <a class="logo-link" [routerLink]="['/home']">
+    <img class="footer-logo" src="/assets/images/logo_small.jpg" />
+  </a>
+</div>
+<!--Partner Main Footer-->
+<div class="image-wrapper" *ngIf="showHeaderB()">
+  <div>
+    <a class="Jamming-logo" [routerLink]="['/home']">
+      <img class="footer-logo1" src="/assets/images/Jamming-logo.png" />
+    </a>
+  </div>
+  <a class="logo-link" [routerLink]="['/home']">
+    <img class="footer-logo" src="/assets/images/logo_small.jpg" />
+  </a>
+  <a class="APCO-log" [routerLink]="['/home']">
+    <img class="footer-logo1" src="/assets/images/APCO-log.png" />
+  </a>
+</div>
+
+<img class="footer-image" src="/assets/images/footer.png" />

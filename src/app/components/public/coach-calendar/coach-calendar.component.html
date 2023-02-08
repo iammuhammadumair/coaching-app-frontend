@@ -1,0 +1,83 @@
+<div class="container">
+  <a class="close" (click)="close()">x</a>
+  <div fxLayout.gt-sm="row" fxLayout="column" fxLayoutAlign.gt-sm="start center" *ngIf="coach?.name">
+    <div fxFlex.gt-sm="initial" fxFlex="grow" class="title">
+        <div class="jubilat jubilat-header"><span>Hello</span> {{coach?.name}}</div>
+    </div>
+    <div fxFlex="grow" class="info">
+        You are booked! In the booked time frame you see the name of your client. Please tap on that booking and wait for your client to appear. If you need to cancel the booking, please do so 24 hours in advance by tapping the X in the right corner.
+    </div>
+  </div>
+  <div>
+    <app-calendar-sync [currentUrl]="'client-calendar'">
+    </app-calendar-sync>
+  </div>
+  <br />
+  <div fxLayout="row" fxLayout.xs="column">
+    <div fxFlex="initial" fxFlex.xs="initial">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <app-coach-datepicker (selectedDateOutput)="showDate($event)"
+                              [slots]="timeSlots"
+                              [bookings]="bookings"
+                              *ngIf="!coach?.timeSlotsInverted">
+        </app-coach-datepicker>
+        <app-coach-datepicker-inverted (selectedDateOutput)="showDate($event)"
+                                       [slots]="timeSlots"
+                                       [bookings]="bookings"
+                                       *ngIf="coach?.timeSlotsInverted">
+        </app-coach-datepicker-inverted>
+      </div>
+      <div class="desktop-types">
+        <br /><br />
+        <div>
+          <div class="calendar-type" (click)="setTimeSlotsInverted(false);"
+                [ngClass]="{'active': !coach?.timeSlotsInverted}">
+            Clients can schedule on selected timeframes
+          </div>
+          <br />
+          <div class="calendar-type" (click)="setTimeSlotsInverted(true);"
+                [ngClass]="{'active': coach?.timeSlotsInverted}">
+            Clients cannot schedule on selected timeframes
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="2%" class="separator"></div>
+    <div fxFlex="grow" fxFlex.xs="initial" class="time-section">
+      <div [hidden]="!selectedDate">
+        <app-coach-slots (slotCreated)="slotCreated($event)"
+                         (slotDeleted)="slotDeleted($event)"
+                         (bookingDeleted)="bookingDeleted($event)"
+                         [slots]="timeSlots"
+                         [bookings]="bookings"
+                         [selectedDate]="selectedDate"
+                         [coach]="coach"
+                         *ngIf="!coach?.timeSlotsInverted">
+        </app-coach-slots>
+        <app-coach-slots-inverted (slotCreated)="slotCreated($event)"
+                                  (slotDeleted)="slotDeleted($event)"
+                                  (bookingDeleted)="bookingDeleted($event)"
+                                  [slots]="timeSlots"
+                                  [bookings]="bookings"
+                                  [selectedDate]="selectedDate"
+                                  [coach]="coach"
+                                  *ngIf="coach?.timeSlotsInverted">
+        </app-coach-slots-inverted>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-types">
+    <br /><br />
+    <div>
+      <div class="calendar-type" (click)="setTimeSlotsInverted(false);"
+            [ngClass]="{'active': !coach?.timeSlotsInverted}">
+        Clients can schedule on selected timeframes
+      </div>
+      <br />
+      <div class="calendar-type" (click)="setTimeSlotsInverted(true);"
+            [ngClass]="{'active': coach?.timeSlotsInverted}">
+        Clients cannot schedule on selected timeframes
+      </div>
+    </div>
+  </div>
+</div>

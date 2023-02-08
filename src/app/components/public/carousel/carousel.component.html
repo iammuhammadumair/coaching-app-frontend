@@ -1,0 +1,13 @@
+<div class="stripes">
+  <div class="violet"></div>
+  <div class="orange"></div>
+  <div class="blue"></div>
+</div>
+<owl-carousel-o *ngIf="carouselData?.length" [options]="customOptions" #owlCar>
+  <ng-template *ngFor="let item of carouselData" [width]="160" carouselSlide [id]="item.id">
+    <div class="slider">
+      <app-tile [uid]="item.text" style="display: block; margin: 0 auto"></app-tile>
+    </div>
+  </ng-template>
+</owl-carousel-o>
+

@@ -1,0 +1,6 @@
+<h2 mat-dialog-title>User: {{ lastname }} &nbsp; {{ firstname }}</h2>
+<mat-dialog-content>Do you really want delete this user?</mat-dialog-content>
+<mat-dialog-actions>
+ <app-form-button (click)="close(false)">No</app-form-button>
+ <app-form-button (click)="close(true)">Yes</app-form-button>
+</mat-dialog-actions>

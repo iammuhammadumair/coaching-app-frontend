@@ -1,0 +1,28 @@
+.session-container {
+    position: relative;
+}
+
+.video-container {
+    position: relative;
+}
+
+app-publisher {
+    width: 100%;
+}
+
+app-subscriber {
+    position: absolute;
+    left: 25px;
+}
+
+.finish {
+    margin: 15px 0px;
+}
+
+.loading {
+    margin-top: 20px;
+}
+
+.no-streams {
+    margin: 20px 0px;
+}

@@ -1,0 +1,25 @@
+.icon {
+    position: relative;
+    border: 2px solid lightgrey;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.index {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.profiles {
+    font-size: 1.6em;
+    padding-left: 2em;
+    color: #2196F3;
+}
+
+.align {
+    text-align: center;
+}
+
+.adminData {
+    font-size: 1.1em;
+}

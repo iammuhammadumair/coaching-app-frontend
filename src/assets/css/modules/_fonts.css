@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'avenir';
+    src: url('../../fonts/avenir/avenir-book.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'verdana';
+    src: url('../../fonts/verdana/verdana.ttf');
+    font-weight: normal;
+    font-style: normal;
+}

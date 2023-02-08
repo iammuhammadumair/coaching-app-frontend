@@ -1,0 +1,46 @@
+<br />
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="90%" fxFlex.gt-sm="70%">
+    <h3>Welcome {{firstname}}</h3>
+    <br /><br />
+    <div *ngIf="coachAgentType !='Company'">
+    <h4>My Pro-bono Clients</h4>
+  </div>
+  <div *ngIf="coachAgentType =='Company'">
+    <h4>These are the people who signed up</h4>
+    <br /><br />
+  </div>
+    <div fxLayout  fxLayoutAlign="center" fxLayoutGap="10%">
+      <div class="align" fxFlex="20%"><span class="index">Firstname</span></div>
+      <div class="align" fxFlex="20%"><span class="index">Lastname</span></div>
+      <div class="align" fxFlex="20%"><span class="index">Email</span></div>
+      <div fxFlex="10%"></div>
+    </div>
+    <hr>
+
+    <div *ngFor="let client of clients | async">
+      <div fxLayout  fxLayoutAlign="center" fxLayoutGap="10%">
+        <div class="align" fxFlex="20%">{{ client.firstname }}</div>
+        <div class="align" fxFlex="20%">{{ client.lastname }}</div>
+        <div class="align" fxFlex="20%">{{ client.email }}</div>
+        <div fxFlex="10%">
+          <mat-icon class="icon" style="color: #F44336" svgIcon="delete" (click)="openDeleteUserDialog(client)"></mat-icon>
+        </div>
+      </div>
+      <hr>
+    </div>
+
+    <br /><br />
+    <div *ngIf="coachAgentType !='Company'">
+    <h4>My Coaches</h4>
+    <app-coach-list (coachEvent)="receiveCoach($event)" [coaches]="coaches"></app-coach-list>
+    <br>
+    <div style="float:right;width: 200px;">
+      <a  [routerLink]="['/coach-form', 'NEW']">
+        <app-form-button >Add new coach</app-form-button>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
+<!-- <app-coach-details *ngIf="selectedCoach" [coach]="selectedCoach" ></app-coach-details> -->

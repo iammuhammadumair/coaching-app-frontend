@@ -1,0 +1,16 @@
+<!-- <h4 *ngIf="!paymentMethod">
+  Select Payment Gateway
+</h4> -->
+<div class="signUpForm">
+  <div>
+    <!-- [continent]="continent" -->
+   <app-payment-gateway  (closePaymentModal)="close()" [coach]="coach" [user]="user" (paymentMade)="paymentComplete($event)" ></app-payment-gateway>
+  
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <br/>
+    <app-form-button (click)="close()" [color]="'blue'">
+        Cancel
+    </app-form-button>
+  </div>
+</div>

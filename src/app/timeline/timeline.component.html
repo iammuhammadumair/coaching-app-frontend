@@ -1,0 +1,33 @@
+<app-page-header [gray]="true">Timeline</app-page-header>
+
+<div class="timeline container" fxLayout="row" fxLayout.xs="column">
+  <div fxFlex="initial" class="add-note">
+    <ng-container *ngIf="role === 'coach'">
+      <app-form-button (click)="addNote()">
+        Add note
+      </app-form-button>
+      <br />
+    </ng-container>
+    <app-form-button routerLink="/welcome" [color]="'blue'">
+      Back
+    </app-form-button>
+  </div>
+  <div fxFlex="50px"></div>
+  <div fxFlex="initial" class="notes-container" *ngIf="notes?.length">
+    <div class="stripes violet"></div>
+    <div class="stripes orange"></div>
+    <div class="stripes blue"></div>
+    <div *ngFor="let note of notes; let index = index;" class="note">
+      <ng-container *ngIf="index === 0 || note.strDate !== notes[index - 1]?.strDate">
+        <div class="line"></div>
+        <span class="date">{{ note.jsdate | date }}</span>
+      </ng-container>
+      <br />
+      <i class="coach-name">coach {{ coaches[note.coach]?.coachName }}</i>
+      <br />
+      <p class="note-note">
+        {{ note.note }}
+      </p>
+    </div>
+  </div>
+</div>

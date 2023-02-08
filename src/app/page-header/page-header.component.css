@@ -1,0 +1,24 @@
+:host {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-weight: 800;
+  font-size: 35px;
+}
+
+.page-header.orange,
+.page-header {
+  color: #FF9966;
+}
+
+.page-header.violet {
+  color: #993399;
+}
+
+.page-header.blue {
+  color: #A9CCF1;
+}
+
+.page-header.gray {
+  color: #3c3c3b;
+}

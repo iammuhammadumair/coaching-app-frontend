@@ -1,0 +1,27 @@
+<div class="container">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <p>
+      We must let <b>{{data?.coach?.name}}</b> know who wants to meet them. Please Sign in for this?
+    </p>
+  </div>
+
+  <br />
+
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex="initial">
+      <app-form-button (click)="close(null)" [color]="'blue'">
+          CLose
+      </app-form-button>
+    </div>
+    <div fxFlex="grow" fxLayout="row" fxLayoutAlign="end center">
+      <app-form-button (click)="close('signin')">
+          Sign in
+      </app-form-button>
+      &nbsp;&nbsp;
+      <app-form-button [color]="'orange'" (click)="close('signup')">
+          Sign up
+      </app-form-button>
+    </div>
+  </div>
+
+</div>

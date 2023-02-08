@@ -1,0 +1,27 @@
+<ng-container *ngIf="source==='header'">
+  <div class="icon-container" (click)='selectIcon("bookmark"); $event.stopPropagation();'>
+    <mat-icon color="{{bookmarkIcon.actual.color}}" matBadgeColor="mywarn" matBadge="{{getArrayLenght(bookmarks)}}"
+      matBadgePosition="above after" class="defaultIcon pointerIcon">
+      {{bookmarkIcon.defaultIcon.icon}}
+    </mat-icon>
+  </div>
+  <div class="icon-container" (click)='selectIcon("request"); $event.stopPropagation();'>
+    <mat-icon color="{{requestIcon.actual.color}}" matBadgeColor="mywarn" matBadge="{{getArrayLenght(requests)}}"
+      matBadgePosition="above after" class="defaultIcon pointerIcon">
+      {{requestIcon.defaultIcon.icon}}
+    </mat-icon>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="source==='carousel'">
+  <div class="icon-container" (click)='selectIcon("bookmark")'>
+    <mat-icon [color]="this.bookmarkIcon.actual.selected ? 'selected' : 'unselected'" class="defaultIcon pointerIcon">
+      {{bookmarkIcon.actual.icon}}
+    </mat-icon>
+  </div>
+  <div class="icon-container">
+    <mat-icon [color]="this.requestIcon.actual.selected ? 'selected' : 'unselected'" class="defaultIcon">
+      {{requestIcon.actual.icon}}
+    </mat-icon>
+  </div>
+</ng-container>

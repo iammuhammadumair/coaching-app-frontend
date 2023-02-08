@@ -1,0 +1,11 @@
+<div class="app-container">
+  <div class="app-close" (click)="close()">x</div>
+  <p>
+    Thank you for booking a free intake with <b>{{ coachName }}</b
+    >. To see the booking in your calender, We need you to sign up with the same email address.
+  </p>
+  <br />
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div (click)="goToSignUp()" class="app-button">Sign-Up</div>
+  </div>
+</div>

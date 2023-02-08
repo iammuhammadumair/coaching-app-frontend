@@ -1,0 +1,28 @@
+.time-section-header {
+    text-align: center;
+}
+
+.time-slot {
+    position: relative;
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 5px;
+    cursor: pointer;
+    background: #ff9966;
+    color: #fff;
+    border: none;
+}
+
+.cancel-booking-icon {
+    position: absolute;
+    right: 0px;
+    top: -5px;
+    padding: 0px 4px;
+    color: #fff;
+}
+
+.click{
+    cursor: pointer;
+}

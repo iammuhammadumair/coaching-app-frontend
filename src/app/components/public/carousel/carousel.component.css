@@ -1,0 +1,44 @@
+:host {
+  display: block;
+  position: relative;
+}
+
+.owl-prev,
+.owl-next {
+  position: absolute;
+  top: 50%;
+  margin-top: -10px;
+}
+
+.owl-prev {
+  left: 0;
+}
+
+.owl-next {
+  right: 0;
+}
+
+.stripes {
+  position: absolute;
+  width: 100%;
+  top: calc(50% - 30px);
+  left: -30px;
+  width: calc(100% + 60px);
+}
+
+.stripes > div {
+  height: 10px;
+}
+
+.stripes .violet {
+  background: #993399;
+}
+
+.stripes .orange {
+  background: #FF9966;
+}
+
+.stripes .blue {
+  background: #A9CCF1;
+}
+

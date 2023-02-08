@@ -1,0 +1,46 @@
+:host {
+    font-size: 16px;
+}
+
+
+
+@media (max-width: 735px) {
+    .top {
+      text-align: center;
+      margin-top: 0px;
+    }
+    .cdk-overlay-pane {
+      width: 96%;
+    }
+    .free-session {
+    color: black;
+    padding: 0px 8px 0px 8px;
+    font-size: 14px !important;
+  }
+  .calendarSyncBtn{
+    background-color: #fff;
+    color: black;
+  }
+  }
+  .free-session {
+    color: black;
+    padding: 0px 8px 0px 8px;
+    font-size: 14px;
+  }
+  .Free-Book-Session {
+    padding: 25px;
+
+  }
+  button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: 'avenir';
+    font-size: inherit;
+    line-height: inherit;
+}
+  .closebtn {
+
+    cursor: pointer;
+    color: black;
+    margin-right: -1em;
+    border-radius: 50%;
+  }

@@ -1,0 +1,69 @@
+image: node:16.14.2
+
+
+stages:
+  - build
+  - test
+  - deploy
+
+before_script:
+  - apt-get update -qq && apt-get install
+
+build:
+  stage: build
+  before_script:
+    - npm install -g firebase-tools
+    - yarn config set cache-folder .yarn
+    - yarn install --ignore-engines
+  cache:
+    paths:
+      - node_modules/
+      - .yarn
+  script:
+    - yarn run lint
+    - yarn run build-dev
+
+test:
+  stage: test
+  before_script:
+    - yarn install --ignore-engines
+  script:
+    - yarn install --ignore-engines
+
+deploy_integration:
+  stage: deploy
+  environment:
+    name: integration
+    url: https://app-3dhomes-int.firebaseapp.com
+  only:
+    - integration
+  before_script:
+    - npm install -g firebase-tools
+    - yarn config set cache-folder .yarn
+    - yarn global add firebase-tools
+    - yarn install --ignore-engines
+  script:
+    - rm -rf dist/
+    - yarn run lint
+    - yarn run build-int
+    - firebase use --token $FIREBASE_DEPLOY_KEY integration
+    - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_DEPLOY_KEY
+
+deploy_production:
+  stage: deploy
+  environment:
+    name: production
+    url: https://app-3dhomes-prod.firebaseapp.com
+  only:
+    - master
+  before_script:
+    - npm install -g firebase-tools
+    - yarn config set cache-folder .yarn
+    - yarn global add firebase-tools
+    - yarn install --ignore-engines
+  script:
+    - yarn run lint
+    - yarn run build-prod
+    - firebase use --token $FIREBASE_DEPLOY_KEY production
+    - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_DEPLOY_KEY
+

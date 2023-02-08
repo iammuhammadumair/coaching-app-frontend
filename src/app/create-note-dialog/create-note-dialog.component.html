@@ -1,0 +1,17 @@
+<div class="container" [formGroup]="form">
+  <h3>Add note to the timeline</h3>
+  <br />
+
+  <mat-form-field>
+    <textarea matInput formControlName="note" rows="6">
+    </textarea>
+    <mat-error *ngIf="note.touched && note?.errors?.required">
+      Note is required
+    </mat-error>
+  </mat-form-field>
+
+  <br /><br />
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <app-form-button (click)="createNote()">Add note</app-form-button>
+  </div>
+</div>

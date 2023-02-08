@@ -1,0 +1,177 @@
+
+   .Custom-Header
+  {
+    position: relative;
+    margin: 0;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    font-size: 1.1em;
+  }
+ 
+  .Custom-Description
+  {
+    position: relative;
+    margin: 0;
+    padding: 10px 0px 10px 0px;
+    margin-top: 20px;
+    text-align: justify;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-top: 1px solid;
+    border-top-color: #48b5e9;
+  }
+  .Custom-Icon
+  {
+    position: relative;
+    margin: 0;
+    padding: 10px 0px 10px 0px;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 1em;
+    border-bottom: 1px solid;
+    border-bottom-color: #48b5e9;
+    text-align: center;
+  }
+  .Custom-Bottom
+  {
+    position: relative;
+    margin: 0;
+    padding: 5px 2px 5px 2px;
+  }
+  .Custom-Bottom-Gradient
+  {
+    position: absolute;
+    width: 326px;
+    height: 35px;
+    bottom: 0px;
+    right: 18px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+  }
+  .Custom-Text-Header
+  {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    text-decoration:none;
+    color: #333;
+    font-style: initial;
+    font-weight: 400;
+    line-height: 1.1em;
+    margin:0;
+    padding:0;
+    display: block;
+    flex-wrap: nowrap;
+  }
+  .Custom-Text-Subtitle
+  {
+    font-family: 'Roboto', sans-serif;
+    font-size: .9em;
+    text-decoration:none;
+    font-style: initial;
+    font-weight: 400;
+    line-height: 1.1em;
+    margin:0;
+    padding:0;
+    display: block;
+    margin-top:5px!important;
+  }
+  .Custom-ImgCircleLeft
+  {
+    border-radius: 50%;
+    margin-left: auto!important;
+    margin-right: 10px!important;
+    width: 80px;
+    height: 80px;
+    max-width: 100%;
+    display:block;
+    float: left;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+  .Custom-btn-group
+  {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+  }
+  .Custom-btn
+  {
+    position: relative;
+    display: inline-block;
+    padding: 5px 15px;
+    margin-bottom: 0;
+    font-size: .8em;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.1;
+    text-align: center;
+    text-transform: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    margin:1px;
+  }
+  .Custom-btn-primary
+  {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+  }
+
+  .card-map {
+    max-width: 400px;
+    padding: 0px;
+  }
+
+  .card-list {
+    /*width: 23%;
+    max-width: 300px;*/
+    padding: 1px;
+  }
+
+  .example-header-image {
+    background-size: cover;
+  }
+
+  .img-card {
+    width: 100%;
+    height: 200px;
+    cursor: pointer;
+    /*margin-bottom: 8%;*/
+  }
+
+  .si-close-button{
+
+    z-index:100;
+  }
+
+  .note{
+    text-align: center;
+    color: rgba(0, 0, 0, 0.54);
+    padding-bottom: 10px;
+    font-size: 11px;
+  }
+
+  
+
+ 
+  
+  
