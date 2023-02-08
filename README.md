@@ -1,5 +1,5 @@
 
-# Online Personal Professioanl Caching 
+# Online Personal and Professioanl Caching 
 
 
 A Coaching App using Node Js with firebase database
